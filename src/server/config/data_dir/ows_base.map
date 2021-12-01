@@ -83,8 +83,8 @@ MAP
     DRIVER "OGR/GPKG"
     MIMETYPE "application/geopackage+sqlite3"
     FORMATOPTION "STORAGE=memory"
-    FORMATOPTION "FORM=simple" # Need this or will get zip
-    FORMATOPTION "FILENAME=result.gpkg"
+    FORMATOPTION "FILENAME=resultlayer.gpkg"
+    FORMATOPTION "FORM=zip"
   END
   
   OUTPUTFORMAT
@@ -141,11 +141,14 @@ MAP
     FORMATOPTION "FILENAME=result.csv"
   END
 
+
   OUTPUTFORMAT
-    NAME pdf
+    NAME "pdf"
+    DRIVER CAIRO/PDF
     MIMETYPE "application/x-pdf"
-    DRIVER pdf
-    FORMATOPTION "OUTPUT_TYPE=RASTER" ##not mandatory
+    IMAGEMODE RGB
+    EXTENSION "pdf"
+    FORMATOPTION "OUTPUT_TYPE=RASTER"
   END
 
   WEB
