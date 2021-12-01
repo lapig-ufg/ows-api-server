@@ -1,0 +1,24 @@
+#!/bin/bash
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2000_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2002_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2004_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2006_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2008_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2010_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2013_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2014_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2015_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2016_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2017_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_completo_30_2018_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2000_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2002_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2004_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2006_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2008_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2010_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2013_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2014_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2015_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2016_fip.tif
+node seed-layer-tms.js bi_ce_mosaico_landsat_complementar_30_2017_fip.tif

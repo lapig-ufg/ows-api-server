@@ -1,0 +1,64 @@
+[
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "limites_terras_indigenas",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2017",
+            "scale": "ND",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='http://www.planalto.gov.br/ccivil_03/LEIS/L6001.htm'> http://www.planalto.gov.br/ccivil_03/LEIS/L6001.htm</a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "columnsMapCard": "nome,etnia,fase,modalidade,cr"
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "assentamentos",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2016",
+            "scale": "1:5.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='https://www.gov.br/incra/pt-br/assuntos/reforma-agraria/assentamentos'> https://www.gov.br/incra/pt-br/assuntos/reforma-agraria/assentamentos </a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": true,
+            "gpkg": true,
+            "raster": false
+        },
+        "columnsMapCard": "cd_sipra,nome_proje,capacidade,num_famili,data_obten,forma_obte,descricao_"
+    }
+]

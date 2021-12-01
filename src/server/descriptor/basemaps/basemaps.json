@@ -1,0 +1,32 @@
+[
+    {
+        "valueType": "mapbox",
+        "type": "basemap",
+        "visible": true,
+        "viewValueType": "translate"
+    },
+    {
+        "valueType": "mapbox-dark",
+        "type": "basemap",
+        "visible": false,
+        "viewValueType": "translate"
+    },
+    {
+        "valueType": "google",
+        "type": "basemap",
+        "visible": false,
+        "viewValueType": "translate"
+    },
+    {
+        "valueType": "roads",
+        "type": "basemap",
+        "visible": false,
+        "viewValueType": "translate"
+    },
+    {
+        "valueType": "bing",
+        "type": "basemap",
+        "visible": false,
+        "viewValueType": "translate"
+    }
+]

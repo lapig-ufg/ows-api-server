@@ -1,0 +1,218 @@
+{
+    "labels": {
+        "layertype": {
+            "typeLabel": {
+                "type": "Type",
+                "quantity": "Amount",
+                "area_planted": "Planted Area",
+                "production": "Production",
+                "source": "Source"
+            },
+            "filterLabel": {
+                "year": "Year",
+                "period": "Period"
+            }
+        }
+    },
+    "metadata_info": {
+        "general_titles": {
+            "title": "Metadata",
+            "description": "Description",
+            "format": "Format",
+            "region": "Region",
+            "period": "Period",
+            "data": "Date",
+            "scale": "Scale",
+            "system_coordinator": "System Coordinator",
+            "cartographic_projection": "Cartographic projection",
+            "cod_caracter": "Character encoding",
+            "coordinates": "Reference and Coordinate Systems",
+            "projection": "Cartographic projection",
+            "caracter": "Character encoding",
+            "fonte": "Source",
+            "update": "Update",
+            "contato": "Contact",
+            "url": "URL"
+        },
+        "general_values": {
+            "format": {
+                "shp": "Shapefile (* .SHP), with complementary files (* .PRJ, * DBF, * .SHX, * .SBX, * MAP).",
+                "tif": "Raster (*.TIF).",
+                "csv": "Comma-separated values (* .CSV).",
+                "gpkg": "Geopackage (*.gpkg)",
+                "service": {
+                    "planet": "Service provided by Norway’s International Climate & Forests Initiative",
+                    "sentinel": "Service provided by EOX "
+                }
+            },
+            "system_coordinator": {
+                "sirgas2000": "SIRGAS 2000 reference surface, Geographic Coordinate System (in degrees)",
+                "wgs84": "World Geodetic System (WGS84)"
+            },
+            "cartographic_projection": {
+                "utm": "Universal Transverse Mercator (UTM)."
+            },
+            "cod_caracter": {
+                "latin1": "Latin 1",
+                "utf8": "UTF-8"
+            }
+        }
+    },
+    "layertype": {
+        "agricultura_agrosatelite": {
+            "viewValueType": "Agrosatellite",
+            "filters": {
+                "year=2001": 2001
+            },
+            "metadata": {
+                "title": "Agricultura - Agrosatélite",
+                "description": "Dynamics of expanding the area planted with annual crops in the Cerrado Biome.",
+                "format": "shp",
+                "region": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities.",
+                "period": "2001; 2007; 2014",
+                "scale": "1:250.000",
+                "system_coordinator": "sirgas2000",
+                "cartographic_projection": "utm",
+                "cod_caracter": "latin1",
+                "fonte": "Agrosatélite Applied Geotechnology, Gordon and Betty Moore Foundation (funders)",
+                "link": "<a target='_blank' class='link-details' href='https://agrosatelite.com.br/'> https://agrosatelite.com.br/</a>"
+            }
+        },
+        "planet": {
+            "metadata": {
+                "title": "Satellite images: Planet",
+                "description": "With hundreds of satellites in orbit, Planet is able to obtain images with a resolution of 3 meters of any location on Earth daily.",
+                "period": "2016 ~ until today",
+                "scale": "1:250.000"
+            }
+        },
+        "sentinel": {
+            "metadata": {
+                "title": "Satellite images: SENTINEL",
+                "description": "The global and cloudless Sentinel-2 map, crafted by EOX.",
+                "region": "Global - World.",
+                "period": "2016 ~ 2020",
+                "scale": "1:250.000"
+            }
+        },
+        "geo_car_imovel": {
+            "metadata": {
+                "title": "Rural Property",
+                "description": "Properties registered in the Rural Environmental Registry (CAR) - Law No. 12,651, of May 25, 2012.",
+                "region": "Brazil",
+                "fonte": "Rural Environmental Registry (CAR) / Brazilian Forest Service (SFB)"
+            }
+        },
+        "unidades_planejamento_hidrico": {
+            "viewValueType": "Units",
+            "metadata": {
+                "title": "Water Planning",
+                "description": "The water planning unit intends to support the definition of the minimum coverage area for the development of a plan, considered as a need to integrate the National Policy with State and Municipal Policies.",
+                "region": "Brazil",
+                "fonte": "National Water and Sanitation Agency"
+            }
+        },
+        "limites_terras_indigenas": {
+            "viewValueType": "Boundaries",
+            "metadata": {
+                "title": "Indigenous Land (TI)",
+                "description": "Indigenous lands boundaries.",
+                "region": "Brazil",
+                "fonte": "National Indian Foundation (FUNAI)"
+            }
+        },
+        "assentamentos": {
+            "viewValueType": "Settlements",
+            "metadata": {
+                "title": "Settlements",
+                "description": "The agrarian reform settlement is a group of agricultural units, installed by Incra in a rural property.",
+                "region": "Brazil",
+                "fonte": "The National Institute of Colonization and Agrarian Reform (INCRA)"
+            }
+        }
+    },
+    "basemap": {
+        "mapbox": {
+            "viewValueType": "Geopolitical"
+        },
+        "bing": {
+            "viewValueType": "Bing Maps"
+        },
+        "google": {
+            "viewValueType": "Google"
+        },
+        "roads": {
+            "viewValueType": "Roads"
+        },
+        "relief": {
+            "viewValueType": "Relief"
+        },
+        "planet": {
+            "viewValueType": "Planet"
+        },
+        "mapbox-dark": {
+            "viewValueType": "Geopolitical Dark"
+        }
+    },
+    "limit": {
+        "estados": {
+            "viewValueType": "States of Brazil"
+        },
+        "municipios": {
+            "viewValueType": "Municipalities of Brazil"
+        },
+        "municipios_info": {
+            "viewValueType": "Municipalities of Brazil with Biomes and States"
+        },
+        "biomas": {
+            "viewValueType": "Biomes of Brazil"
+        },
+        "limites_cartas_ibge": {
+            "viewValueType": "IBGE Maps"
+        }
+    },
+    "cardMapLabels": {
+        "uf": "FS",
+        "estado": "State",
+        "cd_geocmu": "City Code",
+        "municipio": "City",
+        "bioma": "Biome",
+        "regiao": "Region",
+        "area_municipio_ha": {
+            "text": "City Area (ha)",
+            "type": "double"
+        },
+        "area_ha": {
+            "text": "Polygon Area (ha)",
+            "type": "double"
+        },
+        "classe_agricultura_agrosatelite": "Agriculture Class",
+        "data_ref": {
+            "text": "Reference Date",
+            "type": "date"
+        },
+        "cod_car": "CAR Code",
+        "uph_nm": "Water Planning Unit Name",
+        "uph_cd": "Water Planning Unit Code",
+        "nome_limites_terras_indigenas": "Name IL",
+        "etnia_limites_terras_indigenas": "ethnicity",
+        "fase_limites_terras_indigenas": "Phase",
+        "modalidade_limites_terras_indigenas": "Modality",
+        "cr_limites_terras_indigenas": "Regional Coordination",
+        "nome_proje_assentamentos": "Project Name",
+        "capacidade_assentamentos": {
+            "text": "Settlement Capacity",
+            "type": "integer"
+        },
+        "num_famili_assentamentos": {
+            "text": "Number of Families",
+            "type": "integer"
+        },
+        "data_obten_assentamentos": {
+            "text": "Obtaining Date",
+            "type": "date"
+        },
+        "forma_obte_assentamentos": "Obtaining method",
+        "descricao__assentamentos": "Description"
+    }
+}

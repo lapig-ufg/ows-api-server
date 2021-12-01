@@ -1,0 +1,50 @@
+[
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "agricultura_agrosatelite",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "Agrosatélite",
+        "typeLabel": "source",
+        "filterLabel": "year",
+        "filterSelected": "year=2014",
+        "filterHandler": "msfilter",
+        "filters": [
+            {
+                "valueFilter": "year=2001",
+                "viewValueFilter": "translate"
+            },
+            {
+                "valueFilter": "year=2007",
+                "viewValueFilter": 2007
+            },
+            {
+                "valueFilter": "year=2014",
+                "viewValueFilter": 2014
+            }
+        ],
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2001; 2007; 2014",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='https://agrosatelite.com.br/'> https://agrosatelite.com.br/</a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "columnsMapCard": "area_ha,classe"
+    }
+]

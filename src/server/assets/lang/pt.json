@@ -1,0 +1,220 @@
+{
+    "labels": {
+        "layertype": {
+            "typeLabel": {
+                "type": "Tipo",
+                "quantity": "Quantidade",
+                "area_planted": "Área Plantada",
+                "production": "Produção",
+                "source": "Fonte"
+            },
+            "filterLabel": {
+                "year": "Ano",
+                "period": "Período"
+            }
+        }
+    },
+    "metadata_info": {
+        "general_titles": {
+            "title": "Metadados",
+            "description": "Descrição",
+            "format": "Formato",
+            "region": "Região",
+            "data": "Data",
+            "period": "Período",
+            "scale": "Escala",
+            "system_coordinator": "Sistemas de Referência e Coordenadas",
+            "cartographic_projection": "Projeção cartográfica",
+            "cod_caracter": "Codificação de caractere",
+            "coordinates": "Sistemas de Referência e Coordenadas",
+            "projection": "Projeção cartográfica",
+            "caracter": "Codificação de caractere",
+            "fonte": "Fonte",
+            "update": "Atualização",
+            "contato": "Contato",
+            "link": "URL"
+        },
+        "general_values": {
+            "format": {
+                "shp": "Shapefile (*.SHP), com arquivos complementares (*.PRJ, *DBF, *.SHX, *.SBX, *MAP).",
+                "tif": "Raster (*.TIF).",
+                "csv": "Valores separados por vírgula (*.CSV).",
+                "gpkg": "Geopackage (*.gpkg)",
+                "service": {
+                    "planet": "Webservice fornecido pelo Norway’s International Climate & Forests Initiative",
+                    "sentinel": "Webservice fornecido pela EOX "
+                }
+            },
+            "system_coordinator": {
+                "sirgas2000": "Superfície de referência SIRGAS 2000, Sistema de Coordenada Geográfica (em graus).",
+                "wgs84": "Sistema Geodésico Mundial (WGS84)"
+            },
+            "cartographic_projection": {
+                "utm": "Universal Transversa de Mercator (UTM)."
+            },
+            "cod_caracter": {
+                "latin1": "Latin 1",
+                "utf8": "UTF-8"
+            }
+        }
+    },
+    "layertype": {
+        "agricultura_agrosatelite": {
+            "viewValueType": "Agrosatélite",
+            "filters": {
+                "year=2001": 2001
+            },
+            "metadata": {
+                "title": "Agricultura - Agrosatélite",
+                "description": "Dinâmica da expansão da área plantada com culturas anuais no Bioma Cerrado.",
+                "format": "shp",
+                "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                "period": "2001; 2007; 2014",
+                "scale": "1:250.000",
+                "system_coordinator": "sirgas2000",
+                "cartographic_projection": "utm",
+                "cod_caracter": "latin1",
+                "fonte": "Agrosatélite Geotecnologia Aplicada, Fundação Gordon and Betty Moore (Financiadores)",
+                "url": "<a target='_blank' class='link-details' href='https://agrosatelite.com.br/'> https://agrosatelite.com.br/</a>"
+            }
+        },
+        "planet": {
+            "metadata": {
+                "title": "Imagens de Satélite: PLANET",
+                "description": "Com centenas de satélites em órbita a Planet é capaz de obter imagens com resolução de 3 metros de qualquer local da Terra diariamente.",
+                "region": "Global - O Mundo todo.",
+                "period": "2016 ~ até hoje",
+                "scale": "1:250.000"
+            }
+        },
+        "sentinel": {
+            "metadata": {
+                "title": "Imagens de Satélite: SENTINEL",
+                "description": "Mapa Sentinel-2 criada pela EOX.",
+                "region": "Global - O Mundo todo.",
+                "period": "2016 ~ 2020",
+                "scale": "1:250.000"
+            }
+        },
+        "geo_car_imovel": {
+            "metadata": {
+                "title": "Propriedades Rurais",
+                "description": "Propriedades inscritas no Cadastro Ambiental Rural (CAR) - Lei nº 12.651, de 25 de maio de 2012.",
+                "region": "Brasil",
+                "fonte": "Cadastro Ambiental Rural (CAR) / Serviço Florestal Brasileiro (SFB)"
+            }
+        },
+        "unidades_planejamento_hidrico": {
+            "viewValueType": "Unidades",
+            "metadata": {
+                "title": "Unidades de Planejamento Hídrico",
+                "description": "A unidade de planejamento hídrico pretende subsidiar a definição da mínima área de abrangência para o desenvolvimento de um plano, consideradas as necessidades de integração da Política Nacional com as Políticas Estaduais e Municipais.",
+                "region": "Brasil",
+                "fonte": "Agência Nacional de Águas - Superintendência de Planejamento de Recursos Hídricos"
+            }
+        },
+        "limites_terras_indigenas": {
+            "viewValueType": "Limites",
+            "metadata": {
+                "title": "Terras Indígenas (TI)",
+                "description": "Limite das terras indígenas brasileiras.",
+                "region": "Brasil",
+                "fonte": "Fundação Nacional do Índio (FUNAI)"
+            }
+        },
+        "assentamentos": {
+            "viewValueType": "Assentamentos",
+            "metadata": {
+                "title": "Assentamentos",
+                "description": "O assentamento de reforma agrária é um conjunto de unidades agrícolas, instaladas pelo Incra em um imóvel rural.",
+                "region": "Brasil",
+                "fonte": "Instituto Nacional de Colonização e Reforma Agrária (INCRA)"
+            }
+        }
+    },
+    "basemap": {
+        "mapbox": {
+            "viewValueType": "Geopolítico"
+        },
+        "bing": {
+            "viewValueType": "Bing Maps"
+        },
+        "google": {
+            "viewValueType": "Google"
+        },
+        "roads": {
+            "viewValueType": "Estradas"
+        },
+        "relief": {
+            "viewValueType": "Relevo"
+        },
+        "planet": {
+            "viewValueType": "Planet"
+        },
+        "mapbox-dark": {
+            "viewValueType": "Geopolítico Dark"
+        }
+    },
+    "limit": {
+        "estados": {
+            "viewValueType": "Estados do Brasil"
+        },
+        "municipios": {
+            "viewValueType": "Municípios do Brasil"
+        },
+        "municipios_info": {
+            "viewValueType": "Municípios do Brasil com Biomas e Estado"
+        },
+        "biomas": {
+            "viewValueType": "Biomas do Brasil"
+        },
+        "limites_cartas_ibge": {
+            "viewValueType": "Cartas do IBGE"
+        }
+    },
+    "cardMapLabels": {
+        "uf": "UF",
+        "estado": "Estado",
+        "cd_geocmu": "Código Municipal",
+        "municipio": "Município",
+        "bioma": "Bioma",
+        "regiao": "Região",
+        "area_municipio_ha": {
+            "text": "Área do Município (ha)",
+            "type": "double"
+        },
+        "area_ha": {
+            "text": "Área do polígono (ha)",
+            "type": "double"
+        },
+        "classe_agricultura_agrosatelite": "Classe de Agricultura",
+        "data_ref": {
+            "text": "Data de Referência",
+            "type": "date"
+        },
+        "cod_car": "Código do CAR",
+        "uph_nm": "Nome da Unidade de Plan. Hídrico",
+        "uph_cd": "Código da Unidade de Plan. Hídrico",
+        "nome_limites_terras_indigenas": "Nome da TI",
+        "etnia_limites_terras_indigenas": "Etnia",
+        "fase_limites_terras_indigenas": "Fase",
+        "modalidade_limites_terras_indigenas": "Modalidade",
+        "cr_limites_terras_indigenas": "Coordenação Regional",
+        "cd_sipra_assentamentos": "Código SIPRA",
+        "nome_proje_assentamentos": "Nome do Projeto",
+        "capacidade_assentamentos": {
+            "text": "Capacidade do Assentamento",
+            "type": "integer"
+        },
+        "num_famili_assentamentos": {
+            "text": "Número de Famílias",
+            "type": "integer"
+        },
+        "data_obten_assentamentos": {
+            "text": "Data de Obtenção",
+            "type": "date"
+        },
+        "forma_obte_assentamentos": "Forma de Obtenção",
+        "descricao__assentamentos": "Descrição"
+    }
+}

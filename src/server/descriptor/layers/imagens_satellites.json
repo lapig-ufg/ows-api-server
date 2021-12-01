@@ -1,0 +1,175 @@
+[
+    {
+        "origin": {
+            "sourceService": "external",
+            "typeOfTMS": "xyz",
+            "url": "https://tiles.planet.com/basemaps/v1/planet-tiles/{{filters.valueFilter}}/gmap/{z}/{x}/{y}.png?api_key=d6f957677fbf40579a90fb3a9c74be1a"
+        },
+        "valueType": "planet",
+        "type": "layertype",
+        "typeLayer": "raster",
+        "viewValueType": "Planet",
+        "typeLabel": "source",
+        "filterLabel": "year",
+        "filterSelected": "global_quarterly_2021q3_mosaic",
+        "filterHandler": "layername",
+        "filters": [
+            {
+                "valueFilter": "global_quarterly_2016q1_mosaic",
+                "viewValueFilter": "2016/1ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2016q2_mosaic",
+                "viewValueFilter": "2016/2ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2016q3_mosaic",
+                "viewValueFilter": "2016/3ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2016q4_mosaic",
+                "viewValueFilter": "2016/4ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2017q1_mosaic",
+                "viewValueFilter": "2017/1ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2017q2_mosaic",
+                "viewValueFilter": "2017/2ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2017q3_mosaic",
+                "viewValueFilter": "2017/3ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2017q4_mosaic",
+                "viewValueFilter": "2017/4ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2018q1_mosaic",
+                "viewValueFilter": "2018/1ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2018q2_mosaic",
+                "viewValueFilter": "2018/2ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2018q3_mosaic",
+                "viewValueFilter": "2018/3ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2018q4_mosaic",
+                "viewValueFilter": "2018/4ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2019q1_mosaic",
+                "viewValueFilter": "2019/1ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2019q2_mosaic",
+                "viewValueFilter": "2019/2ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2019q3_mosaic",
+                "viewValueFilter": "2019/3ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2019q4_mosaic",
+                "viewValueFilter": "2019/4ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2020q1_mosaic",
+                "viewValueFilter": "2020/1ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2020q2_mosaic",
+                "viewValueFilter": "2020/2ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2020q3_mosaic",
+                "viewValueFilter": "2020/3ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2020q4_mosaic",
+                "viewValueFilter": "2020/4ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2021q1_mosaic",
+                "viewValueFilter": "2021/1ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2021q2_mosaic",
+                "viewValueFilter": "2021/2ºTri"
+            },
+            {
+                "valueFilter": "global_quarterly_2021q3_mosaic",
+                "viewValueFilter": "2021/3ºTri"
+            }
+        ],
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "service",
+            "region": "translate",
+            "period": "translate",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "Planet Scope",
+            "link": "<a target='_blank' class='link-details' href='https://planet.com/'> https://planet.com/</a>"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "external",
+            "typeOfTMS": "wmts",
+            "url": "https://tiles.maps.eox.at/wmts/1.0.0/WMTSCapabilities.xml",
+            "epsg": "EPSG:4326"
+        },
+        "valueType": "sentinel",
+        "type": "layertype",
+        "typeLayer": "raster",
+        "viewValueType": "Sentinel",
+        "typeLabel": "source",
+        "filterLabel": "year",
+        "filterSelected": "s2cloudless-2020",
+        "filterHandler": "layername",
+        "filters": [
+            {
+                "valueFilter": "s2cloudless",
+                "viewValueFilter": "2016"
+            },
+            {
+                "valueFilter": "s2cloudless-2017",
+                "viewValueFilter": "2017"
+            },
+            {
+                "valueFilter": "s2cloudless-2018",
+                "viewValueFilter": "2018"
+            },
+            {
+                "valueFilter": "s2cloudless-2019",
+                "viewValueFilter": "2019"
+            },
+            {
+                "valueFilter": "s2cloudless-2020",
+                "viewValueFilter": "2020"
+            }
+        ],
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "service",
+            "region": "translate",
+            "period": "translate",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "EOX",
+            "link": "<a target='_blank' class='link-details' href='https://s2maps.eu/'> https://s2maps.eu/</a>"
+        }
+    }
+]

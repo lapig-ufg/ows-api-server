@@ -1,0 +1,64 @@
+[
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "geo_car_imovel",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "SICAR",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2012~",
+            "scale": "1:5.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='http://www.car.gov.br/#/sobre'> http://www.car.gov.br/#/sobre </a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "columnsMapCard": "cod_car,data_ref"
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "unidades_planejamento_hidrico",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2016",
+            "scale": "1:5.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='https://metadados.snirh.gov.br/geonetwork/srv/api/records/df48de18-753b-4789-964d-7f0967c53d08'> https://metadados.snirh.gov.br/geonetwork/srv/api/records/df48de18-753b-4789-964d-7f0967c53d08 </a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "columnsMapCard": "uph_nm,uph_cd"
+    }
+]

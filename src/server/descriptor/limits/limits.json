@@ -1,0 +1,46 @@
+[
+    {
+        "valueType": "estados",
+        "type": "limit",
+        "visible": true,
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "tablename": "estados",
+        "columnsMapCard": "estado,regiao,uf"
+    },
+    {
+        "valueType": "municipios",
+        "type": "limit",
+        "visible": false,
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "tablename": "municipios",
+        "columnsMapCard": "municipio,cd_geocmu"
+    },
+    {
+        "valueType": "biomas",
+        "type": "limit",
+        "visible": false,
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "tablename": "biomas",
+        "columnsMapCard": "bioma"
+    },
+    {
+        "valueType": "limites_cartas_ibge",
+        "type": "limit",
+        "visible": false,
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "tablename": "cartas_ibge",
+        "columnsMapCard": "bioma"
+    },
+    {
+        "valueType": "municipios_info",
+        "type": "limit",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "tablename": "municipios_info",
+        "columnsMapCard": "municipio,cd_geocmu,regiao,bioma,area_municipio_ha"
+    }
+]
