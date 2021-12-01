@@ -72,9 +72,7 @@ module.exports = function (app) {
     if (env.NODE_ENV === 'prod') {
         config['path_catalog'] = '/STORAGE/catalog/'
         config['path_metadata'] = config['path_catalog']
-        config['path_fonts_list'] = appRoot + '/data_dir/ows_fonts_prod.list';
         config['path_mapfile'] = pathTmp + 'ows_runtime.map';
-        /*config['path_logfile'] = '/var/log/lapig-maps/mapserver.log'*/
         config['port'] = env.PORT;
         config['ows_onlineresource'] = env.OWS_HOST;
         config['cacheEnable'] = true;
