@@ -14,7 +14,11 @@ const app = express();
 const http = require('http').Server(app);
 const cookie = parseCookie('LAPIG')
 
-
+load('config.js', { 'verbose': false })
+    .then('database')
+    .then('middleware')
+    .then('libs')
+    .into(app);
 
 app.database.client.init(function () {
     app.use(cookie);
@@ -47,20 +51,20 @@ app.database.client.init(function () {
         next();
     });
 
-    // load('controllers')
-    //     // .then('models', { 'verbose': false })
-    //     .then('routes')
-    //     .then('utils')
-    //     .into(app);
-
-    load('config.js', { 'verbose': false })
-        .then('controllers')
-        .then('database')
-        .then('middleware')
-        .then('libs')
+    load('controllers')
+        // .then('models', { 'verbose': false })
         .then('routes')
         .then('utils')
         .into(app);
+
+    // load('config.js', { 'verbose': false })
+    //     .then('controllers')
+    //     .then('database')
+    //     .then('middleware')
+    //     .then('libs')
+    //     .then('routes')
+    //     .then('utils')
+    //     .into(app);
 
     app.database.client.init_general(function () { });
 
