@@ -12,7 +12,8 @@ module.exports = function (app) {
         return ['areas_especiais',
             'agropecuaria',
             'areas_declaradas',
-            'imagens_satellites'
+            'imagens_satellites',
+            'soilgrids'
         ]
 
         // return ['agropecuaria']

@@ -10,7 +10,9 @@
             },
             "filterLabel": {
                 "year": "Year",
-                "period": "Period"
+                "period": "Period",
+                "depth": "Depth",
+                "type": "Type"
             }
         }
     },
@@ -128,6 +130,44 @@
                 "description": "The agrarian reform settlement is a group of agricultural units, installed by Incra in a rural property.",
                 "region": "Brazil",
                 "fonte": "The National Institute of Colonization and Agrarian Reform (INCRA)"
+            }
+        },
+        "soilgrids_argila": {
+            "viewValueType": "Clay by Soilgrids",
+            "filters": {
+                "or_ce_argila_0-5cm_soilgrids": "Between 0 - 5 cm of depth",
+                "or_ce_argila_5-15cm_soilgrids": "Between 5 - 15 cm of depth",
+                "or_ce_argila_15-30cm_soilgrids": "Between 15 - 30 cm of depth",
+                "or_ce_argila_30-60cm_soilgrids": "Between 30 - 60 cm of depth",
+                "or_ce_argila_60-100cm_soilgrids": "Between 60 - 100 cm of depth",
+                "or_ce_argila_100-200cm_soilgrids": "Between 100 - 200 cm of depth"
+            },
+            "metadata": {
+                "title": "Mapa de Argila no Solo - SoilGrids",
+                "description": "SoilGrids is a 250m scale global mapping system that uses 150,000 soil profiles and Machine Learning to predict different quantitative properties of the soil such as: clay, sand, organic carbon density, organic carbon stock, organic carbon in the soil and total nitrogen. With depths of 0, 5, 15, 30, 60, 100 and 200 centimeters. Proportion of clay particles (less than 0.002 mm) in g / kg.",
+                "format": "tif",
+                "region": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities.",
+                "period": "2010",
+                "scale": "250 meters",
+                "system_coordinator": "sirgas2000",
+                "cartographic_projection": "utm",
+                "cod_caracter": "latin1"
+            }
+        },
+        "default": {
+            "viewValueType": "Default Value",
+            "metadata": {
+                "title": "Default Value",
+                "description": "Default Description",
+                "format": "shp",
+                "region": "Default Region",
+                "period": "Infinity",
+                "scale": "1:250.000",
+                "system_coordinator": "sirgas2000",
+                "cartographic_projection": "utm",
+                "cod_caracter": "latin1",
+                "fonte": "Nós mesmos",
+                "url": "bora bora"
             }
         }
     },

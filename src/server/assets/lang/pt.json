@@ -10,7 +10,9 @@
             },
             "filterLabel": {
                 "year": "Ano",
-                "period": "Período"
+                "period": "Período",
+                "depth": "Profundidade",
+                "type": "Tipo"
             }
         }
     },
@@ -129,6 +131,41 @@
                 "description": "O assentamento de reforma agrária é um conjunto de unidades agrícolas, instaladas pelo Incra em um imóvel rural.",
                 "region": "Brasil",
                 "fonte": "Instituto Nacional de Colonização e Reforma Agrária (INCRA)"
+            }
+        },
+        "soilgrids_argila": {
+            "viewValueType": "Argila no Solo - SoilGrids",
+            "filters": {
+                "or_ce_argila_0-5cm_soilgrids": "Entre 0 - 5 cm de profundidade",
+                "or_ce_argila_5-15cm_soilgrids": "Entre 5 - 15 cm de profundidade",
+                "or_ce_argila_15-30cm_soilgrids": "Entre 15 - 30 cm de profundidade",
+                "or_ce_argila_30-60cm_soilgrids": "Entre 30 - 60 cm de profundidade",
+                "or_ce_argila_60-100cm_soilgrids": "Entre 60 - 100 cm de profundidade",
+                "or_ce_argila_100-200cm_soilgrids": "Entre 100 - 200 cm de profundidade"
+            },
+            "metadata": {
+                "title": "Mapa de Argila no Solo - SoilGrids",
+                "description": "SoilGrids é um sistema de mapeamento global com escala de 250m que faz uso de 150.000 perfis de solo e Machine Learning para predizer diferentes propiedades quantitativas do solo como: argila, areia, densidade de carbono orgânico, estoque de carbono orgânico, carbono organico no solo e nitrogênio total. Com profundidades de 0, 5, 15, 30, 60, 100 e 200 centímetros. Proporção de partículas de Argila (menores que 0.002 mm) em g/kg.",
+                "format": "tif",
+                "region": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios.",
+                "period": "2010",
+                "scale": "250 metros"
+            }
+        },
+        "default": {
+            "viewValueType": "Default Value",
+            "metadata": {
+                "title": "Default Value",
+                "description": "Default Description",
+                "format": "shp",
+                "region": "Default Region",
+                "period": "Infinity",
+                "scale": "1:250.000",
+                "system_coordinator": "sirgas2000",
+                "cartographic_projection": "utm",
+                "cod_caracter": "latin1",
+                "fonte": "Nós mesmos",
+                "url": "bora bora"
             }
         }
     },

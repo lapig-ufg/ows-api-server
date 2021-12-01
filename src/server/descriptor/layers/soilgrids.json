@@ -1,0 +1,80 @@
+[
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "soilgrids_argila",
+        "type": "layertype",
+        "typeLayer": "raster",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "filterLabel": "depth",
+        "filterSelected": "or_ce_argila_0-5cm_soilgrids",
+        "filterHandler": "layername",
+        "filters": [
+            {
+                "valueFilter": "or_ce_argila_0-5cm_soilgrids",
+                "viewValueFilter": "translate"
+            },
+            {
+                "valueFilter": "or_ce_argila_5-15cm_soilgrids",
+                "viewValueFilter": "translate"
+            },
+            {
+                "valueFilter": "or_ce_argila_15-30cm_soilgrids",
+                "viewValueFilter": "translate"
+            }
+        ],
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "tif",
+            "region": "translate",
+            "period": "2010",
+            "scale": "translate",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "Soilgrids",
+            "link": "<a target='_blank' class='link-details' href='https://soilgrids.org/'> https://soilgrids.org/</a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": false,
+            "gpkg": false,
+            "raster": true
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pa_br_et_500_2013201_lapig",
+        "type": "layertype",
+        "regionFilter": false,
+        "typeLayer": "raster",
+        "viewValueType": "Chuva",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "Teste1",
+            "description": "Teste2",
+            "format": "tif",
+            "region": "Brasil",
+            "period": "2010",
+            "scale": "1111",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "Soilgrids",
+            "link": "<a target='_blank' class='link-details' href='https://soilgrids.org/'> https://soilgrids.org/</a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": false,
+            "gpkg": false,
+            "raster": true
+        }
+    }
+]
