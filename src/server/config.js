@@ -5,15 +5,14 @@ module.exports = function (app) {
 
     const appProducao = env.APP_PRODUCAO;
 
-    var pathTmp = '/mnt/tmpfs/';
-
+    var pathTmp = env.PATH_TMP
     let config = {
         "appRoot": appRoot,
         "clientDir": appRoot + env.CLIENT_DIR,
 
         'path_tmp': pathTmp,
         'path_basemapfile': appRoot + '/config/data_dir/ows_base.map',
-        'path_catalog': '/home/luizmlpascoal/AmbienteDeTrabalho/Apoio/',
+        'path_catalog': env.PATH_TMP,
         'path_metadata': '/data/catalog/Metadados',
         'path_logfile': appRoot + '/log/ows-mapserv.log',
         'path_mapfile': pathTmp + 'ows_runtime_teste.map',

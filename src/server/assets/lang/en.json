@@ -57,6 +57,13 @@
             "cod_caracter": {
                 "latin1": "Latin 1",
                 "utf8": "UTF-8"
+            },
+            "region": {
+                "brasil": "The entire national territory of Brazil",
+                "cerrado": "Cerrado Biome, allowing to analyze the classes of land use by other regions of interest such as: states and municipalities."
+            },
+            "fonte": {
+                "lapig": "Laboratory of Image Processing and Geoprocessing - LAPIG."
             }
         }
     },
@@ -169,6 +176,15 @@
                 "fonte": "Nós mesmos",
                 "url": "bora bora"
             }
+        },
+        "pasture": {
+            "viewValueType": "Pastagem Regular",
+            "metadata": {
+                "title": "Pasture Areas of Brazil",
+                "description": "Annual mapping of Brazilian pastures, carried out using Landsat data series from 1985 to 2020. Using supervised classification approaches (Random Forest) from Google's Earth Engine platform.",
+                "scale": "30 meters.",
+                "fonte": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Annual Land Use and Land Cover Mapping Project in Brazil - MapBiomas (funder)."
+            }
         }
     },
     "basemap": {
@@ -253,6 +269,10 @@
             "type": "date"
         },
         "forma_obte_assentamentos": "Obtaining method",
-        "descricao__assentamentos": "Description"
+        "descricao__assentamentos": "Description",
+        "year": {
+            "text": "Year",
+            "type": "integer"
+        }
     }
 }

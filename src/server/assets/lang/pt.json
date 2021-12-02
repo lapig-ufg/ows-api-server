@@ -57,6 +57,13 @@
             "cod_caracter": {
                 "latin1": "Latin 1",
                 "utf8": "UTF-8"
+            },
+            "region": {
+                "brasil": "Todo o território nacional do Brasil",
+                "cerrado": "Bioma Cerrado, permitindo analisar as classes de uso do solo por outras regiões de interesse como: estados e municípios."
+            },
+            "fonte": {
+                "lapig": "Laboratório de Processamento de Imagens e Geoprocessamento - LAPIG."
             }
         }
     },
@@ -167,6 +174,15 @@
                 "fonte": "Nós mesmos",
                 "url": "bora bora"
             }
+        },
+        "pasture": {
+            "viewValueType": "Pastagem Regular",
+            "metadata": {
+                "title": "Áreas de Pastagens do Brasil",
+                "description": "Mapeamento anual das pastagens brasileiras, realizado através do uso de séries de dados Landsat de 1985 a 2020. Utilizando abordagens de classificação supervisionada (Random Forest) através da plataforma Earth Engine da Google.",
+                "scale": "30 metros",
+                "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador)."
+            }
         }
     },
     "basemap": {
@@ -252,6 +268,10 @@
             "type": "date"
         },
         "forma_obte_assentamentos": "Forma de Obtenção",
-        "descricao__assentamentos": "Descrição"
+        "descricao__assentamentos": "Descrição",
+        "year": {
+            "text": "Ano",
+            "type": "integer"
+        }
     }
 }

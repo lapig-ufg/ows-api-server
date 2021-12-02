@@ -68,7 +68,7 @@ module.exports = class LayerType {
                 shp: this.typeLayer == "raster" ? false : downloadObj.hasOwnProperty('shp') ? downloadObj.shp : false,
                 gpkg: this.typeLayer == "raster" ? false : downloadObj.hasOwnProperty('gpkg') ? downloadObj.gpkg : false,
                 raster: this.typeLayer == "vectorial" ? false : downloadObj.hasOwnProperty('raster') ? downloadObj.raster : false,
-                layertypename: downloadObj.hasOwnProperty('layername') ? downloadObj.layername : this.valueType
+                layerTypeName: downloadObj.hasOwnProperty('layerTypeName') ? downloadObj.layerTypeName : this.valueType
             }
 
         }

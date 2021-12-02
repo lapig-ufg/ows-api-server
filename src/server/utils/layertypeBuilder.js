@@ -13,10 +13,11 @@ module.exports = function (app) {
             'agropecuaria',
             'areas_declaradas',
             'imagens_satellites',
+            'pastagem',
             'soilgrids'
         ]
 
-        // return ['agropecuaria']
+        // return ['pastagem']
 
     }
 
