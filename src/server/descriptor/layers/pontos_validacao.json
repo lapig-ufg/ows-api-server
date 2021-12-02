@@ -28,7 +28,7 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha"
+        "columnsMapCard": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
     },
     {
         "origin": {
@@ -59,7 +59,7 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha"
+        "columnsMapCard": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
     },
     {
         "origin": {
@@ -90,14 +90,14 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha"
+        "columnsMapCard": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
     },
     {
         "origin": {
             "sourceService": "internal",
             "typeOfTMS": "xyz"
         },
-        "valueType": "pasture_carbon_somsc",
+        "valueType": "pontos_tvi_validacao",
         "type": "layertype",
         "typeLayer": "vectorial",
         "viewValueType": "translate",
@@ -121,6 +121,6 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha"
+        "columnsMapCard": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
     }
 ]

@@ -242,7 +242,7 @@
             }
         },
         "pontos_tvi_treinamento": {
-            "viewValueType": "Pontos de Treinamento",
+            "viewValueType": "Treinamento",
             "metadata": {
                 "title": "Pontos Visualmente Inspecionados",
                 "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros."
@@ -351,6 +351,58 @@
         "ua": {
             "text": "Unidades Animal",
             "type": "integer"
-        }
+        },
+        "cobertura": "Cobertura",
+        "data": {
+            "text": "Data",
+            "type": "date"
+        },
+        "lon": "Longitude",
+        "lat": "Latitude",
+        "longitude": "Longitude",
+        "latitude": "Latitude",
+        "periodo": "Período",
+        "horario": "Horário",
+        "altura": "Altura",
+        "gado": "Presença de Gado?",
+        "qtd_cupins": "Qtd. de Cupins",
+        "forrageira": "Forrageira",
+        "solo_exp": "Solo Exposto",
+        "obs": "Observações",
+        "condicao": "Condição",
+        "cultivo": "Cultivo",
+        "cons_1985": "Classe em 1985",
+        "cons_1986": "Classe em 1986",
+        "cons_1987": "Classe em 1987",
+        "cons_1988": "Classe em 1988",
+        "cons_1989": "Classe em 1989",
+        "cons_1990": "Classe em 1990",
+        "cons_1991": "Classe em 1991",
+        "cons_1992": "Classe em 1992",
+        "cons_1993": "Classe em 1993",
+        "cons_1994": "Classe em 1994",
+        "cons_1995": "Classe em 1995",
+        "cons_1996": "Classe em 1996",
+        "cons_1997": "Classe em 1997",
+        "cons_1998": "Classe em 1998",
+        "cons_1999": "Classe em 1999",
+        "cons_2000": "Classe em 2000",
+        "cons_2001": "Classe em 2001",
+        "cons_2002": "Classe em 2002",
+        "cons_2003": "Classe em 2003",
+        "cons_2004": "Classe em 2004",
+        "cons_2005": "Classe em 2005",
+        "cons_2006": "Classe em 2006",
+        "cons_2007": "Classe em 2007",
+        "cons_2008": "Classe em 2008",
+        "cons_2009": "Classe em 2009",
+        "cons_2010": "Classe em 2010",
+        "cons_2011": "Classe em 2011",
+        "cons_2012": "Classe em 2012",
+        "cons_2013": "Classe em 2013",
+        "cons_2014": "Classe em 2014",
+        "cons_2015": "Classe em 2015",
+        "cons_2016": "Classe em 2016",
+        "cons_2017": "Classe em 2017"
     }
 }

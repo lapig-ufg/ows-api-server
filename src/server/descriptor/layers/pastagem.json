@@ -488,7 +488,7 @@
             "description": "translate",
             "format": "shp",
             "region": "brasil",
-            "period": "ND",
+            "period": "2019",
             "scale": "1:250.000",
             "system_coordinator": "sirgas2000",
             "cartographic_projection": "utm",
@@ -502,7 +502,7 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha"
+        "columnsMapCard": "area_ha,year"
     },
     {
         "origin": {
@@ -519,7 +519,7 @@
             "description": "translate",
             "format": "shp",
             "region": "brasil",
-            "period": "ND",
+            "period": "2019",
             "scale": "1:250.000",
             "system_coordinator": "sirgas2000",
             "cartographic_projection": "utm",
@@ -533,7 +533,7 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha"
+        "columnsMapCard": "area_ha,year"
     },
     {
         "origin": {
@@ -550,7 +550,7 @@
             "description": "translate",
             "format": "shp",
             "region": "brasil",
-            "period": "ND",
+            "period": "2019",
             "scale": "1:250.000",
             "system_coordinator": "sirgas2000",
             "cartographic_projection": "utm",
@@ -564,7 +564,7 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha"
+        "columnsMapCard": "area_ha,year"
     },
     {
         "origin": {
@@ -581,7 +581,7 @@
             "description": "translate",
             "format": "shp",
             "region": "brasil",
-            "period": "ND",
+            "period": "2019",
             "scale": "1:250.000",
             "system_coordinator": "sirgas2000",
             "cartographic_projection": "utm",
@@ -595,6 +595,6 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha"
+        "columnsMapCard": "area_ha,year,altura,gado,"
     }
 ]
