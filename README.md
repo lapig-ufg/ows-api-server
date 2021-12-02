@@ -14,3 +14,5 @@ OWS-Server which is a node-application based on Mapserver that includes several 
 -nvm 0.37.0 or higher
 
 -python-mapscript 7.2.2-1 specific
+
+-MapServer 7.2.2 specific
