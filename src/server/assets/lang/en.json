@@ -186,7 +186,7 @@
                 "fonte": "Laboratory of Image Processing and Geoprocessing - Lapig (data generation). Annual Land Use and Land Cover Mapping Project in Brazil - MapBiomas (funder)."
             }
         },
-        "pasture_quality": {
+        "pasture_quality_s100": {
             "viewValueType": "Pasture Quality",
             "metadata": {
                 "title": "Evidence of degradation of Brazilian pastures",

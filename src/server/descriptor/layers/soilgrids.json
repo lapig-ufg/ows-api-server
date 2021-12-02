@@ -24,6 +24,18 @@
             {
                 "valueFilter": "or_ce_argila_15-30cm_soilgrids",
                 "viewValueFilter": "translate"
+            },
+            {
+                "valueFilter": "or_ce_argila_30-60cm_soilgrids",
+                "viewValueFilter": "translate"
+            },
+            {
+                "valueFilter": "or_ce_argila_60-100cm_soilgrids",
+                "viewValueFilter": "translate"
+            },
+            {
+                "valueFilter": "or_ce_argila_100-200cm_soilgrids",
+                "viewValueFilter": "translate"
             }
         ],
         "metadata": {

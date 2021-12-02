@@ -184,7 +184,7 @@
                 "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador)."
             }
         },
-        "pasture_quality": {
+        "pasture_quality_s100": {
             "viewValueType": "Qualidade da Pastagem",
             "metadata": {
                 "title": "Indícios de degradação das pastagens brasileiras",
