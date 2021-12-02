@@ -14,7 +14,8 @@ module.exports = function (app) {
             'areas_declaradas',
             'imagens_satellites',
             'pastagem',
-            'soilgrids'
+            'soilgrids',
+            'pontos_validacao'
         ]
 
         // return ['pastagem']

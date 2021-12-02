@@ -183,6 +183,77 @@
                 "scale": "30 metros",
                 "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador)."
             }
+        },
+        "pasture_quality": {
+            "viewValueType": "Qualidade da Pastagem",
+            "metadata": {
+                "title": "Indícios de degradação das pastagens brasileiras",
+                "description": "Mapeamento da qualidade de pastagens, gerado pelo Lapig, onde foram analisados os dados de pastagens pixel a pixel para o período de 2011 a 2016, por meio de análise de tendências em anomalias acumuladas. A análise foi baseado em dados satelitários (NDVI/MOD13Q1), e avalia perdas ou ganho em produtividade. As áreas com tendência significativas de perda em produtividade (p < 0.05) foram consideradas áreas com indícios de degradação.",
+                "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador)."
+            }
+        },
+        "lotacao_bovina_regions": {
+            "viewValueType": "Rebanho Bovino em Unidades Animal (UA)",
+            "metadata": {
+                "title": "Indícios de degradação das pastagens brasileiras",
+                "description": "Cálculo realizado considerando a composição do rebanho para o censo agropecuário. Para os anos de 1986 a 1999, utilizou-se os dados do censo agropecuário de 1996. Para os anos de 2000 a 2018. utilizou-se os dados do censo agropecuário de 2006. Sendo que uma Unidade Animal (UA), equivale a um animal de 450 kg vivo."
+            }
+        },
+        "pasture_carbon_aglivc": {
+            "viewValueType": "Biomassa Viva",
+            "metadata": {
+                "title": "Estoque de Carbono com índice de Biomassa Viva",
+                "description": "Biomassa estocada viva acima do solo"
+            }
+        },
+        "pasture_carbon_bglivs": {
+            "viewValueType": "Raízes",
+            "metadata": {
+                "title": "Estoque de Carbono Raízes",
+                "description": "Estoque de Carbono Raizes"
+            }
+        },
+        "pasture_carbon_stdeadc": {
+            "viewValueType": "Biomassa Morta",
+            "metadata": {
+                "title": "Estoque de Carbono Biomassa Morta",
+                "description": "Estoque de Carbono Biomassa Morta"
+            }
+        },
+        "pasture_carbon_somsc": {
+            "viewValueType": "Solo",
+            "metadata": {
+                "title": "Estoque de Carbono Materia Organica do Solo (SOM)",
+                "description": "Estoque de Carbono Materia Organica do Solo (SOM)"
+            }
+        },
+        "pontos_campo_parada": {
+            "viewValueType": "Com Parada",
+            "metadata": {
+                "title": "Pontos de Campo com Parada",
+                "description": "Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens."
+            }
+        },
+        "pontos_campo_sem_parada": {
+            "viewValueType": "Sem Parada",
+            "metadata": {
+                "title": "Pontos de Campo Sem Parada",
+                "description": "Com o propósito de validar mapas produzidos pelo LAPIG-UFG no âmbito do MapBiomas e de subsidiar pesquisas voltadas à qualificação das pastagens brasileiras, seis atividades de campo foram realizadas durante os anos de 2017 e 2018. Um grande conjunto de pontos georreferenciados foi formado e organizado com dados de uso/cobertura do solo e indicativos de qualidade das pastagens."
+            }
+        },
+        "pontos_tvi_treinamento": {
+            "viewValueType": "Pontos de Treinamento",
+            "metadata": {
+                "title": "Pontos Visualmente Inspecionados",
+                "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros."
+            }
+        },
+        "pontos_tvi_validacao": {
+            "viewValueType": "Validação",
+            "metadata": {
+                "title": "Pontos Visualmente Inspecionados",
+                "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros."
+            }
         }
     },
     "basemap": {
@@ -271,6 +342,14 @@
         "descricao__assentamentos": "Descrição",
         "year": {
             "text": "Ano",
+            "type": "integer"
+        },
+        "n_kbcs": {
+            "text": "Nº de Cabeças",
+            "type": "integer"
+        },
+        "ua": {
+            "text": "Unidades Animal",
             "type": "integer"
         }
     }

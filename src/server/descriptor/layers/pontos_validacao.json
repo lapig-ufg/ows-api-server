@@ -1,0 +1,126 @@
+[
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pontos_campo_parada",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "2017",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "columnsMapCard": "area_ha"
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pontos_campo_sem_parada",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "2017",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "columnsMapCard": "area_ha"
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pontos_tvi_treinamento",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "1985 ~ 2019",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "columnsMapCard": "area_ha"
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pasture_carbon_somsc",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "1985 ~ 2019",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "columnsMapCard": "area_ha"
+    }
+]
