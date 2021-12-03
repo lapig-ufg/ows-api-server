@@ -187,7 +187,7 @@
         "viewValueType": "translate",
         "typeLabel": "type",
         "filterLabel": "year",
-        "filterSelected": "year=2020",
+        "filterSelected": "year=2014",
         "filterHandler": "msfilter",
         "filters": [
             {
@@ -249,30 +249,6 @@
             {
                 "valueFilter": "year=2014",
                 "viewValueFilter": 2014
-            },
-            {
-                "valueFilter": "year=2015",
-                "viewValueFilter": 2015
-            },
-            {
-                "valueFilter": "year=2016",
-                "viewValueFilter": 2016
-            },
-            {
-                "valueFilter": "year=2017",
-                "viewValueFilter": 2017
-            },
-            {
-                "valueFilter": "year=2018",
-                "viewValueFilter": 2018
-            },
-            {
-                "valueFilter": "year=2019",
-                "viewValueFilter": 2019
-            },
-            {
-                "valueFilter": "year=2020",
-                "viewValueFilter": 2020
             }
         ],
         "metadata": {
