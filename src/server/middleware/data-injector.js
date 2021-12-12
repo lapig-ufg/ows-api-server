@@ -25,9 +25,6 @@ module.exports = function(app) {
         var controller = pathParts[2]
         var method = pathParts[3]
 
-        console.log(hasController, pathParts, controller, method)
-
-
         if (controller in queries && method in queries[controller]) {
 
             var queriesOfController = queries[controller]
