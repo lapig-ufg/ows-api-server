@@ -1,6 +1,6 @@
 require('dotenv').config();
 const cluster = require('cluster');
-var numCPUs = require('os').cpus().length;
+let numCPUs = require('os').cpus().length;
 // let numCPUs = 16;
 
 if (cluster.isMaster) {

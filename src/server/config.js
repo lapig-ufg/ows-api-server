@@ -64,6 +64,13 @@ module.exports = function (app) {
             "idleTimeoutMillis": 0,
             "connectionTimeoutMillis": 0,
         },
+        "mongo": {
+            "host":env.MONGO_HOST,
+            "port": env.MONGO_PORT,
+            "dbname": env.MONGO_DATABASE,
+            "url": env.MONGO_URL,
+            "dbOwsName": env.MONGO_DATABASE_OWS
+        },
         "port": env.PORT,
         "ows_host": env.OWS_HOST,
     };
