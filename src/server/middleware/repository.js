@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 const async = require('async');
 
-module.exports = function(app) {
+module.exports = function (app) {
 	const config = app.config;
 	let Repository = {
 		collections: {},
@@ -14,8 +14,8 @@ module.exports = function(app) {
 
 	Repository.client = MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-	Repository.init = function(callback) {
-		Repository.client.connect((err,  client) => {
+	Repository.init = function (callback) {
+		Repository.client.connect((err, client) => {
 			if (err) {
 				return callback(err);
 			}
@@ -27,11 +27,11 @@ module.exports = function(app) {
 				if (err) {
 					return callback(err);
 				}
-				const forEachOne = function(collection, callback) {
+				const forEachOne = function (collection, callback) {
 					const name = collection.name.substr(collection.name.indexOf('\.') + 1);
-					if(name != 'indexes') {
-						Repository.db.collection(name, function(err, repository) {
-							if(err){
+					if (name != 'indexes') {
+						Repository.db.collection(name, function (err, repository) {
+							if (err) {
 								console.log(err)
 							}
 							Repository.collections[name] = repository;
@@ -48,11 +48,11 @@ module.exports = function(app) {
 				if (err) {
 					return callback(err);
 				}
-				const forEachOne = function(collection, callback) {
+				const forEachOne = function (collection, callback) {
 					const name = collection.name.substr(collection.name.indexOf('\.') + 1);
-					if(name != 'indexes') {
-						Repository.dbOws.collection(name, function(err, repository) {
-							if(err){
+					if (name != 'indexes') {
+						Repository.dbOws.collection(name, function (err, repository) {
+							if (err) {
 								console.log(err)
 							}
 							Repository.collectionsOws[name] = repository;
@@ -67,11 +67,11 @@ module.exports = function(app) {
 		})
 	};
 
-	Repository.getSync = function(collectionName) {
+	Repository.getSync = function (collectionName) {
 		return Repository.collections[collectionName];
 	};
 
-	Repository.get = function(collectionName, callback) {
+	Repository.get = function (collectionName, callback) {
 		Repository.db.collection(collectionName, callback);
 	};
 

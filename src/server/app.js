@@ -20,7 +20,7 @@ load('config.js', { 'verbose': false })
     .into(app);
 
 app.database.client.init(function () {
-    app.libs.catalog.init(function() {
+    app.libs.catalog.init(function () {
         app.middleware.repository.init(() => {
             app.use(cookie);
 
