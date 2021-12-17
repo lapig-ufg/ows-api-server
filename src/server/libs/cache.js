@@ -39,7 +39,9 @@ module.exports = function (app) {
 	Cache.set = function (cacheKey, data) {
 		if (data) {
 			Cache.cacheFile(cacheKey, function (cacheDir, cacheFile) {
-				fs.writeFile(cacheFile, data, 'base64');
+				fs.writeFile(cacheFile, data, 'base64', (err) => {
+					if (err) throw err;
+				});
 			})
 		}
 	}

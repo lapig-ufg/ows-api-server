@@ -1,13 +1,16 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, GridFSBucket } = require('mongodb');
 const async = require('async');
 
 module.exports = function(app) {
+
 	const config = app.config;
+
 	let Repository = {
 		collections: {},
 		collectionsOws: {},
 		db: {},
-		dbOws: {}
+		dbOws: {},
+		bucket: {}
 	};
 
 	const uri = `mongodb://${config.mongo.host}:${config.mongo.port}/?maxPoolSize=50&writeConcern=majority`;
@@ -16,12 +19,14 @@ module.exports = function(app) {
 
 	Repository.init = function(callback) {
 		Repository.client.connect((err,  client) => {
+
 			if (err) {
 				return callback(err);
 			}
 
 			Repository.db = client.db(config.mongo.dbname);
 			Repository.dbOws = client.db(config.mongo.dbOwsName);
+			Repository.bucket = new GridFSBucket(Repository.db);
 
 			Repository.db.listCollections().toArray((err, collection) => {
 				if (err) {
@@ -29,7 +34,7 @@ module.exports = function(app) {
 				}
 				const forEachOne = function(collection, callback) {
 					const name = collection.name.substr(collection.name.indexOf('\.') + 1);
-					if(name != 'indexes') {
+					if(name !== 'indexes') {
 						Repository.db.collection(name, function(err, repository) {
 							if(err){
 								console.log(err)
@@ -50,7 +55,7 @@ module.exports = function(app) {
 				}
 				const forEachOne = function(collection, callback) {
 					const name = collection.name.substr(collection.name.indexOf('\.') + 1);
-					if(name != 'indexes') {
+					if(name !== 'indexes') {
 						Repository.dbOws.collection(name, function(err, repository) {
 							if(err){
 								console.log(err)
