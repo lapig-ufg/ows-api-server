@@ -185,7 +185,7 @@
             "sourceService": "internal",
             "typeOfTMS": "xyz"
         },
-        "valueType": "pasture_quality_s100",
+        "valueType": "pasture_quality_col6_s100",
         "type": "layertype",
         "typeLayer": "vectorial",
         "viewValueType": "translate",
@@ -297,7 +297,7 @@
             "shp": false,
             "gpkg": true,
             "raster": false,
-            "layerTypeName": "pasture_quality"
+            "layerTypeName": "pasture_quality_col6"
         },
         "columnsMapCard": "area_ha,year,classe"
     },
