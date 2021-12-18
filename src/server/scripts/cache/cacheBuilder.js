@@ -10,10 +10,9 @@ module.exports = class CacheBuilder {
      * @param regions {object} - Object that contains the collections of biomes, ufs and municipalities.
      * @param layerType {object} - Object that describes the layer of descriptor.
      * @param typeCache {string} - Type of cache requests ex. tiles or downloads.
-     * @param cacheCollections {object} - Object with collections of mongoDB.
      * @throws Will throw an error if the arguments is null, undefined or empty.
      */
-    constructor(regions, layerType, typeCache, cacheCollections) {
+    constructor(regions, layerType, typeCache) {
         this.biomes = [];
         this.ows_url = 'ows_url';
         this.ufs = [];
@@ -21,8 +20,7 @@ module.exports = class CacheBuilder {
         this.layerType = {};
         this.filters = [];
         this.typeCache = "";
-        this.cacheCollections = {};
-        this.zoomLevels = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+        this.zoomLevels = [5, 6, 7, 8, 9, 10];
         this.bbox = {bottom: -33.752081, left: -73.990450, top: 5.271841, right: -28.835908};
         this.limits = ['countries', 'cities', 'states', 'biomes'];
 
@@ -32,11 +30,6 @@ module.exports = class CacheBuilder {
         this.setLayerType(layerType);
         this.setType(typeCache);
 
-        if (!this.isEmpty(cacheCollections)) {
-            this.cacheCollections = cacheCollections;
-        } else {
-            throw new Error('The cacheCollections is required');
-        }
     }
 
     isEmpty(ob) {
@@ -123,11 +116,10 @@ module.exports = class CacheBuilder {
     }
 
     getRequestsTiles() {
-        let urlPromises = [];
+        let urls = [];
         const ows_url = this.ows_url;
-        const cacheCollections = this.cacheCollections;
-        const layerType = this.layerType;
         let layers = [this.layerType.valueType];
+        const layerId = this.layerType.valueType;
 
         if (this.layerType.filterHandler === 'layername') {
             layers = [];
@@ -156,18 +148,15 @@ module.exports = class CacheBuilder {
                                         + "&tile=" + [tile.x, tile.y, tile.z].join('+')
 
                                     url += "&MSFILTER=" + filter.valueFilter
-
-                                    const promise = new Promise((resolve, reject) => {
-                                        cacheCollections.requests.updateOne(
-                                            {_id: layerType.valueType},
-                                            {$push: {requests: {url: url, status: 0}}}
-                                        ).then(inserted => {
-                                            resolve(inserted)
-                                        }).catch(e => {
-                                            reject(e);
-                                        });
-                                    })
-                                    urlPromises.push(promise);
+                                    urls.push(
+                                        {
+                                            _id: 'tile_' + layername + '_brazil_' + filter.valueFilter + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                            url: url,
+                                            status: 0,
+                                            type: 'tile',
+                                            layer_id: layerId
+                                        }
+                                    );
                                 })
                             }
                         });
@@ -184,17 +173,15 @@ module.exports = class CacheBuilder {
 
                                 url += "&MSFILTER=true";
 
-                                const promise = new Promise((resolve, reject) => {
-                                    cacheCollections.requests.updateOne(
-                                        {_id: layerType.valueType},
-                                        {$push: {requests: {url: url, status: 0}}}
-                                    ).then(inserted => {
-                                        resolve(inserted)
-                                    }).catch(e => {
-                                        reject(e);
-                                    });
-                                })
-                                urlPromises.push(promise);
+                                urls.push(
+                                    {
+                                        _id: 'tile_' + layername + '_brazil_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                        url: url,
+                                        status: 0,
+                                        type: 'tile',
+                                        layer_id: layerId
+                                    }
+                                );
                             })
                         }
                     }
@@ -215,19 +202,15 @@ module.exports = class CacheBuilder {
                                             + "&tile=" + [tile.x, tile.y, tile.z].join('+')
 
                                         url += "&MSFILTER=" + filter.valueFilter + " AND cd_geocmu = '" + mun.cd_geocmu + "'";
-
-                                        const promise = new Promise((resolve, reject) => {
-                                            cacheCollections.requests.updateOne(
-                                                {_id: layerType.valueType},
-                                                {$push: {requests: {url: url, status: 0}}}
-                                            ).then(inserted => {
-                                                resolve(inserted)
-                                            }).catch(e => {
-                                                reject(e);
-                                            });
-                                        })
-
-                                        urlPromises.push(promise);
+                                        urls.push(
+                                            {
+                                                _id: 'tile_' + layername + '_' + mun.cd_geocmu + '_' + filter.valueFilter + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                                url: url,
+                                                status: 0,
+                                                type: 'tile',
+                                                layer_id: layerId
+                                            }
+                                        );
                                     })
                                 }
                             });
@@ -243,19 +226,15 @@ module.exports = class CacheBuilder {
                                         + "&tile=" + [tile.x, tile.y, tile.z].join('+')
 
                                     url += "&MSFILTER=cd_geocmu='" + mun.cd_geocmu + "'";
-
-                                    const promise = new Promise((resolve, reject) => {
-                                        cacheCollections.requests.updateOne(
-                                            {_id: layerType.valueType},
-                                            {$push: {requests: {url: url, status: 0}}}
-                                        ).then(inserted => {
-                                            resolve(inserted)
-                                        }).catch(e => {
-                                            reject(e);
-                                        });
-                                    })
-
-                                    urlPromises.push(promise);
+                                    urls.push(
+                                        {
+                                            _id: 'tile_' + layername + '_' + mun.cd_geocmu + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                            url: url,
+                                            status: 0,
+                                            type: 'tile',
+                                            layer_id: layerId
+                                        }
+                                    );
                                 })
                             }
                         }
@@ -278,17 +257,15 @@ module.exports = class CacheBuilder {
 
                                         url += "&MSFILTER=" + filter.valueFilter + " AND uf = '" + uf.uf + "'";
 
-                                        const promise = new Promise((resolve, reject) => {
-                                            cacheCollections.requests.updateOne(
-                                                {_id: layerType.valueType},
-                                                {$push: {requests: {url: url, status: 0}}}
-                                            ).then(inserted => {
-                                                resolve(inserted)
-                                            }).catch(e => {
-                                                reject(e);
-                                            });
-                                        })
-                                        urlPromises.push(promise);
+                                        urls.push(
+                                            {
+                                                _id: 'tile_' + layername + '_' + uf.uf + '_' + filter.valueFilter + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                                url: url,
+                                                status: 0,
+                                                type: 'tile',
+                                                layer_id: layerId
+                                            }
+                                        );
                                     })
                                 }
                             });
@@ -304,19 +281,15 @@ module.exports = class CacheBuilder {
                                         + "&tile=" + [tile.x, tile.y, tile.z].join('+')
 
                                     url += "&MSFILTER=uf='" + uf.uf + "'"
-
-                                    const promise = new Promise((resolve, reject) => {
-                                        cacheCollections.requests.updateOne(
-                                            {_id: layerType.valueType},
-                                            {$push: {requests: {url: url, status: 0}}}
-                                        ).then(inserted => {
-                                            resolve(inserted)
-                                        }).catch(e => {
-                                            reject(e);
-                                        });
-                                    })
-
-                                    urlPromises.push(promise);
+                                    urls.push(
+                                        {
+                                            _id: 'tile_' + layername + '_' + uf.uf + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                            url: url,
+                                            status: 0,
+                                            type: 'tile',
+                                            layer_id: layerId
+                                        }
+                                    );
                                 })
                             }
                         }
@@ -339,18 +312,15 @@ module.exports = class CacheBuilder {
 
                                         url += "&MSFILTER=" + filter.valueFilter + " AND bioma = '" + bioma.bioma + "'";
 
-                                        const promise = new Promise((resolve, reject) => {
-                                            cacheCollections.requests.updateOne(
-                                                {_id: layerType.valueType},
-                                                {$push: {requests: {url: url, status: 0}}}
-                                            ).then(inserted => {
-                                                resolve(inserted)
-                                            }).catch(e => {
-                                                reject(e);
-                                            });
-                                        })
-
-                                        urlPromises.push(promise);
+                                        urls.push(
+                                            {
+                                                _id: 'tile_' + layername + '_' + bioma.bioma + '_' + filter.valueFilter + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                                url: url,
+                                                status: 0,
+                                                type: 'tile',
+                                                layer_id: layerId
+                                            }
+                                        );
                                     })
                                 }
                             });
@@ -367,18 +337,15 @@ module.exports = class CacheBuilder {
 
                                     url += "&MSFILTER=bioma='" + bioma.bioma + "'";
 
-                                    const promise = new Promise((resolve, reject) => {
-                                        cacheCollections.requests.updateOne(
-                                            {_id: layerType.valueType},
-                                            {$push: {requests: {url: url, status: 0}}}
-                                        ).then(inserted => {
-                                            resolve(inserted)
-                                        }).catch(e => {
-                                            reject(e);
-                                        });
-                                    })
-
-                                    urlPromises.push(promise);
+                                    urls.push(
+                                        {
+                                            _id: 'tile_' + layername + '_' + bioma.bioma + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                            url: url,
+                                            status: 0,
+                                            type: 'tile',
+                                            layer_id: layerId
+                                        }
+                                    );
                                 })
                             }
                         }
@@ -387,7 +354,7 @@ module.exports = class CacheBuilder {
             }
         }
 
-        return urlPromises;
+        return urls;
     }
 
     getDownloadsAvailable() {
@@ -403,12 +370,10 @@ module.exports = class CacheBuilder {
     }
 
     getRequestsDownloads() {
-        let urlPromises = [];
+        let urls = [];
         let types = this.getDownloadsAvailable();
         let layers = [this.layerType.download.layerTypeName];
-        const cacheCollections = this.cacheCollections;
-        const layerType = this.layerType;
-
+        const layerId = this.layerType.valueType;
 
         if (this.layerType.filterHandler === 'layername') {
 
@@ -432,24 +397,15 @@ module.exports = class CacheBuilder {
                                     let builder = new DownloadBuilder(type);
                                     builder.setTypeName(layername);
                                     builder.addFilterDirect(filter.valueFilter);
-                                    let promise = new Promise((resolve, reject) => {
-                                        cacheCollections.requests.updateOne(
-                                            {_id: layerType.valueType},
-                                            {
-                                                $push: {
-                                                    requests: {
-                                                        url: {url: builder.getMapserverURL(), status: 0},
-                                                        status: 0
-                                                    }
-                                                }
-                                            }
-                                        ).then(inserted => {
-                                            resolve(inserted)
-                                        }).catch(e => {
-                                            reject(e);
-                                        });
-                                    })
-                                    urlPromises.push(promise);
+                                    urls.push(
+                                        {
+                                            _id: 'download_' + layername + '_brazil_' + filter.valueFilter + '_' + type,
+                                            url: builder.getMapserverURL(),
+                                            status: 0,
+                                            type: 'download',
+                                            layer_id: layerId
+                                        }
+                                    );
                                 });
                             }
                         });
@@ -459,25 +415,15 @@ module.exports = class CacheBuilder {
                                 let builder = new DownloadBuilder(type);
                                 builder.setTypeName(layername);
                                 builder.addFilterDirect('1=1');
-                                let promise = new Promise((resolve, reject) => {
-                                    cacheCollections.requests.updateOne(
-                                        {_id: layerType.valueType},
-                                        {
-                                            $push: {
-                                                requests: {
-                                                    url: {url: builder.getMapserverURL(), status: 0},
-                                                    status: 0
-                                                }
-                                            }
-                                        }
-                                    ).then(inserted => {
-                                        resolve(inserted)
-                                    }).catch(e => {
-                                        reject(e);
-                                    });
-                                })
-
-                                urlPromises.push(promise);
+                                urls.push(
+                                    {
+                                        _id: 'download_' + layername + '_brazil_' + type,
+                                        url: builder.getMapserverURL(),
+                                        status: 0,
+                                        type: 'download',
+                                        layer_id: layerId
+                                    }
+                                );
                             });
                         }
                     }
@@ -493,25 +439,15 @@ module.exports = class CacheBuilder {
                                         builder.setTypeName(layername);
                                         builder.addFilterDirect(filter.valueFilter);
                                         builder.addFilter('cd_geocmu', "'" + mun.cd_geocmu + "'");
-                                        let promise = new Promise((resolve, reject) => {
-                                            cacheCollections.requests.updateOne(
-                                                {_id: layerType.valueType},
-                                                {
-                                                    $push: {
-                                                        requests: {
-                                                            url: {url: builder.getMapserverURL(), status: 0},
-                                                            status: 0
-                                                        }
-                                                    }
-                                                }
-                                            ).then(inserted => {
-                                                resolve(inserted)
-                                            }).catch(e => {
-                                                reject(e);
-                                            });
-                                        })
-
-                                        urlPromises.push(promise);
+                                        urls.push(
+                                            {
+                                                _id: 'download_' + layername + '_' + mun.cd_geocmu + '_' + filter.valueFilter + '_' + type,
+                                                url: builder.getMapserverURL(),
+                                                status: 0,
+                                                type: 'download',
+                                                layer_id: layerId
+                                            }
+                                        );
                                     });
                                 }
                             });
@@ -521,24 +457,15 @@ module.exports = class CacheBuilder {
                                     let builder = new DownloadBuilder(type);
                                     builder.setTypeName(layername);
                                     builder.addFilter('cd_geocmu', "'" + mun.cd_geocmu + "'");
-                                    let promise = new Promise((resolve, reject) => {
-                                        cacheCollections.requests.updateOne(
-                                            {_id: layerType.valueType},
-                                            {
-                                                $push: {
-                                                    requests: {
-                                                        url: {url: builder.getMapserverURL(), status: 0},
-                                                        status: 0
-                                                    }
-                                                }
-                                            }
-                                        ).then(inserted => {
-                                            resolve(inserted)
-                                        }).catch(e => {
-                                            reject(e);
-                                        });
-                                    })
-                                    urlPromises.push(promise);
+                                    urls.push(
+                                        {
+                                            _id: 'download_' + layername + '_' + mun.cd_geocmu + '_' + type,
+                                            url: builder.getMapserverURL(),
+                                            status: 0,
+                                            type: 'download',
+                                            layer_id: layerId
+                                        }
+                                    );
                                 });
                             }
                         }
@@ -555,24 +482,15 @@ module.exports = class CacheBuilder {
                                         builder.setTypeName(layername);
                                         builder.addFilterDirect(filter.valueFilter);
                                         builder.addFilter('uf', "'" + uf.uf + "'");
-                                        let promise = new Promise((resolve, reject) => {
-                                            cacheCollections.requests.updateOne(
-                                                {_id: layerType.valueType},
-                                                {
-                                                    $push: {
-                                                        requests: {
-                                                            url: {url: builder.getMapserverURL(), status: 0},
-                                                            status: 0
-                                                        }
-                                                    }
-                                                }
-                                            ).then(inserted => {
-                                                resolve(inserted)
-                                            }).catch(e => {
-                                                reject(e);
-                                            });
-                                        })
-                                        urlPromises.push(promise);
+                                        urls.push(
+                                            {
+                                                _id: 'download_' + layername + '_' + uf.uf + '_' + filter.valueFilter + '_' + type,
+                                                url: builder.getMapserverURL(),
+                                                status: 0,
+                                                type: 'download',
+                                                layer_id: layerId
+                                            }
+                                        );
                                     });
                                 }
                             });
@@ -582,24 +500,15 @@ module.exports = class CacheBuilder {
                                     let builder = new DownloadBuilder(type);
                                     builder.setTypeName(layername);
                                     builder.addFilter('uf', "'" + uf.uf + "'");
-                                    let promise = new Promise((resolve, reject) => {
-                                        cacheCollections.requests.updateOne(
-                                            {_id: layerType.valueType},
-                                            {
-                                                $push: {
-                                                    requests: {
-                                                        url: {url: builder.getMapserverURL(), status: 0},
-                                                        status: 0
-                                                    }
-                                                }
-                                            }
-                                        ).then(inserted => {
-                                            resolve(inserted)
-                                        }).catch(e => {
-                                            reject(e);
-                                        });
-                                    })
-                                    urlPromises.push(promise);
+                                    urls.push(
+                                        {
+                                            _id: 'download_' + layername + '_' + uf.uf + '_' + type,
+                                            url: builder.getMapserverURL(),
+                                            status: 0,
+                                            type: 'download',
+                                            layer_id: layerId
+                                        }
+                                    );
                                 });
                             }
                         }
@@ -616,25 +525,15 @@ module.exports = class CacheBuilder {
                                         builder.setTypeName(layername);
                                         builder.addFilterDirect(filter.valueFilter);
                                         builder.addFilter('bioma', "'" + bioma.bioma + "'");
-                                        let promise = new Promise((resolve, reject) => {
-                                            cacheCollections.requests.updateOne(
-                                                {_id: layerType.valueType},
-                                                {
-                                                    $push: {
-                                                        requests: {
-                                                            url: {url: builder.getMapserverURL(), status: 0},
-                                                            status: 0
-                                                        }
-                                                    }
-                                                }
-                                            ).then(inserted => {
-                                                resolve(inserted)
-                                            }).catch(e => {
-                                                reject(e);
-                                            });
-                                        })
-
-                                        urlPromises.push(promise);
+                                        urls.push(
+                                            {
+                                                _id: 'download_' + layername + '_' + bioma.bioma + '_' + filter.valueFilter + '_' + type,
+                                                url: builder.getMapserverURL(),
+                                                status: 0,
+                                                type: 'download',
+                                                layer_id: layerId
+                                            }
+                                        );
                                     });
                                 }
 
@@ -645,25 +544,15 @@ module.exports = class CacheBuilder {
                                     let builder = new DownloadBuilder(type);
                                     builder.setTypeName(layername);
                                     builder.addFilter('bioma', "'" + bioma.bioma + "'");
-                                    let promise = new Promise((resolve, reject) => {
-                                        cacheCollections.requests.updateOne(
-                                            {_id: layerType.valueType},
-                                            {
-                                                $push: {
-                                                    requests: {
-                                                        url: {url: builder.getMapserverURL(), status: 0},
-                                                        status: 0
-                                                    }
-                                                }
-                                            }
-                                        ).then(inserted => {
-                                            resolve(inserted)
-                                        }).catch(e => {
-                                            reject(e);
-                                        });
-                                    })
-
-                                    urlPromises.push(promise);
+                                    urls.push(
+                                        {
+                                            _id: 'download_' + layername + '_' + bioma.bioma + '_' + type,
+                                            url: builder.getMapserverURL(),
+                                            status: 0,
+                                            type: 'download',
+                                            layer_id: layerId
+                                        }
+                                    );
                                 });
                             }
                         }
@@ -672,7 +561,7 @@ module.exports = class CacheBuilder {
             }
         }
 
-        return urlPromises;
+        return urls;
     }
 
     /**
@@ -688,7 +577,12 @@ module.exports = class CacheBuilder {
             requests = this.getRequestsDownloads();
         } else {
             let tilesRequests = this.getRequestsTiles();
-            requests = tilesRequests.concat(this.getRequestsDownloads());
+            let downloadsRequests = this.getRequestsDownloads()
+
+            console.log('tilesRequests', tilesRequests)
+            console.log('downloadsRequests', downloadsRequests)
+
+            requests = tilesRequests.concat(downloadsRequests);
         }
 
         return requests;

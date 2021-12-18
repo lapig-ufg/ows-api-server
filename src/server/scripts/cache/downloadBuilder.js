@@ -141,6 +141,11 @@ module.exports = class DownloadBuilder {
         return this;
     }
 
+    setUrl(value) {
+        this._url = value;
+        return this;
+    }
+
     getMapserverURL() {
         let url = "";
 

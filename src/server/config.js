@@ -42,6 +42,9 @@ module.exports = function (app) {
         'rasterBaseExt': 'tif',
         'rasterDownloadExts': ['.tif'],
 
+        "downloadDataDir": appRoot + env.DOWNLOAD_DATA_DIR,
+
+
         "pg_lapig": {
             "user": env.PG_USER,
             "host": env.PG_HOST,
@@ -82,6 +85,7 @@ module.exports = function (app) {
         config['port'] = env.PORT;
         config['ows_onlineresource'] = env.OWS_HOST;
         config['cacheEnable'] = true;
+        config["downloadDataDir"] = appProducao + env.DOWNLOAD_DATA_DIR;
     }
 
     return config;
