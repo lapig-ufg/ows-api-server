@@ -1,11 +1,9 @@
 require('dotenv').config();
 const cluster = require('cluster');
 let numCPUs = require('os').cpus().length;
-// let numCPUs = 16;
 
 if (cluster.isMaster) {
-
-    if (process.env.NODE_ENV == 'dev') {
+    if (process.env.NODE_ENV === 'dev') {
         numCPUs = 2
     }
 
@@ -14,8 +12,7 @@ if (cluster.isMaster) {
         if (i == 0) {
             ENV_VAR = { 'PRIMARY_WORKER': 1 }
         }
-
-        let worker = cluster.fork(ENV_VAR);
+       cluster.fork(ENV_VAR);
     }
 
     cluster.on('exit', function (worker, code, signal) {

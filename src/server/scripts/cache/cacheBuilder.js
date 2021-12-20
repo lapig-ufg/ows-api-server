@@ -397,12 +397,18 @@ module.exports = class CacheBuilder {
                                     let builder = new DownloadBuilder(type);
                                     builder.setTypeName(layername);
                                     builder.addFilterDirect(filter.valueFilter);
+
                                     urls.push(
                                         {
-                                            _id: 'download_' + layername + '_brazil_' + filter.valueFilter + '_' + type,
+                                            _id: 'download_' + layername + '_brasil_' + filter.valueFilter + '_' + type,
+                                            layerName: layername,
                                             url: builder.getMapserverURL(),
                                             status: 0,
                                             type: 'download',
+                                            typeDownload: type,
+                                            region: 'BRASIL',
+                                            regionType: 'country',
+                                            filePath: 'country/BRASIL/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
                                             layer_id: layerId
                                         }
                                     );
@@ -417,10 +423,15 @@ module.exports = class CacheBuilder {
                                 builder.addFilterDirect('1=1');
                                 urls.push(
                                     {
-                                        _id: 'download_' + layername + '_brazil_' + type,
+                                        _id: 'download_' + layername + '_brasil_' + type,
+                                        layerName: layername,
                                         url: builder.getMapserverURL(),
                                         status: 0,
                                         type: 'download',
+                                        typeDownload: type,
+                                        region: 'BRASIL',
+                                        regionType: 'country',
+                                        filePath: 'country/BRASIL/' + type + '/' + layername + '/' + layername,
                                         layer_id: layerId
                                     }
                                 );
@@ -442,9 +453,14 @@ module.exports = class CacheBuilder {
                                         urls.push(
                                             {
                                                 _id: 'download_' + layername + '_' + mun.cd_geocmu + '_' + filter.valueFilter + '_' + type,
+                                                layerName: layername,
                                                 url: builder.getMapserverURL(),
                                                 status: 0,
                                                 type: 'download',
+                                                typeDownload: type,
+                                                region: mun.cd_geocmu,
+                                                regionType: 'city',
+                                                filePath: 'city/' + mun.cd_geocmu + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
                                                 layer_id: layerId
                                             }
                                         );
@@ -460,9 +476,14 @@ module.exports = class CacheBuilder {
                                     urls.push(
                                         {
                                             _id: 'download_' + layername + '_' + mun.cd_geocmu + '_' + type,
+                                            layerName: layername,
                                             url: builder.getMapserverURL(),
                                             status: 0,
                                             type: 'download',
+                                            typeDownload: type,
+                                            region: mun.cd_geocmu,
+                                            regionType: 'city',
+                                            filePath: 'city/' + mun.cd_geocmu + '/' + type + '/' + layername + '/' + layername,
                                             layer_id: layerId
                                         }
                                     );
@@ -485,9 +506,14 @@ module.exports = class CacheBuilder {
                                         urls.push(
                                             {
                                                 _id: 'download_' + layername + '_' + uf.uf + '_' + filter.valueFilter + '_' + type,
+                                                layerName: layername,
                                                 url: builder.getMapserverURL(),
                                                 status: 0,
                                                 type: 'download',
+                                                typeDownload: type,
+                                                region: uf.uf,
+                                                regionType: 'state',
+                                                filePath: 'state/' + uf.uf + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
                                                 layer_id: layerId
                                             }
                                         );
@@ -503,9 +529,14 @@ module.exports = class CacheBuilder {
                                     urls.push(
                                         {
                                             _id: 'download_' + layername + '_' + uf.uf + '_' + type,
+                                            layerName: layername,
                                             url: builder.getMapserverURL(),
                                             status: 0,
                                             type: 'download',
+                                            typeDownload: type,
+                                            region: uf.uf,
+                                            regionType: 'state',
+                                            filePath: 'state/' + uf.uf + '/' + type + '/' + layername + '/' + layername,
                                             layer_id: layerId
                                         }
                                     );
@@ -528,9 +559,14 @@ module.exports = class CacheBuilder {
                                         urls.push(
                                             {
                                                 _id: 'download_' + layername + '_' + bioma.bioma + '_' + filter.valueFilter + '_' + type,
+                                                layerName: layername,
                                                 url: builder.getMapserverURL(),
                                                 status: 0,
                                                 type: 'download',
+                                                typeDownload: type,
+                                                region: bioma.bioma,
+                                                regionType: 'biome',
+                                                filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
                                                 layer_id: layerId
                                             }
                                         );
@@ -547,9 +583,14 @@ module.exports = class CacheBuilder {
                                     urls.push(
                                         {
                                             _id: 'download_' + layername + '_' + bioma.bioma + '_' + type,
+                                            layerName: layername,
                                             url: builder.getMapserverURL(),
                                             status: 0,
                                             type: 'download',
+                                            typeDownload: type,
+                                            region: uf.uf,
+                                            regionType: 'biome',
+                                            filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layername + '/' + layername,
                                             layer_id: layerId
                                         }
                                     );
@@ -571,16 +612,13 @@ module.exports = class CacheBuilder {
     generateRequests() {
         let requests = [];
 
-        if (this.typeCache === 'tiles') {
+        if (this.typeCache === 'tile') {
             requests = this.getRequestsTiles();
-        } else if (this.typeCache === 'downloads') {
+        } else if (this.typeCache === 'download') {
             requests = this.getRequestsDownloads();
         } else {
             let tilesRequests = this.getRequestsTiles();
             let downloadsRequests = this.getRequestsDownloads()
-
-            console.log('tilesRequests', tilesRequests)
-            console.log('downloadsRequests', downloadsRequests)
 
             requests = tilesRequests.concat(downloadsRequests);
         }

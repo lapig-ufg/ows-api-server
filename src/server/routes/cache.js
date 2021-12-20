@@ -3,6 +3,7 @@ module.exports = function (app) {
     const dataInjector = app.middleware.dataInjector;
 
     app.get('/api/cache/builder', dataInjector, cache.generateRequests);
-    app.get('/api/cache/clear', dataInjector, cache.clearRequests);
+    app.get('/api/cache/clear', cache.clearRequests);
+    app.get('/cache/dashboard', cache.dashboard);
 
 }

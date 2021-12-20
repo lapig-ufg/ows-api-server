@@ -3,7 +3,7 @@
 module.exports = class DownloadBuilder {
     constructor(typeDownload) {
 
-        this._url = 'ows_url';
+        this._url = 'ows_url/ows';
         this._width = "256";
         this._height = "256";
         if (typeDownload === 'shp') {

@@ -43,7 +43,7 @@ module.exports = function (app) {
 
     Controller.generateRequests = function (request, response) {
         let lang = 'pt';
-        const { layerType, type, zoomLevels, limits,  token } = request.query;
+        const { layerType, type, zoomLevels, limits, token } = request.query;
         const regions = request.queryResult;
 
         if(token){
@@ -82,7 +82,6 @@ module.exports = function (app) {
                     cacheBuilder.setLimits(limits.split('-'))
                 }
 
-                console.log(cacheBuilder)
                 layer['_id'] = layer.valueType
 
                 cacheCollections.layers.updateOne(
@@ -121,9 +120,10 @@ module.exports = function (app) {
             response.end();
         }
     };
+
     Controller.clearRequests = function (request, response) {
         let lang = 'pt';
-        const { layerType, token } = request.query;
+        const { layerType, type, token } = request.query;
 
         if(token){
             const hashRequest = CryptoJS.MD5(token).toString();
@@ -150,6 +150,7 @@ module.exports = function (app) {
             if(layer){
 
                 let layerId = layer.valueType
+                const filter = type ? { layer_id : layerId, type: type }: { layer_id : layerId } ;
 
                 cacheCollections.layers.updateOne(
                     {_id: layerId},
@@ -157,7 +158,7 @@ module.exports = function (app) {
                         $set: { updated_at: Internal.currentDate() },
                     }
                 ).then(async updated => {
-                    cacheCollections.requests.deleteMany( { layer_id : layerId } ).then(resp => {
+                    cacheCollections.requests.deleteMany(filter).then(resp => {
                         response.status(200).json({totalRequestsRemoved: resp.result.n, responseMongo: resp.result})
                         response.end();
                     }).catch(e => {
@@ -175,6 +176,41 @@ module.exports = function (app) {
                 response.status(404).json({ msg: 'Layer not found' })
                 response.end();
             }
+
+        } catch (e) {
+            console.error(e)
+            response.status(400).json({ msg: e.stack })
+            response.end();
+        }
+    };
+
+    Controller.dashboard = function (request, response) {
+        let lang = 'pt';
+        const { layerType, type, token } = request.query;
+
+        if(token){
+            const hashRequest = CryptoJS.MD5(token).toString();
+            const hashEnv = CryptoJS.MD5(process.env.CACHE_TOKEN).toString();
+
+            if(hashRequest !== hashEnv){
+                response.status(401).json({ msg: 'Access not authorized' })
+                response.end();
+                return;
+            }
+
+        } else {
+            response.status(401).json({ msg: 'Access not authorized' })
+            response.end();
+            return;
+        }
+
+
+        try {
+            let layer = Internal.returnAllLayerTypes(lang).find(obj => {
+                return obj.valueType.toUpperCase() === layerType.toUpperCase()
+            });
+
+            response.render('dashboard', {layer: layer});
 
         } catch (e) {
             console.error(e)

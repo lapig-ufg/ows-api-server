@@ -86,7 +86,7 @@ module.exports = function(app) {
         } else if (region.type === 'state') {
             builder.addFilter('uf', "'" + region.value + "'");
         } else if (region.type === 'biome') {
-            builder.addFilter('biome', "'" + region.value + "'");
+            builder.addFilter('bioma', "'" + region.value + "'");
         }
 
         if (filter !== undefined) {

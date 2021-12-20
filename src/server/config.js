@@ -72,10 +72,13 @@ module.exports = function (app) {
             "port": env.MONGO_PORT,
             "dbname": env.MONGO_DATABASE,
             "url": env.MONGO_URL,
-            "dbOwsName": env.MONGO_DATABASE_OWS
+            "dbOwsName": env.MONGO_DATABASE_OWS,
+            "dbLogs": env.MONGO_DATABASE_LOGS
         },
+        "jobsConfig": env.MONGO_JOBS_CONFIG,
         "port": env.PORT,
         "ows_host": env.OWS_HOST,
+        "ows_local": env.OWS_LOCAL,
     };
 
     if (env.NODE_ENV === 'prod') {
