@@ -185,7 +185,7 @@
             "sourceService": "internal",
             "typeOfTMS": "xyz"
         },
-        "valueType": "pasture_quality_col6_s100",
+        "valueType": "pasture_quality_col6",
         "type": "layertype",
         "typeLayer": "vectorial",
         "viewValueType": "translate",

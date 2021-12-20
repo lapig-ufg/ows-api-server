@@ -192,6 +192,14 @@
                 "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador)."
             }
         },
+        "pasture_quality_col6": {
+            "viewValueType": "Qualidade da Pastagem",
+            "metadata": {
+                "title": "Indícios de degradação das pastagens brasileiras",
+                "description": "Mapeamento da qualidade de pastagens, gerado pelo Lapig, onde foram analisados os dados de pastagens pixel a pixel para o período de 2011 a 2016, por meio de análise de tendências em anomalias acumuladas. A análise foi baseado em dados satelitários (NDVI/MOD13Q1), e avalia perdas ou ganho em produtividade. As áreas com tendência significativas de perda em produtividade (p < 0.05) foram consideradas áreas com indícios de degradação.",
+                "fonte": "Laboratório de Processamento de Imagens e Geoprocessamento - Lapig (geração do dado). Projeto de Mapeamento Anual da Cobertura e Uso do Solo do Brasil - MapBiomas (viabilizador)."
+            }
+        },
         "lotacao_bovina_regions": {
             "viewValueType": "Rebanho Bovino em Unidades Animal (UA)",
             "metadata": {
