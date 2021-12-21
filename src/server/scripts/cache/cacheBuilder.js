@@ -131,6 +131,8 @@ module.exports = class CacheBuilder {
         const priority = this.priority;
         let layers = [this.layerType.valueType];
         const layerId = this.layerType.valueType;
+        const zooms = this.zoomLevels
+        const bbox = this.bbox;
 
         if (this.layerType.filterHandler === 'layername') {
             layers = [];
@@ -151,8 +153,8 @@ module.exports = class CacheBuilder {
                 for (let layername of layers) {
                     if (this.filters.length > 0) {
                         this.filters.forEach(filter => {
-                            for (let zoom in this.zoomLevels) {
-                                let tiles = t.tilesInBbox(this.bbox, zoom)
+                            for (let zoom in zooms) {
+                                let tiles = t.tilesInBbox(bbox, zoom)
                                 tiles.forEach(function (tile) {
                                     let url = ows_url + "/ows"
                                         + "?layers=" + layername
@@ -177,8 +179,8 @@ module.exports = class CacheBuilder {
                             }
                         });
                     } else {
-                        for (let zoom in this.zoomLevels) {
-                            let tiles = t.tilesInBbox(this.bbox, zoom)
+                        for (let zoom in zooms) {
+                            let tiles = t.tilesInBbox(bbox, zoom)
                             tiles.forEach(function (tile) {
                                 let url = ows_url + "/ows"
                                     + "?layers=" + layername
@@ -209,8 +211,8 @@ module.exports = class CacheBuilder {
                     for (let layername of layers) {
                         if (this.filters.length > 0) {
                             this.filters.forEach(filter => {
-                                for (let zoom in this.zoomLevels) {
-                                    let tiles = t.tilesInBbox(this.bbox, zoom)
+                                for (let zoom in zooms) {
+                                    let tiles = t.tilesInBbox(bbox, zoom)
                                     tiles.forEach(function (tile) {
                                         let url = ows_url + "/ows"
                                             + "?layers=" + layername
@@ -235,8 +237,8 @@ module.exports = class CacheBuilder {
                                 }
                             });
                         } else {
-                            for (let zoom in this.zoomLevels) {
-                                let tiles = t.tilesInBbox(this.bbox, zoom)
+                            for (let zoom in zooms) {
+                                let tiles = t.tilesInBbox(bbox, zoom)
                                 tiles.forEach(function (tile) {
                                     let url = ows_url + "/ows"
                                         + "?layers=" + layername
@@ -267,8 +269,8 @@ module.exports = class CacheBuilder {
                     for (let layername of layers) {
                         if (this.filters.length > 0) {
                             this.filters.forEach(filter => {
-                                for (let zoom in this.zoomLevels) {
-                                    let tiles = t.tilesInBbox(this.bbox, zoom)
+                                for (let zoom in zooms) {
+                                    let tiles = t.tilesInBbox(bbox, zoom)
                                     tiles.forEach(function (tile) {
                                         let url = ows_url + "/ows"
                                             + "?layers=" + layername
@@ -294,8 +296,8 @@ module.exports = class CacheBuilder {
                                 }
                             });
                         } else {
-                            for (let zoom in this.zoomLevels) {
-                                let tiles = t.tilesInBbox(this.bbox, zoom)
+                            for (let zoom in zooms) {
+                                let tiles = t.tilesInBbox(bbox, zoom)
                                 tiles.forEach(function (tile) {
                                     let url = ows_url + "/ows"
                                         + "?layers=" + layername
@@ -326,8 +328,8 @@ module.exports = class CacheBuilder {
                     for (let layername of layers) {
                         if (this.filters.length > 0) {
                             this.filters.forEach(filter => {
-                                for (let zoom in this.zoomLevels) {
-                                    let tiles = t.tilesInBbox(this.bbox, zoom)
+                                for (let zoom in zooms) {
+                                    let tiles = t.tilesInBbox(bbox, zoom)
                                     tiles.forEach(function (tile) {
                                         let url = ows_url + "/ows"
                                             + "?layers=" + layername
@@ -353,8 +355,8 @@ module.exports = class CacheBuilder {
                                 }
                             });
                         } else {
-                            for (let zoom in this.zoomLevels) {
-                                let tiles = t.tilesInBbox(this.bbox, zoom)
+                            for (let zoom in zooms) {
+                                let tiles = t.tilesInBbox(bbox, zoom)
                                 tiles.forEach(function (tile) {
                                     let url = ows_url + "/ows"
                                         + "?layers=" + layername
