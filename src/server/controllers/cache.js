@@ -2,11 +2,12 @@ const CryptoJS = require("crypto-js");
 const LayerTypeBuilder = require('../utils/layertypeBuilder');
 const CacheBuilder = require('../scripts/cache/cacheBuilder');
 const fs = require("fs");
-const {config} = require("dotenv");
+
 
 module.exports = function (app) {
-    const Controller = {};
-    const Internal = {};
+    let Controller = {};
+    let Internal = {};
+    const config = app.config;
     const cacheCollections = app.middleware.repository.collections;
 
     Internal.currentDate = function (){

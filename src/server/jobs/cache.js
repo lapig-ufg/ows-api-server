@@ -38,7 +38,7 @@ module.exports = function (app) {
                             // The whole response has been received. Print out the result.
                             resp.on('end', () => {
                                 let zip = new AdmZip(req.filePath + '.zip');
-                                zip.addFile(req.layerName + ".sld", Buffer.from(data, "utf8"), "Styled Layer Descriptor (SLD) of " + layerName);
+                                zip.addFile(req.layerName + ".sld", Buffer.from(data, "utf8"), "Styled Layer Descriptor (SLD) of " + req.layerName);
                                 zip.writeZip(req.filePath + '.zip');
                                 resolve();
                             });
