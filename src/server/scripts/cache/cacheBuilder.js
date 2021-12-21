@@ -153,7 +153,7 @@ module.exports = class CacheBuilder {
                 for (let layername of layers) {
                     if (this.filters.length > 0) {
                         this.filters.forEach(filter => {
-                            for (let zoom in zooms) {
+                            zooms.forEach( zoom => {
                                 let tiles = t.tilesInBbox(bbox, zoom)
                                 tiles.forEach(function (tile) {
                                     let url = ows_url + "/ows"
@@ -166,7 +166,7 @@ module.exports = class CacheBuilder {
                                     url += "&MSFILTER=" + filter.valueFilter
                                     urls.push(
                                         {
-                                            _id: 'tile_' + layername + '_brazil_' + filter.valueFilter + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                            _id: 'tile_' + layername + '_brasil_' + filter.valueFilter + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
                                             url: url,
                                             status: 0,
                                             type: 'tile',
@@ -176,10 +176,10 @@ module.exports = class CacheBuilder {
                                         }
                                     );
                                 })
-                            }
+                            })
                         });
                     } else {
-                        for (let zoom in zooms) {
+                        zooms.forEach( zoom => {
                             let tiles = t.tilesInBbox(bbox, zoom)
                             tiles.forEach(function (tile) {
                                 let url = ows_url + "/ows"
@@ -193,7 +193,7 @@ module.exports = class CacheBuilder {
 
                                 urls.push(
                                     {
-                                        _id: 'tile_' + layername + '_brazil_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
+                                        _id: 'tile_' + layername + '_brasil_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
                                         url: url,
                                         status: 0,
                                         type: 'tile',
@@ -203,7 +203,7 @@ module.exports = class CacheBuilder {
                                     }
                                 );
                             })
-                        }
+                        })
                     }
                 }
             } else if (limit === 'cities') {
@@ -211,7 +211,7 @@ module.exports = class CacheBuilder {
                     for (let layername of layers) {
                         if (this.filters.length > 0) {
                             this.filters.forEach(filter => {
-                                for (let zoom in zooms) {
+                                zooms.forEach( zoom => {
                                     let tiles = t.tilesInBbox(bbox, zoom)
                                     tiles.forEach(function (tile) {
                                         let url = ows_url + "/ows"
@@ -234,10 +234,10 @@ module.exports = class CacheBuilder {
                                             }
                                         );
                                     })
-                                }
+                                })
                             });
                         } else {
-                            for (let zoom in zooms) {
+                            zooms.forEach( zoom => {
                                 let tiles = t.tilesInBbox(bbox, zoom)
                                 tiles.forEach(function (tile) {
                                     let url = ows_url + "/ows"
@@ -260,7 +260,7 @@ module.exports = class CacheBuilder {
                                         }
                                     );
                                 })
-                            }
+                            });
                         }
                     }
                 }
@@ -269,7 +269,7 @@ module.exports = class CacheBuilder {
                     for (let layername of layers) {
                         if (this.filters.length > 0) {
                             this.filters.forEach(filter => {
-                                for (let zoom in zooms) {
+                                zooms.forEach( zoom => {
                                     let tiles = t.tilesInBbox(bbox, zoom)
                                     tiles.forEach(function (tile) {
                                         let url = ows_url + "/ows"
@@ -293,10 +293,10 @@ module.exports = class CacheBuilder {
                                             }
                                         );
                                     })
-                                }
+                                });
                             });
                         } else {
-                            for (let zoom in zooms) {
+                            zooms.forEach( zoom => {
                                 let tiles = t.tilesInBbox(bbox, zoom)
                                 tiles.forEach(function (tile) {
                                     let url = ows_url + "/ows"
@@ -319,7 +319,7 @@ module.exports = class CacheBuilder {
                                         }
                                     );
                                 })
-                            }
+                            });
                         }
                     }
                 }
@@ -328,7 +328,7 @@ module.exports = class CacheBuilder {
                     for (let layername of layers) {
                         if (this.filters.length > 0) {
                             this.filters.forEach(filter => {
-                                for (let zoom in zooms) {
+                                zooms.forEach( zoom => {
                                     let tiles = t.tilesInBbox(bbox, zoom)
                                     tiles.forEach(function (tile) {
                                         let url = ows_url + "/ows"
@@ -352,10 +352,10 @@ module.exports = class CacheBuilder {
                                             }
                                         );
                                     })
-                                }
+                                });
                             });
                         } else {
-                            for (let zoom in zooms) {
+                            zooms.forEach( zoom => {
                                 let tiles = t.tilesInBbox(bbox, zoom)
                                 tiles.forEach(function (tile) {
                                     let url = ows_url + "/ows"
@@ -379,7 +379,7 @@ module.exports = class CacheBuilder {
                                         }
                                     );
                                 })
-                            }
+                            });
                         }
                     }
                 }

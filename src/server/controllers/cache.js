@@ -77,11 +77,13 @@ module.exports = function (app) {
                         const zooms = zoomLevels.split('-').map(function(item) {
                             return parseInt(item, 10);
                         });
+
                         cacheBuilder.setZoomLevels(zooms)
                     }
 
                     if(limits){
                         cacheBuilder.setLimits(limits.split('-'))
+
                     }
 
                     if(priority){
@@ -101,7 +103,7 @@ module.exports = function (app) {
                         let requests = cacheBuilder.generateRequests();
 
                         cacheCollections.requests.insertMany(requests).then(resp => {
-                            response.status(200).json({requestsGenerated: requests.length, totalRequestsInserted: resp.result.n, responseMongo: resp.result})
+                            response.status(200).json({requestsGenerated: requests.length, totalRequestsInserted: resp.result.n})
                             response.end();
                         }).catch(e => {
                             console.error(e)
@@ -202,7 +204,7 @@ module.exports = function (app) {
                                 removedLayerDirs.push(layerLegendPathDir);
                             }
                         }
-                        response.status(200).json({totalRequestsRemoved: resp.result.n, removedLayerDirs: removedLayerDirs, responseMongo: resp.result})
+                        response.status(200).json({totalRequestsRemoved: resp.result.n, removedLayerDirsFromOwsCache: removedLayerDirs})
                         response.end();
                     }).catch(e => {
                         console.error(e)
@@ -270,11 +272,8 @@ module.exports = function (app) {
                     filter['zoom'] =  { $in: zooms }
                 }
 
-                cacheCollections.layers.updateOne(
-                    {_id: layerId},
-                    {
-                        $set: { updated_at: Internal.currentDate() },
-                    }
+                cacheCollections.layers.deleteOne(
+                    {_id: layerId}
                 ).then(async updated => {
                     cacheCollections.requests.deleteMany(filter).then(resp => {
                         let removedLayerDirs = []
@@ -298,7 +297,7 @@ module.exports = function (app) {
                                 removedLayerDirs.push(layerLegendPathDir);
                             }
                         }
-                        response.status(200).json({totalRequestsRemoved: resp.result.n, removedLayerDirs: removedLayerDirs, responseMongo: resp.result})
+                        response.status(200).json({totalRequestsRemoved: resp.result.n, removedLayerDirsFromOwsCache: removedLayerDirs})
                         response.end();
                     }).catch(e => {
                         console.error(e)
