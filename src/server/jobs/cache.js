@@ -80,14 +80,14 @@ module.exports = function (app) {
     self.processCacheDownload = function (request) {
         request['url'] = request.url.replace('ows_url', config.ows_local);
         request['filePath'] = config.downloadDataDir + request.filePath;
-        const directory = config.downloadDataDir + request.regionType + '/' + request.typeDownload + '/' + request.layerName;
+        const directory = config.downloadDataDir + request.regionType + '/' + request.region + '/' + request.typeDownload + '/' + request.layerName;
         if (!fs.existsSync(directory)) {
             fs.mkdirSync(directory, {recursive: true});
         }
         self.requestFileFromMapServer(request);
     }
 
-    self.processCacheTile = async function (request) {
+    self.processCacheTile = function (request) {
         const url = request.url.replace('ows_url', config.ows_local);
         http.get(url, (resp) => {
             resp.on('end', () => {
@@ -118,7 +118,7 @@ module.exports = function (app) {
             priority: {$gt: 0}
         }).then(priorities => {
 
-            let filter = {status: 0, type: 'tile'};
+            let filter = {status: 0, type: 'download'};
             if (Array.isArray(priorities)) {
                 if (priorities.length > 0) {
                     const temp = priorities.sort().reverse();
@@ -131,23 +131,27 @@ module.exports = function (app) {
                 {$sample: {size: parseInt(parallelRequestsLimit)}}
             ]).toArray().then(requests => {
                 if (Array.isArray(requests)) {
-                    collections.requests.bulkWrite(requests.map(req => {
+                    const operations = requests.map(req => {
                         return {
                             updateOne: {
                                 "filter": {"_id": req._id},
                                 "update": {$set: {"status": 1, updated_at: new Date()}}
                             }
                         };
-                    })).then(response => {
-                        requests.forEach(req => {
-                            self.processCacheDownload(req);
-                        })
-                    }).catch(e => collectionsLogs.cache.insertOne({
-                        origin: config.jobsConfig,
-                        msg: e.stack.toString(),
-                        type: 'querying_requests_downloads',
-                        date: new Date()
-                    }));
+                    });
+
+                    if(operations.length > 0){
+                        collections.requests.bulkWrite(operations).then(response => {
+                            requests.forEach(req => {
+                                self.processCacheDownload(req);
+                            })
+                        }).catch(e => collectionsLogs.cache.insertOne({
+                            origin: config.jobsConfig,
+                            msg: e.stack.toString(),
+                            type: 'querying_requests_downloads',
+                            date: new Date()
+                        }));
+                    }
                 }
             });
         }).catch(e => collectionsLogs.cache.insertOne({
@@ -176,23 +180,27 @@ module.exports = function (app) {
                 {$sample: {size: parseInt(parallelRequestsLimit)}}
             ]).toArray().then(requests => {
                 if (Array.isArray(requests)) {
-                    collections.requests.bulkWrite(requests.map(req => {
+                    const operations = requests.map(req => {
                         return {
                             updateOne: {
                                 "filter": {"_id": req._id},
-                                "update": {$set: {"status": 1, updated_at: new Date()}}
+                                "update": { $set: { "status": 1, updated_at: new Date()} }
                             }
                         };
-                    })).then(response => {
-                        requests.forEach(req => {
-                            self.processCacheTile(req);
-                        })
-                    }).catch(e => collectionsLogs.cache.insertOne({
-                        origin: config.jobsConfig,
-                        msg: e.stack.toString(),
-                        type: 'querying_requests_tiles',
-                        date: new Date()
-                    }));
+                    });
+
+                    if(operations.length > 0){
+                        collections.requests.bulkWrite(operations).then(response => {
+                            requests.forEach(req => {
+                                self.processCacheTile(req);
+                            })
+                        }).catch(e => collectionsLogs.cache.insertOne({
+                            origin: config.jobsConfig,
+                            msg: e.stack.toString(),
+                            type: 'querying_requests_tiles',
+                            date: new Date()
+                        }));
+                    }
                 }
             });
         }).catch(e => collectionsLogs.cache.insertOne({
@@ -204,7 +212,6 @@ module.exports = function (app) {
     }
 
     Jobs.start = function () {
-
         try {
             collections.config.findOne({config_id: config.jobsConfig}).then(conf => {
                 Jobs['task'] = cron.schedule(conf.jobs.cron, () => {
