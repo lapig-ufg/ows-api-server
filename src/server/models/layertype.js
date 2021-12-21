@@ -49,6 +49,8 @@ module.exports = class LayerType {
                 visible: params.hasOwnProperty('visible') ? params.visible : false,
                 opacity: params.hasOwnProperty('opacity') ? params.opacity : 1.0,
 
+                displayGallery: params.hasOwnProperty('displayGallery') ? params.displayGallery : false,
+
                 metadata: params.hasOwnProperty('metadata') ? new Metadado(language, this.valueType, params.metadata).getMetadadoInstance() : null
             };
             this.obj = Auxiliar.removeNullProperties(temp);
