@@ -445,7 +445,7 @@ module.exports = class CacheBuilder {
                                             regionType: 'country',
                                             filePath: 'country/BRASIL/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
                                             priority: priority,
-                                            zoom: undefined,
+                                            zoom: null,
                                             layer_id: layerId
                                         }
                                     );
@@ -470,7 +470,7 @@ module.exports = class CacheBuilder {
                                         regionType: 'country',
                                         filePath: 'country/BRASIL/' + type + '/' + layername + '/' + layername,
                                         priority: priority,
-                                        zoom: undefined,
+                                        zoom: null,
                                         layer_id: layerId
                                     }
                                 );
@@ -501,7 +501,7 @@ module.exports = class CacheBuilder {
                                                 regionType: 'city',
                                                 filePath: 'city/' + mun.cd_geocmu + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
                                                 priority: priority,
-                                                zoom: undefined,
+                                                zoom: null,
                                                 layer_id: layerId
                                             }
                                         );
@@ -526,7 +526,7 @@ module.exports = class CacheBuilder {
                                             regionType: 'city',
                                             filePath: 'city/' + mun.cd_geocmu + '/' + type + '/' + layername + '/' + layername,
                                             priority: priority,
-                                            zoom: undefined,
+                                            zoom: null,
                                             layer_id: layerId
                                         }
                                     );
@@ -558,7 +558,7 @@ module.exports = class CacheBuilder {
                                                 regionType: 'state',
                                                 filePath: 'state/' + uf.uf + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
                                                 priority: priority,
-                                                zoom: undefined,
+                                                zoom: null,
                                                 layer_id: layerId
                                             }
                                         );
@@ -583,7 +583,7 @@ module.exports = class CacheBuilder {
                                             regionType: 'state',
                                             filePath: 'state/' + uf.uf + '/' + type + '/' + layername + '/' + layername,
                                             priority: priority,
-                                            zoom: undefined,
+                                            zoom: null,
                                             layer_id: layerId
                                         }
                                     );
@@ -615,7 +615,7 @@ module.exports = class CacheBuilder {
                                                 regionType: 'biome',
                                                 filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
                                                 priority: priority,
-                                                zoom: undefined,
+                                                zoom: null,
                                                 layer_id: layerId
                                             }
                                         );
@@ -641,7 +641,7 @@ module.exports = class CacheBuilder {
                                             regionType: 'biome',
                                             filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layername + '/' + layername,
                                             priority: priority,
-                                            zoom: undefined,
+                                            zoom: null,
                                             layer_id: layerId
                                         }
                                     );
