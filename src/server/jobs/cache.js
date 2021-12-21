@@ -12,7 +12,7 @@ module.exports = function (app) {
     const collections = app.middleware.repository.collections;
     const collectionsLogs = app.middleware.repository.collectionsLogs;
 
-    self.requestFileFromMapServer = function(req) {
+    self.requestFileFromMapServer = function (req) {
         let file = fs.createWriteStream(req.filePath + ".zip");
 
         const downloadPromise = new Promise((resolve, reject) => {
@@ -21,11 +21,11 @@ module.exports = function (app) {
                     gzip: true
                 }).pipe(file).on('finish', () => {
                     const stats = fs.statSync(req.filePath + '.zip');
-                    if(stats.size < 1000) {
+                    if (stats.size < 1000) {
                         reject('Error on mapserver');
                         fs.unlinkSync(req.filePath + '.zip');
                     }
-                    if(req.typeDownload !== 'csv') {
+                    if (req.typeDownload !== 'csv') {
                         const url = `${config.ows_url}/ows?request=GetStyles&layers=${req.layerName}&service=wms&version=1.1.1`;
                         http.get(url, (resp) => {
                             let data = '';
@@ -38,7 +38,7 @@ module.exports = function (app) {
                             // The whole response has been received. Print out the result.
                             resp.on('end', () => {
                                 let zip = new AdmZip(req.filePath + '.zip');
-                                zip.addFile(req.layerName +".sld", Buffer.from(data, "utf8"), "Styled Layer Descriptor (SLD) of " + layerName);
+                                zip.addFile(req.layerName + ".sld", Buffer.from(data, "utf8"), "Styled Layer Descriptor (SLD) of " + layerName);
                                 zip.writeZip(req.filePath + '.zip');
                                 resolve();
                             });
@@ -56,9 +56,18 @@ module.exports = function (app) {
         );
 
         downloadPromise.then(result => {
-            console.log(req.filePath + '.zip')
+            collections.requests.updateOne(
+                {"_id": req._id},
+                {$set: {"status": 2, updated_at: new Date()}}
+            );
         }).catch(error => {
-            collectionsLogs.cache.insertOne({origin: 'Processing Download', msg: error.toString(), type: 'download', "request": req, date: new Date()})
+            collectionsLogs.cache.insertOne({
+                origin: config.jobsConfig,
+                msg: error.toString(),
+                type: 'download',
+                "request": req,
+                date: new Date()
+            })
         });
     };
 
@@ -73,7 +82,7 @@ module.exports = function (app) {
         request['filePath'] = config.downloadDataDir + request.filePath;
         const directory = config.downloadDataDir + request.regionType + '/' + request.typeDownload + '/' + request.layerName;
         if (!fs.existsSync(directory)) {
-            fs.mkdirSync(directory, { recursive: true });
+            fs.mkdirSync(directory, {recursive: true});
         }
         self.requestFileFromMapServer(request);
     }
@@ -83,62 +92,119 @@ module.exports = function (app) {
         http.get(url, (resp) => {
             resp.on('end', () => {
                 collections.requests.updateOne(
-                    { "_id" : request._id },
-                    { $set : { "status" : 1, updated_at: new Date() } }
+                    {"_id": request._id},
+                    {$set: {"status": 2, updated_at: new Date()}}
                 );
             });
 
         }).on("error", (err) => {
-            collectionsLogs.cache.insertOne({origin: 'Processing Tile', msg: err.toString(), request: request,  type: 'tile', date: new Date()})
+            collectionsLogs.cache.insertOne({
+                origin: config.jobsConfig,
+                msg: err.toString(),
+                request: request,
+                type: 'tile',
+                date: new Date()
+            })
         });
 
     }
 
     self.startCacheDownloads = function (cache) {
         const parallelRequestsLimit = self.busyTimeCondition() ? cache.parallelRequestsBusyTime : cache.parallelRequestsDawnTime;
-        collections.requests.aggregate([
-            {$match: {status: 0, type: 'download'}},
-            {$sample: {size: parseInt(parallelRequestsLimit) }}
-        ]).toArray().then(requests => {
-            if(Array.isArray(requests)){
-                collections.requests.bulkWrite(requests.map(req => {
-                    return  { updateOne : {
-                            "filter" : { "_id" : req._id },
-                            "update" : { $set : { "status" : 1, updated_at: new Date() } }
-                        }
-                    };
-                })).then(response => {
-                    requests.forEach(req => {
-                        self.processCacheDownload(req);
-                    })
-                }).catch(e => collectionsLogs.cache.insertOne({origin: 'Update Status 1 - Processing', msg: e.stack.toString(), type: 'querying_requests_downloads', date: new Date()}));
+
+        collections.requests.distinct("priority", {
+            status: 0,
+            type: 'download',
+            priority: {$gt: 0}
+        }).then(priorities => {
+
+            let filter = {status: 0, type: 'tile'};
+            if (Array.isArray(priorities)) {
+                if (priorities.length > 0) {
+                    const temp = priorities.sort().reverse();
+                    filter['priority'] = temp[0];
+                }
             }
-        });
+
+            collections.requests.aggregate([
+                {$match: {status: 0, type: 'download'}},
+                {$sample: {size: parseInt(parallelRequestsLimit)}}
+            ]).toArray().then(requests => {
+                if (Array.isArray(requests)) {
+                    collections.requests.bulkWrite(requests.map(req => {
+                        return {
+                            updateOne: {
+                                "filter": {"_id": req._id},
+                                "update": {$set: {"status": 1, updated_at: new Date()}}
+                            }
+                        };
+                    })).then(response => {
+                        requests.forEach(req => {
+                            self.processCacheDownload(req);
+                        })
+                    }).catch(e => collectionsLogs.cache.insertOne({
+                        origin: config.jobsConfig,
+                        msg: e.stack.toString(),
+                        type: 'querying_requests_downloads',
+                        date: new Date()
+                    }));
+                }
+            });
+        }).catch(e => collectionsLogs.cache.insertOne({
+            origin: config.jobsConfig,
+            msg: e.stack.toString(),
+            type: 'querying_priority_requests_tiles',
+            date: new Date()
+        }));
     }
 
     self.startCacheTiles = function (cache) {
         const parallelRequestsLimit = self.busyTimeCondition() ? cache.parallelRequestsBusyTime : cache.parallelRequestsDawnTime;
-        collections.requests.aggregate([
-            {$match: {status: 0, type: 'tile'}},
-            {$sample: {size: parseInt(parallelRequestsLimit) }}
-        ]).toArray().then(requests => {
-            if(Array.isArray(requests)){
-                collections.requests.bulkWrite(requests.map(req => {
-                    return  { updateOne : {
-                            "filter" : { "_id" : req._id },
-                            "update" : { $set : { "status" : 1, updated_at: new Date() } }
-                        }
-                    };
-                })).then(response => {
-                    requests.forEach(req => {
-                        self.processCacheTile(req);
-                    })
-                }).catch(e => collectionsLogs.cache.insertOne({origin: 'Update Status 1 - Processing', msg: e.stack.toString(), type: 'querying_requests_tiles', date: new Date()}));
+
+        collections.requests.distinct("priority", {status: 0, type: 'tile', priority: {$gt: 0}}).then(priorities => {
+
+            let filter = {status: 0, type: 'tile'};
+            if (Array.isArray(priorities)) {
+                if (priorities.length > 0) {
+                    const temp = priorities.sort().reverse();
+                    filter['priority'] = temp[0];
+                }
             }
-        });
+
+            collections.requests.aggregate([
+                {$match: filter},
+                {$sample: {size: parseInt(parallelRequestsLimit)}}
+            ]).toArray().then(requests => {
+                if (Array.isArray(requests)) {
+                    collections.requests.bulkWrite(requests.map(req => {
+                        return {
+                            updateOne: {
+                                "filter": {"_id": req._id},
+                                "update": {$set: {"status": 1, updated_at: new Date()}}
+                            }
+                        };
+                    })).then(response => {
+                        requests.forEach(req => {
+                            self.processCacheTile(req);
+                        })
+                    }).catch(e => collectionsLogs.cache.insertOne({
+                        origin: config.jobsConfig,
+                        msg: e.stack.toString(),
+                        type: 'querying_requests_tiles',
+                        date: new Date()
+                    }));
+                }
+            });
+        }).catch(e => collectionsLogs.cache.insertOne({
+            origin: config.jobsConfig,
+            msg: e.stack.toString(),
+            type: 'querying_priority_requests_tiles',
+            date: new Date()
+        }));
     }
 
     Jobs.start = function () {
+
         try {
             collections.config.findOne({config_id: config.jobsConfig}).then(conf => {
                 Jobs['task'] = cron.schedule(conf.jobs.cron, () => {
@@ -152,9 +218,11 @@ module.exports = function (app) {
                     scheduled: conf.jobs.scheduled,
                     timezone: conf.jobs.timezone
                 });
-            }).catch(e => collectionsLogs.cache.insertOne({origin: 'Initialization 02', msg: e.stack.toString(), type: 'config', date: new Date()}));
+            }).catch(e => {
+                console.error(e)
+            });
         } catch (e) {
-            collectionsLogs.cache.insertOne({origin: 'Initialization 01 ', msg: e.stack.toString(), type: 'config', date: new Date()})
+            console.error(e)
         }
     }
 

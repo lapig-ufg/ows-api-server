@@ -43,7 +43,7 @@ module.exports = function (app) {
         'rasterDownloadExts': ['.tif'],
 
         "downloadDataDir": appRoot + env.DOWNLOAD_DATA_DIR,
-
+        "cacheTilesDir": env.CACHE_TILES_DIR,
 
         "pg_lapig": {
             "user": env.PG_USER,
