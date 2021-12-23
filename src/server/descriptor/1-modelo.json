@@ -31,6 +31,10 @@
             "raster": false,
             "layername": "NonObrigatory value of the layertypename used to download data, if not informed the valueType is set. Use when you want download other layer than the valueType."
         },
-        "columnsMapCard": "Columns on Layertype of Mapserver to display on Card when clicking on a Map (ex. cd_geocmu,area_ha,classe)"
+        "displayGallery": "true or false, wheter the layer has a photo gallery associated with it.",
+        "mapCard": {
+            "show": "true or false, if this layer should use the WFS of mapserver to return its features",
+            "columns": "Columns on Layertype of Mapserver to display on Card when clicking on a Map (ex. cd_geocmu,area_ha,classe)"
+        }
     }
 ]

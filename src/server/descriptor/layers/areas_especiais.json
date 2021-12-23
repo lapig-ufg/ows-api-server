@@ -28,7 +28,10 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "nome,etnia,fase,modalidade,cr"
+        "mapCard": {
+            "show": true,
+            "columns": "nome,etnia,fase,modalidade,cr"
+        }
     },
     {
         "origin": {
@@ -59,6 +62,9 @@
             "gpkg": true,
             "raster": false
         },
-        "columnsMapCard": "cd_sipra,nome_proje,capacidade,num_famili,data_obten,forma_obte,descricao_"
+        "mapCard": {
+            "show": true,
+            "columns": "cd_sipra,nome_proje,capacidade,num_famili,data_obten,forma_obte,descricao_"
+        }
     }
 ]
