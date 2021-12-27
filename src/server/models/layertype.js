@@ -30,25 +30,23 @@ module.exports = class LayerType {
                     origin: this.origin,
                     typeLayer: this.typeLayer,
                     viewValueType: params.viewValueType.toLowerCase() == "translate".toLowerCase() ? this.languageOb[this.type][this.valueType].viewValueType : params.viewValueType,
-
                     typeLabel: params.hasOwnProperty('typeLabel') ? this.languageOb.labels.layertype.typeLabel[params.typeLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.typeLabel["type"],
 
-                tableName: !params.hasOwnProperty('typeLayer') ? null : !(params.typeLayer.toUpperCase() === "vectorial".toUpperCase()) ? null : params.hasOwnProperty('tableName') ? params.tableName : null,
+                    tableName: !params.hasOwnProperty('typeLayer') ? null : !(params.typeLayer.toUpperCase() === "vectorial".toUpperCase()) ? null : params.hasOwnProperty('tableName') ? params.tableName : null,
 
-                wfsMapCard: params.hasOwnProperty('wfsMapCard') ? this.getCardObject(params.wfsMapCard) : {
-                    show: false, displayMapCardAttributes: {
-                        column: "",
-                        label: "",
-                        columnType: ""
-                    }
-                },
+                    wfsMapCard: params.hasOwnProperty('wfsMapCard') ? this.getCardObject(params.wfsMapCard) : {
+                        show: false, displayMapCardAttributes: {
+                            column: "",
+                            label: "",
+                            columnType: ""
+                        }
+                    },
 
-                galleryAddress: params.hasOwnProperty('galleryAddress') ? process.env.PLATAFORMS_FOLDER + params.galleryAddress : null,
+                    galleryAddress: params.hasOwnProperty('galleryAddress') ? process.env.PLATAFORMS_FOLDER + params.galleryAddress : null,
 
                     download: this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : params.hasOwnProperty('download') ? this.getDownloadObject(params.download) : this.getDownloadObject('default'),
 
                     layerLimits: this.type.toUpperCase() === 'limit'.toUpperCase() ? true : null,
-
                     regionFilter: this.type.toUpperCase() === 'layertype'.toUpperCase() && this.typeLayer == "vectorial" ? true : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : false,
 
                     filters: params.hasOwnProperty('filters') ? this.getFiltersArray(params.filters) : null,
@@ -56,11 +54,8 @@ module.exports = class LayerType {
                     filterSelected: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterSelected') ? params.filterSelected : null,
                     filterHandler: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterHandler') ? params.filterHandler : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() || this.typeLayer == "raster" ? null : "msfilter",
 
-
                     visible: params.hasOwnProperty('visible') ? params.visible : false,
                     opacity: params.hasOwnProperty('opacity') ? params.opacity : 1.0,
-
-                    displayGallery: params.hasOwnProperty('displayGallery') ? params.displayGallery : false,
 
                     metadata: params.hasOwnProperty('metadata') ? new Metadado(language, this.valueType, params.metadata).getMetadadoInstance() : null
                 };
