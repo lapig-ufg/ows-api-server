@@ -512,7 +512,10 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha,year"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "area_ha,year"
+        }
     },
     {
         "origin": {
