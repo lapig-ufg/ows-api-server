@@ -31,6 +31,10 @@
             "raster": false,
             "layername": "NonObrigatory value of the layertypename used to download data, if not informed the valueType is set. Use when you want download other layer than the valueType."
         },
-        "columnsMapCard": "Columns on Layertype of Mapserver to display on Card when clicking on a Map (ex. cd_geocmu,area_ha,classe)"
+        "wfsMapCard": {
+            "show": "true or false. Whether display or not the MapCard",
+            "columns": "Columns on Layertype of Mapserver to display on Card when clicking on a Map (ex. cd_geocmu,area_ha,classe)"
+        },
+        "galleryAddress": "Path to folder where the images are stored, mapped on env.PLATAFORMS_FOLDER"
     }
 ]

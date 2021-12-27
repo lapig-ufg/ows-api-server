@@ -32,7 +32,16 @@ module.exports = class LayerType {
                 typeLabel: params.hasOwnProperty('typeLabel') ? this.languageOb.labels.layertype.typeLabel[params.typeLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.typeLabel["type"],
 
                 tableName: !params.hasOwnProperty('typeLayer') ? null : !(params.typeLayer.toUpperCase() === "vectorial".toUpperCase()) ? null : params.hasOwnProperty('tableName') ? params.tableName : null,
-                displayMapCardAttributes: params.hasOwnProperty('columnsMapCard') ? this.getCardArray(params.columnsMapCard) : null,
+
+                wfsMapCard: params.hasOwnProperty('wfsMapCard') ? this.getCardObject(params.wfsMapCard) : {
+                    show: false, displayMapCardAttributes: {
+                        column: "",
+                        label: "",
+                        columnType: ""
+                    }
+                },
+
+                galleryAddress: params.hasOwnProperty('galleryAddress') ? process.env.PLATAFORMS_FOLDER + params.galleryAddress : null,
 
                 download: this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : params.hasOwnProperty('download') ? this.getDownloadObject(params.download) : this.getDownloadObject('default'),
 
@@ -87,10 +96,10 @@ module.exports = class LayerType {
     }
 
 
-    getCardArray(columnsStr) {
+    getCardObject(mapObject) {
         let language = this.languageOb.cardMapLabels
         let temp_valueType = this.valueType
-        let columns = columnsStr.split(",");
+        let columns = mapObject.columns.split(",");
         let displayMapCardAttributes = [];
         columns.forEach(function (value, index) {
             let obj = {}
@@ -138,7 +147,10 @@ module.exports = class LayerType {
 
         });
 
-        return displayMapCardAttributes;
+        return {
+            show: mapObject.show,
+            attributes: displayMapCardAttributes
+        };
     }
 
 

@@ -28,7 +28,10 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "cod_car,data_ref"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cod_car,data_ref"
+        }
     },
     {
         "origin": {
@@ -59,6 +62,9 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "uph_nm,uph_cd"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "uph_nm,uph_cd"
+        }
     }
 ]

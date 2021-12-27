@@ -45,6 +45,9 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha,classe"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "area_ha,classe"
+        }
     }
 ]

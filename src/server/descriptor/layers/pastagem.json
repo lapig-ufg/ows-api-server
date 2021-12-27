@@ -178,7 +178,10 @@
             "raster": false,
             "layerTypeName": "pasture_col6"
         },
-        "columnsMapCard": "area_ha,year"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "area_ha,year"
+        }
     },
     {
         "origin": {
@@ -475,7 +478,10 @@
             "gpkg": true,
             "raster": false
         },
-        "columnsMapCard": "year,n_kbcs,ua"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "year,n_kbcs,ua"
+        }
     },
     {
         "origin": {
@@ -537,7 +543,10 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha,year"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "area_ha,year"
+        }
     },
     {
         "origin": {
@@ -568,7 +577,10 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha,year"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "area_ha,year"
+        }
     },
     {
         "origin": {
@@ -599,6 +611,9 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "area_ha,year,altura,gado,"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "area_ha,year"
+        }
     }
 ]

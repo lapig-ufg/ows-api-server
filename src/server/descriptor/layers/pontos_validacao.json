@@ -28,7 +28,11 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
+        },
+        "galleryAddress": "atlas-pastagens-files/campo"
     },
     {
         "origin": {
@@ -59,7 +63,11 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
+        },
+        "galleryAddress": "atlas-pastagens-files/campo"
     },
     {
         "origin": {
@@ -90,7 +98,11 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
+        },
+        "galleryAddress": "atlas-pastagens-files/campo"
     },
     {
         "origin": {
@@ -121,6 +133,10 @@
             "gpkg": false,
             "raster": false
         },
-        "columnsMapCard": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
+        },
+        "galleryAddress": "atlas-pastagens-files/campo"
     }
 ]
