@@ -20,7 +20,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -55,7 +55,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -90,7 +90,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -125,7 +125,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -136,6 +136,76 @@
         "wfsMapCard": {
             "show": true,
             "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
+        },
+        "galleryAddress": "atlas-pastagens-files/campo"
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "v_union_tvi_validacao_1985_2017",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "1985 ~ 2017",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
+        },
+        "galleryAddress": "atlas-pastagens-files/campo"
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pontos_validacao_pastagem_mapbiomas_col6",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "2020",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "campanha,class_2020"
         },
         "galleryAddress": "atlas-pastagens-files/campo"
     }

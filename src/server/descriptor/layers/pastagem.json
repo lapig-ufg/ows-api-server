@@ -169,7 +169,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "translate",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -293,7 +293,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "translate",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -470,7 +470,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -504,7 +504,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -538,7 +538,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -572,7 +572,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -606,7 +606,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,

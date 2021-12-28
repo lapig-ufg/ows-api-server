@@ -139,6 +139,33 @@
                 "fonte": "The National Institute of Colonization and Agrarian Reform (INCRA)"
             }
         },
+        "areas_quilombolas": {
+            "viewValueType": "Quilombolas Communities",
+            "metadata": {
+                "title": "Quilombolas Communities",
+                "description": "Boundaries of Quilombolas Communities lands.",
+                "region": "Brasil",
+                "fonte": "National Indian Foundation (FUNAI)"
+            }
+        },
+        "pa_br_unidades_conservacao_PI": {
+            "viewValueType": "UCs - Integral Protection",
+            "metadata": {
+                "title": "Conservation Units (Integral Protection)",
+                "description": "Location of strictly protected conservation units.",
+                "region": "Brazil",
+                "fonte": "Chico Mendes Institute for Biodiversity Conservation (ICMBio)"
+            }
+        },
+        "pa_br_unidades_conservacao_US": {
+            "viewValueType": "UCs - Uso Sustentável",
+            "metadata": {
+                "title": "Conservation Units (Sustainable Use)",
+                "description": "Location of sustainable use conservation units.",
+                "region": "Brazil",
+                "fonte": "Chico Mendes Institute for Biodiversity Conservation (ICMBio)"
+            }
+        },
         "soilgrids_argila": {
             "viewValueType": "Clay by Soilgrids",
             "filters": {
@@ -255,6 +282,20 @@
             "metadata": {
                 "title": "Visually Inspected Points",
                 "description": "Georeferenced set of points for the entire Brazilian territory, with classes of Land use and land cover referring to each year, from 1985 to 2017. Landsat images from TM, ETM + and OLI sensors were used. We also sought to address the criteria adopted, difficulties and specificities encountered regarding the interpretation of images in each of the 6 Brazilian biomes."
+            }
+        },
+        "v_union_tvi_validacao_1985_2017": {
+            "viewValueType": "Points (1985-2017)",
+            "metadata": {
+                "title": "Visually Inspected Points",
+                "description": "Georeferenced set of points for the entire Brazilian territory, with classes of Land use and land cover referring to each year, from 1985 to 2017. Landsat images from TM, ETM + and OLI sensors were used. We also sought to address the criteria adopted, difficulties and specificities encountered regarding the interpretation of images in each of the 6 Brazilian biomes."
+            }
+        },
+        "pontos_validacao_pastagem_mapbiomas_col6": {
+            "viewValueType": "Points (Col.6)",
+            "metadata": {
+                "title": "Visually Inspected Points",
+                "description": "Georeferenced set of points for the entire Brazilian territory, being assigned pasture and non-grazing classes referring to the year 2020. Semiannual Sentinel 2 images were used through the GEE platform and using the Qgis software. "
             }
         }
     },
@@ -404,6 +445,25 @@
         "cons_2015": "Class in 2015",
         "cons_2016": "Class in 2016",
         "cons_2017": "Class in 2017",
-        "classe": "Class"
+        "classe": "Class",
+        "dt_publica": {
+            "text": "Public Date",
+            "type": "date"
+        },
+        "esfera": "Domain",
+        "status": "Status",
+        "nm_comunid": "Community Name",
+        "nr_process": "Process No.",
+        "nome": "Name",
+        "grupo": "Category",
+        "codigouc": "UC Code",
+        "anocriacao": {
+            "text": "Foundation Year",
+            "type": "integer"
+        },
+        "atolegal": "Legal Act",
+        "qualidade": "Quality",
+        "origem": "Source",
+        "class_2020": "Class in 2020"
     }
 }

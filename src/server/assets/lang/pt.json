@@ -140,6 +140,33 @@
                 "fonte": "Instituto Nacional de Colonização e Reforma Agrária (INCRA)"
             }
         },
+        "areas_quilombolas": {
+            "viewValueType": "Comunidades Quilombolas",
+            "metadata": {
+                "title": "Comunidades Quilombolas",
+                "description": "Limite das terras de Comunidades Quilombolas.",
+                "region": "Brasil",
+                "fonte": "Fundação Nacional do Índio (FUNAI)"
+            }
+        },
+        "pa_br_unidades_conservacao_PI": {
+            "viewValueType": "UCs - Proteção Integral",
+            "metadata": {
+                "title": "Unidades de Conservação (Proteção Integral)",
+                "description": "Localização das unidades de conservação de proteção integral.",
+                "region": "Brasil",
+                "fonte": "Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio)"
+            }
+        },
+        "pa_br_unidades_conservacao_US": {
+            "viewValueType": "UCs - Uso Sustentável",
+            "metadata": {
+                "title": "Unidades de Conservação (Uso Sustentável)",
+                "description": "Localização das unidades de conservação de uso sustentável.",
+                "region": "Brasil",
+                "fonte": "Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio)"
+            }
+        },
         "soilgrids_argila": {
             "viewValueType": "Argila no Solo - SoilGrids",
             "filters": {
@@ -253,6 +280,20 @@
             "metadata": {
                 "title": "Pontos Visualmente Inspecionados",
                 "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros."
+            }
+        },
+        "v_union_tvi_validacao_1985_2017": {
+            "viewValueType": "Pontos (1985-2017)",
+            "metadata": {
+                "title": "Pontos Visualmente Inspecionados",
+                "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros."
+            }
+        },
+        "pontos_validacao_pastagem_mapbiomas_col6": {
+            "viewValueType": "Pontos (Col.6)",
+            "metadata": {
+                "title": "Pontos Visualmente Inspecionados",
+                "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de pastagem e não pastagem referente ao ano de 2020. Foram utilizadas imagens semestrais de Sentinel 2 através da plataforma GEE e utilizando o software Qgis. "
             }
         }
     },
@@ -404,6 +445,25 @@
         "cons_2015": "Classe em 2015",
         "cons_2016": "Classe em 2016",
         "cons_2017": "Classe em 2017",
-        "classe": "Classe"
+        "classe": "Classe",
+        "dt_publica": {
+            "text": "Data Pública",
+            "type": "date"
+        },
+        "esfera": "Esfera",
+        "status": "Status",
+        "nm_comunid": "Nome da Comunidade",
+        "nr_process": "Nº do Processo",
+        "nome": "Nome",
+        "grupo": "Categoria",
+        "codigouc": "Código UC",
+        "anocriacao": {
+            "text": "Ano de Criação",
+            "type": "integer"
+        },
+        "atolegal": "Ato Legal",
+        "qualidade": "Qualidade",
+        "origem": "Fonte",
+        "class_2020": "Classe em 2020"
     }
 }

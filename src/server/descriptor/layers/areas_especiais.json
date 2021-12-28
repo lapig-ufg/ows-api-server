@@ -66,5 +66,107 @@
             "show": true,
             "columns": "cd_sipra,nome_proje,capacidade,num_famili,data_obten,forma_obte,descricao_"
         }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "areas_quilombolas",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2021",
+            "scale": "ND",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/quilombolas'> https://www.gov.br/incra/pt-br/assuntos/governanca-fundiaria/quilombolas </a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "nr_process,esfera,nm_comunid,dt_publica,status"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pa_br_unidades_conservacao_PI",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2019",
+            "scale": "ND",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='http://www.planalto.gov.br/ccivil_03/leis/L9985.htm'> http://www.planalto.gov.br/ccivil_03/leis/L9985.htm </a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "nome,esfera,grupo,codigouc,anocriacao,atolegal,qualidade,origem"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pa_br_unidades_conservacao_US",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2019",
+            "scale": "ND",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='http://www.planalto.gov.br/ccivil_03/leis/L9985.htm'> http://www.planalto.gov.br/ccivil_03/leis/L9985.htm </a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "nome,esfera,grupo,codigouc,anocriacao,atolegal,qualidade,origem"
+        }
     }
 ]
