@@ -8,7 +8,7 @@ module.exports = function (app) {
 
     const collections = app.middleware.repository.collectionsOws
 
-    Internal.returnAllLayerTypes = async function (lang) {
+    Internal.returnAllLayerTypes = function (lang) {
 
         const result = {
             layers: LayerTypeBuilder().getAllLayertypes(lang),
@@ -76,7 +76,6 @@ module.exports = function (app) {
 
     Controller.getAllLayers = function (request, response) {
         const { lang } = request.query;
-
 
         let allLayers = Internal.returnAllLayerTypes(lang);
 

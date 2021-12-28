@@ -202,31 +202,31 @@
             }
         },
         "pasture_carbon_aglivc": {
-            "viewValueType": "Living Biomass",
+            "viewValueType": "Live Aerial Biomass (MgC.ha)",
             "metadata": {
                 "title": "Carbon Stock with Living Biomass Index",
-                "description": "Carbon Stock with Living Biomass Index"
-            }
-        },
-        "pasture_carbon_bglivs": {
-            "viewValueType": "Roots",
-            "metadata": {
-                "title": "Roots Carbon Stock",
-                "description": "Roots Carbon Stock"
+                "description": "Estimates of stocks in pasture areas of the Cerrado biome, in the following compartments: (a) live aboveground biomass; (b) dead aboveground biomass; (c) soil organic matter; and (d) roots."
             }
         },
         "pasture_carbon_stdeadc": {
-            "viewValueType": "Dead biomass",
+            "viewValueType": "Dead Aerial Biomass (MgC.ha)",
             "metadata": {
                 "title": "Dead Biomass Carbon Stock",
-                "description": "Dead Biomass Carbon Stock"
+                "description": "Estimates of stocks in pasture areas of the Cerrado biome, in the following compartments: (a) live aboveground biomass; (b) dead aboveground biomass; (c) soil organic matter; and (d) roots."
             }
         },
         "pasture_carbon_somsc": {
-            "viewValueType": "Soil",
+            "viewValueType": "Soil Organic Matter - 0-20cm (MgC.ha)",
             "metadata": {
                 "title": "Soil Organic Material Carbon Stock (SOM)",
-                "description": "Soil Organic Material Carbon Stock (SOM)"
+                "description": "Estimates of stocks in pasture areas of the Cerrado biome, in the following compartments: (a) live aboveground biomass; (b) dead aboveground biomass; (c) soil organic matter; and (d) roots."
+            }
+        },
+        "pasture_carbon_bglivs": {
+            "viewValueType": "Roots - 0-20cm (MgC.ha)",
+            "metadata": {
+                "title": "Roots Carbon Stock",
+                "description": "Estimates of stocks in pasture areas of the Cerrado biome, in the following compartments: (a) live aboveground biomass; (b) dead aboveground biomass; (c) soil organic matter; and (d) roots."
             }
         },
         "pontos_campo_parada": {

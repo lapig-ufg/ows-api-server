@@ -9,8 +9,6 @@ const express = require('express'),
     requestParam = require('request-param'),
     morgan = require('morgan');
 
-const {algorithms} = require("hawk/lib/crypto");
-
 const app = express();
 const http = require('http').Server(app);
 const cookie = parseCookie('LAPIG')

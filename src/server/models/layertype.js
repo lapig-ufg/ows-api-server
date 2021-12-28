@@ -22,14 +22,24 @@ module.exports = class LayerType {
         this.typeLayer = params.hasOwnProperty('typeLayer') ? params.typeLayer : null;
         let temp = {}
         if (this.valueType) {
+            // if (this.valueType == "pasture_carbon_aglivc") {
 
+            //     let replacement = {};
+            //     let str = '{{' + this.getStringInBetween(this.languageOb[this.type][this.valueType].viewValueType, '{{', '}}') + '}}'
+            //     replacement[str] = this.encode_superscript(this.getStringInBetween(this.languageOb[this.type][this.valueType].viewValueType, "#", "#"))
+
+            //     console.log(str, replacement)
+            // }
             try {
                 temp = {
                     valueType: this.valueType,
                     type: this.type,
                     origin: this.origin,
                     typeLayer: this.typeLayer,
+
+
                     viewValueType: params.viewValueType.toLowerCase() == "translate".toLowerCase() ? this.languageOb[this.type][this.valueType].viewValueType : params.viewValueType,
+
                     typeLabel: params.hasOwnProperty('typeLabel') ? this.languageOb.labels.layertype.typeLabel[params.typeLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.typeLabel["type"],
 
                     tableName: !params.hasOwnProperty('typeLayer') ? null : !(params.typeLayer.toUpperCase() === "vectorial".toUpperCase()) ? null : params.hasOwnProperty('tableName') ? params.tableName : null,
@@ -68,6 +78,43 @@ module.exports = class LayerType {
         else {
             this.obj = null;
         }
+    }
+
+    replacementStringsSuperscript(template, replacements) {
+
+        return template.replace(/#([^#]+)#/g, (match, key) => {
+            // If there's a replacement for the key, return that replacement with a `<br />`. Otherwise, return a empty string.
+            return replacements[key] !== undefined
+                ? replacements[key]
+                : "";
+        });
+    }
+
+    getStringInBetween(string, start, end) {
+        // start and end will be excluded
+        var indexOfStart = string.indexOf(start)
+        indexOfStart = indexOfStart + start.length;
+        var newString = string.slice(indexOfStart)
+        var indexOfEnd = newString.indexOf(end)
+        return newString.slice(0, indexOfEnd)
+    }
+
+    encode_superscript(text) {
+        var map = {
+            "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "a": "ᵃ", "b": "ᵇ",
+            "c": "ᶜ", "d": "ᵈ", "e": "ᵉ", "f": "ᶠ", "g": "ᵍ", "h": "ʰ", "i": "ᶦ", "j": "ʲ", "k": "ᵏ", "l": "ˡ", "m": "ᵐ", "n": "ⁿ", "o": "ᵒ",
+            "p": "ᵖ", "q": "ᑫ", "r": "ʳ", "s": "ˢ", "t": "ᵗ", "u": "ᵘ", "v": "ᵛ", "w": "ʷ", "x": "ˣ", "y": "ʸ", "z": "ᶻ", "A": "ᴬ", "B": "ᴮ", "C": "ᶜ", "D": "ᴰ",
+            "E": "ᴱ", "F": "ᶠ", "G": "ᴳ", "H": "ᴴ", "I": "ᴵ", "J": "ᴶ", "K": "ᴷ", "L": "ᴸ", "M": "ᴹ", "N": "ᴺ", "O": "ᴼ", "P": "ᴾ", "Q": "Q", "R": "ᴿ", "S": "ˢ",
+            "T": "ᵀ", "U": "ᵁ", "V": "ⱽ", "W": "ᵂ", "X": "ˣ", "Y": "ʸ", "Z": "ᶻ", "+": "⁺", "-": "⁻", "=": "⁼", "(": "⁽", ")": "⁾"
+        };
+        var charArray = text.split("");
+        for (var i = 0; i < charArray.length; i++) {
+            if (map[charArray[i].toLowerCase()]) {
+                charArray[i] = map[charArray[i]];
+            }
+        }
+        text = charArray.join("");
+        return text;
     }
 
     getDownloadObject(downloadObj) {

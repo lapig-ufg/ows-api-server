@@ -200,31 +200,31 @@
             }
         },
         "pasture_carbon_aglivc": {
-            "viewValueType": "Biomassa Viva",
+            "viewValueType": "Biomassa Aérea Viva (MgC.ha)",
             "metadata": {
-                "title": "Estoque de Carbono com índice de Biomassa Viva",
-                "description": "Biomassa estocada viva acima do solo"
-            }
-        },
-        "pasture_carbon_bglivs": {
-            "viewValueType": "Raízes",
-            "metadata": {
-                "title": "Estoque de Carbono Raízes",
-                "description": "Estoque de Carbono Raizes"
+                "title": "Estoque de Carbono na Biomassa Aérea Viva nas pastagens do bioma Cerrado",
+                "description": "Estimativas de estoques de nas áreas de pastagens do bioma Cerrado, nos seguintes compartimentos: (a) biomassa aérea viva; (b) biomassa aérea morta; (c) matéria orgânica do solo; e (d) raízes."
             }
         },
         "pasture_carbon_stdeadc": {
-            "viewValueType": "Biomassa Morta",
+            "viewValueType": "Biomassa Aérea Morta (MgC.ha)",
             "metadata": {
-                "title": "Estoque de Carbono Biomassa Morta",
-                "description": "Estoque de Carbono Biomassa Morta"
+                "title": "Estoque de Carbono Biomassa Morta nas pastagens do bioma Cerrado",
+                "description": "Estimativas de estoques de nas áreas de pastagens do bioma Cerrado, nos seguintes compartimentos: (a) biomassa aérea viva; (b) biomassa aérea morta; (c) matéria orgânica do solo; e (d) raízes."
             }
         },
         "pasture_carbon_somsc": {
-            "viewValueType": "Solo",
+            "viewValueType": "Matéria orgânica do solo - 0-20cm (MgC.ha)",
             "metadata": {
-                "title": "Estoque de Carbono Materia Organica do Solo (SOM)",
-                "description": "Estoque de Carbono Materia Organica do Solo (SOM)"
+                "title": "Estoque de Carbono na Matéria Orgânica do Solo nas pastagens do bioma Cerrado",
+                "description": "Estimativas de estoques de nas áreas de pastagens do bioma Cerrado, nos seguintes compartimentos: (a) biomassa aérea viva; (b) biomassa aérea morta; (c) matéria orgânica do solo; e (d) raízes."
+            }
+        },
+        "pasture_carbon_bglivs": {
+            "viewValueType": "Raízes - 0-20cm (MgC.ha)",
+            "metadata": {
+                "title": "Estoque de Carbono nas Raízes nas pastagens do bioma Cerrado",
+                "description": "Estimativas de estoques de nas áreas de pastagens do bioma Cerrado, nos seguintes compartimentos: (a) biomassa aérea viva; (b) biomassa aérea morta; (c) matéria orgânica do solo; e (d) raízes."
             }
         },
         "pontos_campo_parada": {
