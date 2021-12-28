@@ -178,7 +178,7 @@
             }
         },
         "pasture_col6_s100": {
-            "viewValueType": "Regular Pasture",
+            "viewValueType": "Pasture",
             "metadata": {
                 "title": "Pasture Areas of Brazil",
                 "description": "Annual mapping of Brazilian pastures, carried out using Landsat data series from 1985 to 2020. Using supervised classification approaches (Random Forest) from Google's Earth Engine platform.",

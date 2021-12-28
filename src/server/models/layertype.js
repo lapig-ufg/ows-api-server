@@ -190,9 +190,6 @@ module.exports = class LayerType {
                 obj = null
             }
 
-
-
-
             displayMapCardAttributes.push(obj)
 
         });

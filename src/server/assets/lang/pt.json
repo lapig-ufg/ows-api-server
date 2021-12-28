@@ -176,7 +176,7 @@
             }
         },
         "pasture_col6_s100": {
-            "viewValueType": "Pastagem Regular",
+            "viewValueType": "Área de Pastagem",
             "metadata": {
                 "title": "Áreas de Pastagens do Brasil",
                 "description": "Mapeamento anual das pastagens brasileiras, realizado através do uso de séries de dados Landsat de 1985 a 2020. Utilizando abordagens de classificação supervisionada (Random Forest) através da plataforma Earth Engine da Google.",
