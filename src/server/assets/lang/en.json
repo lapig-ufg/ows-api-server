@@ -122,7 +122,7 @@
             }
         },
         "limites_terras_indigenas": {
-            "viewValueType": "Boundaries",
+            "viewValueType": "Boundaries Indigenous Land",
             "metadata": {
                 "title": "Indigenous Land (TI)",
                 "description": "Indigenous lands boundaries.",
@@ -297,6 +297,9 @@
                 "title": "Visually Inspected Points",
                 "description": "Georeferenced set of points for the entire Brazilian territory, being assigned pasture and non-grazing classes referring to the year 2020. Semiannual Sentinel 2 images were used through the GEE platform and using the Qgis software. "
             }
+        },
+        "floresta_plantada_mapbiomas": {
+            "viewValueType": "Planted Forest"
         }
     },
     "basemap": {

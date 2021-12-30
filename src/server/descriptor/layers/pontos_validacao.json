@@ -23,7 +23,7 @@
             "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
-            "csv": false,
+            "csv": true,
             "shp": true,
             "gpkg": false,
             "raster": false
@@ -58,7 +58,7 @@
             "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
-            "csv": false,
+            "csv": true,
             "shp": true,
             "gpkg": false,
             "raster": false

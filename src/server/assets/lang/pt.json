@@ -123,7 +123,7 @@
             }
         },
         "limites_terras_indigenas": {
-            "viewValueType": "Limites",
+            "viewValueType": "Limites Terras Indígenas",
             "metadata": {
                 "title": "Terras Indígenas (TI)",
                 "description": "Limite das terras indígenas brasileiras.",
@@ -295,6 +295,9 @@
                 "title": "Pontos Visualmente Inspecionados",
                 "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de pastagem e não pastagem referente ao ano de 2020. Foram utilizadas imagens semestrais de Sentinel 2 através da plataforma GEE e utilizando o software Qgis. "
             }
+        },
+        "floresta_plantada_mapbiomas": {
+            "viewValueType": "Floresta Plantada"
         }
     },
     "basemap": {

@@ -30,7 +30,7 @@
         },
         "wfsMapCard": {
             "show": true,
-            "columns": "nome,etnia,fase,modalidade,cr"
+            "columns": "nome,etnia,fase"
         }
     },
     {

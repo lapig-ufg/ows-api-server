@@ -125,8 +125,8 @@ module.exports = class LayerType {
             obj = {
                 csv: this.typeLayer == "raster" ? false : downloadObj.hasOwnProperty('csv') ? downloadObj.csv : false,
                 shp: this.typeLayer == "raster" ? false : downloadObj.hasOwnProperty('shp') ? downloadObj.shp : false,
-                gpkg: this.typeLayer == "raster" ? false : downloadObj.hasOwnProperty('gpkg') ? downloadObj.gpkg : false,
-                raster: this.typeLayer == "vectorial" ? false : downloadObj.hasOwnProperty('raster') ? downloadObj.raster : false,
+                gpkg: this.typeLayer == "raster" ? false : downloadObj.hasOwnProperty('gpkg') ? downloadObj.gpkg : true,
+                raster: this.typeLayer == "vectorial" ? false : downloadObj.hasOwnProperty('raster') ? downloadObj.raster : true,
                 layerTypeName: downloadObj.hasOwnProperty('layerTypeName') ? downloadObj.layerTypeName : this.valueType
             }
 
@@ -137,7 +137,7 @@ module.exports = class LayerType {
                 shp: false,
                 gpkg: false,
                 raster: false,
-                layertypename: ""
+                layertypename: this.valueType
             }
         }
 

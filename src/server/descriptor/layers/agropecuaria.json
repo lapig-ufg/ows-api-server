@@ -49,5 +49,168 @@
             "show": true,
             "columns": "area_ha,classe"
         }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "floresta_plantada_mapbiomas",
+        "type": "layertype",
+        "typeLayer": "raster",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "filterLabel": "year",
+        "filterSelected": "br_mapbiomas_floresta_plantada_2020",
+        "filterHandler": "layername",
+        "filters": [
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1985",
+                "viewValueFilter": "1985"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1986",
+                "viewValueFilter": "1986"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1987",
+                "viewValueFilter": "1987"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1988",
+                "viewValueFilter": "1988"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1989",
+                "viewValueFilter": "1989"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1990",
+                "viewValueFilter": "1990"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1991",
+                "viewValueFilter": "1991"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1992",
+                "viewValueFilter": "1992"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1993",
+                "viewValueFilter": "1993"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1994",
+                "viewValueFilter": "1994"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1995",
+                "viewValueFilter": "1995"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1996",
+                "viewValueFilter": "1996"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1997",
+                "viewValueFilter": "1997"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1998",
+                "viewValueFilter": "1998"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_1999",
+                "viewValueFilter": "1999"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2000",
+                "viewValueFilter": "2000"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2001",
+                "viewValueFilter": "2001"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2002",
+                "viewValueFilter": "2002"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2003",
+                "viewValueFilter": "2003"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2004",
+                "viewValueFilter": "2004"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2005",
+                "viewValueFilter": "2005"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2006",
+                "viewValueFilter": "2006"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2007",
+                "viewValueFilter": "2007"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2008",
+                "viewValueFilter": "2008"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2009",
+                "viewValueFilter": "2009"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2010",
+                "viewValueFilter": "2010"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2011",
+                "viewValueFilter": "2011"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2012",
+                "viewValueFilter": "2012"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2013",
+                "viewValueFilter": "2013"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2014",
+                "viewValueFilter": "2014"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2015",
+                "viewValueFilter": "2015"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2016",
+                "viewValueFilter": "2016"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2017",
+                "viewValueFilter": "2017"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2018",
+                "viewValueFilter": "2018"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2019",
+                "viewValueFilter": "2019"
+            },
+            {
+                "valueFilter": "br_mapbiomas_floresta_plantada_2020",
+                "viewValueFilter": "2020"
+            }
+        ],
+        "download": {
+            "raster": true
+        }
     }
 ]
