@@ -298,6 +298,12 @@
         },
         "floresta_plantada_mapbiomas": {
             "viewValueType": "Floresta Plantada"
+        },
+        "lavoura_perene_mapbiomas": {
+            "viewValueType": "Lavoura Perene"
+        },
+        "lavoura_temporaria_mapbiomas": {
+            "viewValueType": "Lavoura Temporária"
         }
     },
     "basemap": {

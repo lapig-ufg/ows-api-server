@@ -300,6 +300,12 @@
         },
         "floresta_plantada_mapbiomas": {
             "viewValueType": "Planted Forest"
+        },
+        "lavoura_perene_mapbiomas": {
+            "viewValueType": "Perennial Crop"
+        },
+        "lavoura_temporaria_mapbiomas": {
+            "viewValueType": "Temporary Crop"
         }
     },
     "basemap": {
