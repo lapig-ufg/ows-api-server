@@ -411,7 +411,8 @@
         "periodo": "Período",
         "horario": "Horário",
         "altura": "Altura",
-        "gado": "Presença de Gado?",
+        "invasoras": "Invasoras?",
+        "gado": "Gado?",
         "qtd_cupins": "Qtd. de Cupins",
         "forrageira": "Forrageira",
         "solo_exp": "Solo Exposto",
@@ -451,6 +452,7 @@
         "cons_2015": "Classe em 2015",
         "cons_2016": "Classe em 2016",
         "cons_2017": "Classe em 2017",
+        "class_2020": "Classe em 2020",
         "classe": "Classe",
         "dt_publica": {
             "text": "Data Pública",
@@ -470,7 +472,6 @@
         "atolegal": "Ato Legal",
         "qualidade": "Qualidade",
         "origem": "Fonte",
-        "class_2020": "Classe em 2020",
         "campanha": "Campanha"
     }
 }

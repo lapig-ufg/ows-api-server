@@ -407,6 +407,7 @@
         "periodo": "Period",
         "horario": "Time",
         "altura": "Height",
+        "invasoras": "Invaders?",
         "gado": "Livestock Presence?",
         "qtd_cupins": "Termite Quantity",
         "forrageira": "Forager",
@@ -451,6 +452,7 @@
         "cons_2015": "Class in 2015",
         "cons_2016": "Class in 2016",
         "cons_2017": "Class in 2017",
+        "class_2020": "Class in 2020",
         "classe": "Class",
         "dt_publica": {
             "text": "Public Date",
@@ -470,7 +472,6 @@
         "atolegal": "Legal Act",
         "qualidade": "Quality",
         "origem": "Source",
-        "class_2020": "Class in 2020",
         "campanha": "Campaign"
     }
 }

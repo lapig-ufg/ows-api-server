@@ -315,7 +315,7 @@
         "viewValueType": "translate",
         "typeLabel": "type",
         "filterLabel": "year",
-        "filterSelected": "year=2019",
+        "filterSelected": "year=2020",
         "filterHandler": "msfilter",
         "filters": [
             {
@@ -457,6 +457,10 @@
             {
                 "valueFilter": "year=2019",
                 "viewValueFilter": 2019
+            },
+            {
+                "valueFilter": "year=2020",
+                "viewValueFilter": 2020
             }
         ],
         "metadata": {

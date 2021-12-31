@@ -30,7 +30,7 @@
         },
         "wfsMapCard": {
             "show": true,
-            "columns": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
+            "columns": "cobertura,data,periodo,horario,latitude,longitude,altura,invasoras,gado,qtd_cupins,forrageira,solo_exp,condicao,obs"
         },
         "gallery": {
             "id_column": "id",
