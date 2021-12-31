@@ -391,10 +391,7 @@
         },
         "forma_obte_assentamentos": "Obtaining method",
         "descricao__assentamentos": "Settlement Description",
-        "year": {
-            "text": "Year",
-            "type": "integer"
-        },
+        "year": "Year",
         "n_kbcs": {
             "text": "Cattle Population",
             "type": "integer"

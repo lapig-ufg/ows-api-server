@@ -32,7 +32,10 @@
             "show": true,
             "columns": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
         },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        "gallery": {
+            "id_column": "id",
+            "tableName": "pontos_campo_parada"
+        }
     },
     {
         "origin": {
@@ -66,8 +69,7 @@
         "wfsMapCard": {
             "show": true,
             "columns": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
-        },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        }
     },
     {
         "origin": {
@@ -101,8 +103,7 @@
         "wfsMapCard": {
             "show": true,
             "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
-        },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        }
     },
     {
         "origin": {
@@ -136,8 +137,7 @@
         "wfsMapCard": {
             "show": true,
             "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
-        },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        }
     },
     {
         "origin": {
@@ -171,8 +171,7 @@
         "wfsMapCard": {
             "show": true,
             "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
-        },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        }
     },
     {
         "origin": {
@@ -206,7 +205,6 @@
         "wfsMapCard": {
             "show": true,
             "columns": "campanha,class_2020"
-        },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        }
     }
 ]

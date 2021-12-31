@@ -390,10 +390,7 @@
         },
         "forma_obte_assentamentos": "Forma de Obtenção",
         "descricao__assentamentos": "Descrição",
-        "year": {
-            "text": "Ano",
-            "type": "integer"
-        },
+        "year": "Ano",
         "n_kbcs": {
             "text": "Nº de Cabeças",
             "type": "integer"

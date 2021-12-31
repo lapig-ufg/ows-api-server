@@ -52,7 +52,7 @@ module.exports = class LayerType {
                         }
                     },
 
-                    galleryAddress: params.hasOwnProperty('galleryAddress') ? process.env.PLATAFORMS_FOLDER + params.galleryAddress : null,
+                    gallery: params.hasOwnProperty('gallery') ? params.gallery : null,
 
                     download: this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : params.hasOwnProperty('download') ? this.getDownloadObject(params.download) : this.getDownloadObject('default'),
 
