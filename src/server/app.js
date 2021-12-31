@@ -7,7 +7,8 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     parseCookie = require('cookie-parser'),
     requestParam = require('request-param'),
-    morgan = require('morgan');
+    morgan = require('morgan'),
+    cors = require('cors');
 
 const app = express();
 const http = require('http').Server(app);
@@ -23,6 +24,15 @@ app.database.client.init(function () {
     app.libs.catalog.init(function () {
         app.middleware.repository.init(() => {
             app.use(cookie);
+
+            app.use((req, res, next) => {
+                //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
+                res.header("Access-Control-Allow-Origin", "*");
+                //Quais são os métodos que a conexão pode realizar na API
+                res.header("Access-Control-Allow-Methods", '*');
+                app.use(cors());
+                next();
+            });
 
             app.use(compression());
             app.use(express.static(app.config.clientDir));
