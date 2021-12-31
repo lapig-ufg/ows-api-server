@@ -222,8 +222,15 @@
         "lotacao_bovina_regions": {
             "viewValueType": "Rebanho Bovino em Unidades Animal (UA)",
             "metadata": {
-                "title": "Indícios de degradação das pastagens brasileiras",
+                "title": "Rebanho Bovino em Unidades Animal (UA)",
                 "description": "Cálculo realizado considerando a composição do rebanho para o censo agropecuário. Para os anos de 1986 a 1999, utilizou-se os dados do censo agropecuário de 1996. Para os anos de 2000 a 2018. utilizou-se os dados do censo agropecuário de 2006. Sendo que uma Unidade Animal (UA), equivale a um animal de 450 kg vivo."
+            }
+        },
+        "n_kbcs_regions": {
+            "viewValueType": "Rebanho Bovino em Nº de Cabeças (Kbcs)",
+            "metadata": {
+                "title": "Rebanho Bovino em Nº de Cabeças (Kbcs)",
+                "description": "Cálculo realizado considerando a composição do rebanho para o censo agropecuário. Para os anos de 1986 a 1999, utilizou-se os dados do censo agropecuário de 1996. Para os anos de 2000 a 2018. utilizou-se os dados do censo agropecuário de 2006."
             }
         },
         "pasture_carbon_aglivc": {

@@ -222,9 +222,16 @@
             }
         },
         "lotacao_bovina_regions": {
-            "viewValueType": "Cattle Herd",
+            "viewValueType": "Cattle Herd (Animal Units)",
             "metadata": {
                 "title": "Bovine Herd in Animal Units (UA)",
+                "description": "Calculation performed considering the composition of the herd for the agricultural census. For the years 1986 to 1999, data from the 1996 agricultural census were used. For the years 2000 to 2018, data from the 2006 agricultural census were used. Animal Unit (UA) is equivalent to 450 kg animal alive."
+            }
+        },
+        "n_kbcs_regions": {
+            "viewValueType": "Cattle Herd (Head Counts)",
+            "metadata": {
+                "title": "Bovine Herd in Head Counts (NKbcs)",
                 "description": "Calculation performed considering the composition of the herd for the agricultural census. For the years 1986 to 1999, data from the 1996 agricultural census were used. For the years 2000 to 2018, data from the 2006 agricultural census were used. Animal Unit (UA) is equivalent to 450 kg animal alive."
             }
         },
