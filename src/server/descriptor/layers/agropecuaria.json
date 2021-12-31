@@ -209,6 +209,19 @@
                 "viewValueFilter": "2020"
             }
         ],
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "tif",
+            "region": "brasil",
+            "period": "1985-2020",
+            "scale": "30m",
+            "system_coordinator": "wgs84",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "MapBiomas",
+            "link": "<a target='_blank' class='link-details' href='https://mapbiomas.org/'> https://mapbiomas.org/</a>"
+        },
         "download": {
             "raster": true
         }
@@ -372,6 +385,19 @@
                 "viewValueFilter": "2020"
             }
         ],
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "tif",
+            "region": "brasil",
+            "period": "1985-2020",
+            "scale": "30m",
+            "system_coordinator": "wgs84",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "MapBiomas",
+            "link": "<a target='_blank' class='link-details' href='https://mapbiomas.org/'> https://mapbiomas.org/</a>"
+        },
         "download": {
             "raster": true
         }
@@ -535,6 +561,19 @@
                 "viewValueFilter": "2020"
             }
         ],
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "tif",
+            "region": "brasil",
+            "period": "1985-2020",
+            "scale": "30m",
+            "system_coordinator": "wgs84",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "MapBiomas",
+            "link": "<a target='_blank' class='link-details' href='https://mapbiomas.org/'> https://mapbiomas.org/</a>"
+        },
         "download": {
             "raster": true
         }

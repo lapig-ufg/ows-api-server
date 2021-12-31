@@ -299,13 +299,25 @@
             }
         },
         "floresta_plantada_mapbiomas": {
-            "viewValueType": "Planted Forest"
+            "viewValueType": "Planted Forest",
+            "metadata": {
+                "title": "Planted Forest (MapBiomas Collection 6)",
+                "description": "Tree species planted for commercial purposes (e.g., pine, eucalyptus, araucaria)."
+            }
         },
         "lavoura_perene_mapbiomas": {
-            "viewValueType": "Perennial Crop"
+            "viewValueType": "Perennial Crop",
+            "metadata": {
+                "title": "Perennial Crop (MapBiomas Collection 6)",
+                "description": "Areas occupied with short or medium term agricultural crops (e.g., Soybean, Sugarcane, Rice, and others)."
+            }
         },
         "lavoura_temporaria_mapbiomas": {
-            "viewValueType": "Temporary Crop"
+            "viewValueType": "Temporary Crop",
+            "metadata": {
+                "title": "Temporary Crop (MapBiomas Collection 6)",
+                "description": "Areas occupied with agricultural crops with a long vegetative cycle (e.g, Coffee, Citrus, Cocoa, Cashew, and others)."
+            }
         }
     },
     "basemap": {

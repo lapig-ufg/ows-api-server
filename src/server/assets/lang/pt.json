@@ -297,13 +297,25 @@
             }
         },
         "floresta_plantada_mapbiomas": {
-            "viewValueType": "Floresta Plantada"
+            "viewValueType": "Floresta Plantada",
+            "metadata": {
+                "title": "Floresta Plantada (MapBiomas Coleção 6)",
+                "description": "Espécies arbóreas plantadas para fins comerciais (e.g., pinus, eucalipto, araucária). "
+            }
         },
         "lavoura_perene_mapbiomas": {
-            "viewValueType": "Lavoura Perene"
+            "viewValueType": "Lavoura Perene",
+            "metadata": {
+                "title": "Lavoura Temporária (MapBiomas Coleção 6)",
+                "description": "Áreas ocupadas com cultivos agrícolas de curta ou média duração (e.g., Soja, Cana-de-Áçucar, Arroz, e outros)."
+            }
         },
         "lavoura_temporaria_mapbiomas": {
-            "viewValueType": "Lavoura Temporária"
+            "viewValueType": "Lavoura Temporária",
+            "metadata": {
+                "title": "Lavoura Perene (MapBiomas Coleção 6)",
+                "description": "Áreas ocupadas com cultivos agrícolas de ciclo vegetativo longo (e.g., Café, Citrus, Cacau, Caju, e outros)."
+            }
         }
     },
     "basemap": {
