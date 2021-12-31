@@ -168,5 +168,39 @@
             "show": true,
             "columns": "nome,esfera,grupo,codigouc,anocriacao,atolegal,qualidade,origem"
         }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "areas_militares_br",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2019",
+            "scale": "ND",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='http://www.planalto.gov.br/ccivil_03/leis/L9985.htm'> http://www.planalto.gov.br/ccivil_03/leis/L9985.htm </a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "nome,type,category,agency_man,year_created,origem"
+        }
     }
 ]

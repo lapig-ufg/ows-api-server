@@ -130,6 +130,9 @@
                 "fonte": "National Indian Foundation (FUNAI)"
             }
         },
+        "areas_militares_br": {
+            "viewValueType": "Military Areas"
+        },
         "assentamentos": {
             "viewValueType": "Settlements",
             "metadata": {
@@ -191,8 +194,8 @@
         "default": {
             "viewValueType": "Default Value",
             "metadata": {
-                "title": "Default Value",
-                "description": "Default Description",
+                "title": "Metadata not supplied to the TI Team, therefore we set Default",
+                "description": "Due to the lack of Metadata delivery, it was not possible to obtain a description.",
                 "format": "shp",
                 "region": "Default Region",
                 "period": "Infinity",
@@ -200,8 +203,8 @@
                 "system_coordinator": "sirgas2000",
                 "cartographic_projection": "utm",
                 "cod_caracter": "latin1",
-                "fonte": "Nós mesmos",
-                "url": "bora bora"
+                "fonte": "Not supplied",
+                "url": "Still Pending."
             }
         },
         "pasture_col6_s100": {
@@ -491,6 +494,10 @@
         "atolegal": "Legal Act",
         "qualidade": "Quality",
         "origem": "Source",
-        "campanha": "Campaign"
+        "campanha": "Campaign",
+        "year_created": "Creation Year",
+        "category": "Category",
+        "type": "Type",
+        "agency_man": "Agency"
     }
 }

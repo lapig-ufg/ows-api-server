@@ -131,6 +131,9 @@
                 "fonte": "Fundação Nacional do Índio (FUNAI)"
             }
         },
+        "areas_militares_br": {
+            "viewValueType": "Áreas Militares"
+        },
         "assentamentos": {
             "viewValueType": "Assentamentos",
             "metadata": {
@@ -189,8 +192,8 @@
         "default": {
             "viewValueType": "Default Value",
             "metadata": {
-                "title": "Default Value",
-                "description": "Default Description",
+                "title": "Metadados não enviados a TI, valor Default",
+                "description": "Devido a ausência de entrega dos Metadados, não foi possível obter descrição.",
                 "format": "shp",
                 "region": "Default Region",
                 "period": "Infinity",
@@ -198,8 +201,8 @@
                 "system_coordinator": "sirgas2000",
                 "cartographic_projection": "utm",
                 "cod_caracter": "latin1",
-                "fonte": "Nós mesmos",
-                "url": "bora bora"
+                "fonte": "Não foi enviado para a TI",
+                "url": "Falta enviar."
             }
         },
         "pasture_col6_s100": {
@@ -491,6 +494,10 @@
         "atolegal": "Ato Legal",
         "qualidade": "Qualidade",
         "origem": "Fonte",
-        "campanha": "Campanha"
+        "campanha": "Campanha",
+        "year_created": "Ano de Criação",
+        "category": "Categoria",
+        "type": "Tipo",
+        "agency_man": "Agência"
     }
 }

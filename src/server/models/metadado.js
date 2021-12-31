@@ -11,6 +11,8 @@ module.exports = class Metadado {
         this.layertype = layertype;
         this.languageOb = lang().getLang(language);
 
+        console.log(layertype)
+
         let arrayOfMetadata = [];
         let layerTranslate = !this.languageOb.layertype.hasOwnProperty(this.layertype) ? this.languageOb.layertype['default'].metadata : this.languageOb.layertype[this.layertype].hasOwnProperty('metadata') ? this.languageOb.layertype[this.layertype].metadata : this.languageOb.layertype['default'].metadata;
 
