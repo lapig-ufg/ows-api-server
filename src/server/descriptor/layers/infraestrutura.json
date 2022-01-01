@@ -29,7 +29,7 @@
             "raster": false
         },
         "wfsMapCard": {
-            "show": false,
+            "show": true,
             "columns": "codigo,armazenado,type,endereco,capacidade"
         }
     },
@@ -63,7 +63,7 @@
             "raster": false
         },
         "wfsMapCard": {
-            "show": false,
+            "show": true,
             "columns": "codigo,nm_tipo_tr,ds_local_i,ds_local_f,ds_tipo_ad,ds_legenda,leg_multim,comprimento_km,versao"
         }
     },
@@ -97,7 +97,7 @@
             "raster": false
         },
         "wfsMapCard": {
-            "show": false,
+            "show": true,
             "columns": "codigo,nome,comprimento_km"
         }
     }
