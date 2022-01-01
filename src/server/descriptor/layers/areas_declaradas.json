@@ -66,5 +66,39 @@
             "show": true,
             "columns": "uph_nm,uph_cd"
         }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "reserva_legal_br",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "gpkg",
+            "region": "translate",
+            "period": "2019",
+            "scale": "1:5.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm'> http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm </a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": false,
+            "gpkg": true,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "nom_tema,area_ha"
+        }
     }
 ]

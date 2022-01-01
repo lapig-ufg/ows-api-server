@@ -194,15 +194,15 @@
             "metadata": {
                 "title": "Metadados não enviados a TI, valor Default",
                 "description": "Devido a ausência de entrega dos Metadados, não foi possível obter descrição.",
-                "format": "shp",
-                "region": "Default Region",
-                "period": "Infinity",
-                "scale": "1:250.000",
-                "system_coordinator": "sirgas2000",
-                "cartographic_projection": "utm",
-                "cod_caracter": "latin1",
-                "fonte": "Não foi enviado para a TI",
-                "url": "Falta enviar."
+                "format": "Especificar se é SHP, GPKG (Vetor) ou TIF (Raster)",
+                "region": "Especificar a Região de abrangência do dado. Ex. Brasil, Cerrado, etc.",
+                "period": "Especificar o período do dado. Ex. 2000 ~ 2020",
+                "scale": "Especificar a escala do dado: Ex. 1:250.000",
+                "system_coordinator": "Especificar o sistema de coordenadas. Ex: SIRGAS2000",
+                "cartographic_projection": "Especificar a projeção cartográfica. Ex: UTM",
+                "cod_caracter": "Especificar o código do Caractere. Ex: UTF-8",
+                "fonte": "Não foi enviado para a TI. Especificar a organização ou pessoa que gerou o dado.",
+                "url": "Falta enviar. Especificar o link para especificação do dado ou e-mail de contato da pessoa."
             }
         },
         "pasture_col6_s100": {
@@ -325,6 +325,17 @@
             "metadata": {
                 "title": "Lavoura Perene (MapBiomas Coleção 6)",
                 "description": "Áreas ocupadas com cultivos agrícolas de ciclo vegetativo longo (e.g., Café, Citrus, Cacau, Caju, e outros)."
+            }
+        },
+        "areas_publicas_nao_destinadas_br": {
+            "viewValueType": "Áreas Públicas Não-Destinadas"
+        },
+        "reserva_legal_br": {
+            "viewValueType": "Reserva Legal",
+            "metadata": {
+                "title": "Reserva Legal (RL)",
+                "description": "Área da propriedade com a função de assegurar o uso econômico de modo sustentável dos recursos naturais do imóvel rural, auxiliar a conservação e a reabilitação dos processos ecológicos e promover a conservação da biodiversidade.",
+                "fonte": "Cadastro Ambiental Rural (CAR) / Serviço Florestal Brasileiro (SFB)"
             }
         }
     },
@@ -498,6 +509,9 @@
         "year_created": "Ano de Criação",
         "category": "Categoria",
         "type": "Tipo",
-        "agency_man": "Agência"
+        "agency_man": "Agência",
+        "codigo": "Código",
+        "paof_fase": "Plano Anual de Outorga Florestal (PAOF)",
+        "nom_tema_reserva_legal_br": "Tema"
     }
 }
