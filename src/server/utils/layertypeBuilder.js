@@ -15,7 +15,8 @@ module.exports = function (app) {
             'imagens_satellites',
             'pastagem',
             'soilgrids',
-            'pontos_validacao'
+            'pontos_validacao',
+            'infraestrutura'
         ]
 
         // return ['pastagem']
@@ -26,35 +27,40 @@ module.exports = function (app) {
         let folder_path = './descriptor/layers'
         const jsonsInDir = fs.readdirSync(folder_path).filter(file => path.extname(file) === '.json');
 
+        // var order = Internal.getGroupsOrder();
 
-        var order = Internal.getGroupsOrder();
-        // let layers = [];
         let layers = {};
-        order.forEach(element => {
-            layers[element] = []
+        // order.forEach(element => {
+        //     layers[element] = []
+        jsonsInDir.forEach(file => {
             let layertypes = [];
-            jsonsInDir.forEach(file => {
 
-                if (new String(file).toLowerCase().includes(new String(element).toLowerCase())) {
-                    try {
-                        const fileData = fs.readFileSync(path.join(folder_path, file), 'utf8');
-                        const json = JSON.parse(fileData.toString());
+            const filename = file.split('.').slice(0, -1).join('.')
 
-                        json.forEach(function (item, index) {
+            if (!layers.hasOwnProperty(filename)) {
+                layers[filename] = []
+            }
 
-                            // console.log(element, item)
-                            layertypes.push(new LayerType(language, item).getLayerTypeInstance())
+            // if (new String(file).toLowerCase().includes(new String(element).toLowerCase())) {
+            try {
+                const fileData = fs.readFileSync(path.join(folder_path, file), 'utf8');
+                const json = JSON.parse(fileData.toString());
 
-                        });
+                json.forEach(function (item, index) {
 
-                    } catch (e) {
-                        console.error(e)
-                    }
-                }
-            });
+                    // console.log(element, item)
+                    layertypes.push(new LayerType(language, item).getLayerTypeInstance())
 
-            layers[element] = layertypes;
+                });
+
+            } catch (e) {
+                console.error(e)
+            }
+            // }
+            layers[filename] = layertypes;
         });
+
+        // });
 
         return layers;
     };

@@ -4,28 +4,24 @@
             "sourceService": "internal",
             "typeOfTMS": "xyz"
         },
-        "valueType": "agricultura_agrosatelite",
+        "valueType": "armazens_conab_br",
         "type": "layertype",
         "typeLayer": "vectorial",
-        "viewValueType": "Agrosatélite",
+        "viewValueType": "translate",
         "typeLabel": "source",
-        "filterLabel": "year",
-        "filterSelected": "year=2014",
-        "filterHandler": "msfilter",
-        "filters": [
-            {
-                "valueFilter": "year=2001",
-                "viewValueFilter": "translate"
-            },
-            {
-                "valueFilter": "year=2007",
-                "viewValueFilter": 2007
-            },
-            {
-                "valueFilter": "year=2014",
-                "viewValueFilter": 2014
-            }
-        ],
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2021",
+            "scale": "translate",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "translate",
+            "link": "<a target='_blank' class='link-details' href='https://portaldeinformacoes.conab.gov.br/armazem'> https://portaldeinformacoes.conab.gov.br/armazem </a>"
+        },
         "download": {
             "csv": true,
             "shp": true,
@@ -33,8 +29,76 @@
             "raster": false
         },
         "wfsMapCard": {
-            "show": true,
-            "columns": "area_ha,classe"
+            "show": false,
+            "columns": "codigo,armazenado,type,endereco,capacidade"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pa_br_rodovias_dnit",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2021",
+            "scale": "1:2.500 ~ 1:25.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "OpenStreet Map",
+            "link": "<a target='_blank' class='link-details' href='https://www.gov.br/infraestrutura/pt-br/assuntos/dados-de-transportes/bit/bitmodosmapas#maprodo'> https://www.gov.br/infraestrutura/pt-br/assuntos/dados-de-transportes/bit/bitmodosmapas#maprodo </a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": false,
+            "columns": "codigo,nm_tipo_tr,ds_local_i,ds_local_f,ds_tipo_ad,ds_legenda,leg_multim,comprimento_km,versao"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pa_br_estradas_osm",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2021",
+            "scale": "1:25.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "OpenStreet Map",
+            "link": "<a target='_blank' class='link-details' href='http://download.geofabrik.de/south-america/brazil.html'> http://download.geofabrik.de/south-america/brazil.html </a>"
+        },
+        "download": {
+            "csv": false,
+            "shp": false,
+            "gpkg": true,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": false,
+            "columns": "codigo,nome,comprimento_km"
         }
     }
 ]

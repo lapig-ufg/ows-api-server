@@ -337,6 +337,30 @@
                 "description": "Área da propriedade com a função de assegurar o uso econômico de modo sustentável dos recursos naturais do imóvel rural, auxiliar a conservação e a reabilitação dos processos ecológicos e promover a conservação da biodiversidade.",
                 "fonte": "Cadastro Ambiental Rural (CAR) / Serviço Florestal Brasileiro (SFB)"
             }
+        },
+        "armazens_conab_br": {
+            "viewValueType": "Armazéns",
+            "metadata": {
+                "title": "Armazéns",
+                "description": "Número de armazéns destinados a armazenamento e controle de produção no Brasil.",
+                "scale": "Pontual",
+                "fonte": "Companhia Nacional de Abastecimento (CONAB) (Revisado pelo LAPIG-UFG)"
+            }
+        },
+        "pa_br_rodovias_dnit": {
+            "viewValueType": "Rodovias - DNIT",
+            "metadata": {
+                "title": "Malha Viária (DNIT)",
+                "description": "Malha viária brasileira detalhada fornecida pelo Departamento Nacional de Infraestrutura e Transporte brasileiro (DNIT).",
+                "fonte": "Governo Federal do Brasil - Departamento Nacional de Infraestrutura e Transporte (DNIT)"
+            }
+        },
+        "pa_br_estradas_osm": {
+            "viewValueType": "Vias Detalhadas - OSM",
+            "metadata": {
+                "title": "Malha Viária detalhada (OSM)",
+                "description": "Malha viária brasileira detalhada fornecida pelo OpenStreet Map (OSM)."
+            }
         }
     },
     "basemap": {
@@ -512,6 +536,18 @@
         "agency_man": "Agência",
         "codigo": "Código",
         "paof_fase": "Plano Anual de Outorga Florestal (PAOF)",
-        "nom_tema_reserva_legal_br": "Tema"
+        "nom_tema_reserva_legal_br": "Tema",
+        "armazenado": "Nome do Armazém",
+        "endereco": "Endereço",
+        "capacidade": "Capacidade",
+        "nm_tipo_tr_pa_br_rodovias_dnit": "Tipo do Trecho",
+        "ds_local_i_pa_br_rodovias_dnit": "Rodovia Início",
+        "ds_local_f_pa_br_rodovias_dnit": "Rodovia Final",
+        "ds_tipo_ad_pa_br_rodovias_dnit": "Tipo de Administração",
+        "ds_legenda_pa_br_rodovias_dnit": "Tipo Rodovia",
+        "leg_multim_pa_br_rodovias_dnit": "Detalhes",
+        "tamanho": "Tamanho",
+        "versao": "Versão",
+        "comprimento_km": "Comprimento em KMs."
     }
 }

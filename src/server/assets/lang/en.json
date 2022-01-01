@@ -339,6 +339,30 @@
                 "description": "Property area intended for the sustainable economic use of the natural resources of the rural property, to assist the conservation and rehabilitation of ecological processes and to promote the conservation of biodiversity.",
                 "fonte": "Rural Environmental Registry (CAR) / Brazilian Forest Service (SFB)"
             }
+        },
+        "armazens_conab_br": {
+            "viewValueType": "Warehouses",
+            "metadata": {
+                "title": "Warehouses",
+                "description": "Number of warehouses for storage and production control in Brazil.",
+                "scale": "Point",
+                "fonte": "National Supply Company (CONAB) (Reviewed by LAPIG-UFG)"
+            }
+        },
+        "pa_br_rodovias_dnit": {
+            "viewValueType": "Highways - DNIT",
+            "metadata": {
+                "title": "road network (DNIT)",
+                "description": "Detailed Brazilian road network provided by the Brazilian National Department of Infrastructure and Transport (DNIT).",
+                "fonte": "Federal Government of Brazil - National Department of Infrastructure and Transport (DNIT)"
+            }
+        },
+        "pa_br_estradas_osm": {
+            "viewValueType": "Detailed Ways - OSM",
+            "metadata": {
+                "title": "Detailed road network (OSM)",
+                "description": "Detailed Brazilian road network provided by OpenStreet Map (OSM)."
+            }
         }
     },
     "basemap": {
@@ -512,6 +536,18 @@
         "agency_man": "Agency",
         "codigo": "Code",
         "paof_fase": "Annual Forestry Grant Plan (PAOF)",
-        "nom_tema_reserva_legal_br": "Theme"
+        "nom_tema_reserva_legal_br": "Theme",
+        "armazenado": "Warehouse Name",
+        "endereco": "Address",
+        "capacidade": "Capacity",
+        "nm_tipo_tr_pa_br_rodovias_dnit": "Tipo do Trecho",
+        "ds_local_i_pa_br_rodovias_dnit": "Rodovia Início",
+        "ds_local_f_pa_br_rodovias_dnit": "Rodovia Final",
+        "ds_tipo_ad_pa_br_rodovias_dnit": "Administration Type",
+        "ds_legenda_pa_br_rodovias_dnit": "Highway Type",
+        "leg_multim_pa_br_rodovias_dnit": "Details",
+        "tamanho": "Size",
+        "versao": "Version",
+        "comprimento_km": "Lenght (KMs)"
     }
 }

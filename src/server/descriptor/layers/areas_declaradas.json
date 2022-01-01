@@ -97,7 +97,7 @@
             "raster": false
         },
         "wfsMapCard": {
-            "show": true,
+            "show": false,
             "columns": "nom_tema,area_ha"
         }
     }
