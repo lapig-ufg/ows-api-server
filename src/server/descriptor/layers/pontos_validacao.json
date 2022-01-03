@@ -238,7 +238,7 @@
         },
         "wfsMapCard": {
             "show": true,
-            "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2019,carta,declividade"
+            "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2016,cons_2017,cons_2018,cons_2019,carta,declividade"
         }
     }
 ]
