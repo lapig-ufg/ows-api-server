@@ -299,6 +299,13 @@
                 "description": "Conjunto georreferenciado de pontos para todo o território brasileiro, sendo atribuídas classes de uso e cobertura do solo referente a cada ano no período de 1985 a 2017. Foram utilizadas imagens Landsat provenientes dos sensores TM, ETM+ e OLI. Buscou-se também abordar os critérios adotados, dificuldades e especificidades encontradas quanto a interpretação de imagens em cada um dos 6 biomas brasileiros."
             }
         },
+        "pontos_classes_raras_85k_mapbiomas": {
+            "viewValueType": "Pontos (1985-2019)",
+            "metadata": {
+                "title": "Pontos Visualmente Inspecionados",
+                "description": "Conjunto georreferenciado de pontos para todo o território brasileiro utilizado para validação dos mapeamentos do mapbiomas, sendo atribuídas classes de uso e cobertura da terra conforme a legenda mapbiomas referente aos anos de 1985 a 2018. Foram utilizadas series temporais de imagens Landsat e utilizando a ferramenta TVI. Período: 1985 a 2019"
+            }
+        },
         "pontos_validacao_pastagem_mapbiomas_col6": {
             "viewValueType": "Pontos (Col.6)",
             "metadata": {
@@ -509,7 +516,12 @@
         "cons_2015": "Classe em 2015",
         "cons_2016": "Classe em 2016",
         "cons_2017": "Classe em 2017",
+        "cons_2018": "Classe em 2018",
+        "cons_2019": "Classe em 2019",
+        "cons_2020": "Classe em 2020",
         "class_2020": "Classe em 2020",
+        "carta": "Carta",
+        "declividade": "Declividade",
         "classe": "Classe",
         "dt_publica": {
             "text": "Data Pública",
@@ -522,10 +534,7 @@
         "nome": "Nome",
         "grupo": "Categoria",
         "codigouc": "Código UC",
-        "anocriacao": {
-            "text": "Ano de Criação",
-            "type": "integer"
-        },
+        "anocriacao": "Ano de Criação",
         "atolegal": "Ato Legal",
         "qualidade": "Qualidade",
         "origem": "Fonte",

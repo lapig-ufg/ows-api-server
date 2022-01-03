@@ -301,6 +301,13 @@
                 "description": "Georeferenced set of points for the entire Brazilian territory, with classes of Land use and land cover referring to each year, from 1985 to 2017. Landsat images from TM, ETM + and OLI sensors were used. We also sought to address the criteria adopted, difficulties and specificities encountered regarding the interpretation of images in each of the 6 Brazilian biomes."
             }
         },
+        "pontos_classes_raras_85k_mapbiomas": {
+            "viewValueType": "Points (1985-2019)",
+            "metadata": {
+                "title": "Visually Inspected Points",
+                "description": "Georeferenced set of points for the entire Brazilian territory used to validate the mapbiomas mappings, with classes of land use and land cover being assigned according to the mapbiomas legend for the years 1985 to 2018. Time series of Landsat images were used using the TVI tool. Period: 1985 to 2019"
+            }
+        },
         "pontos_validacao_pastagem_mapbiomas_col6": {
             "viewValueType": "Points (Col.6)",
             "metadata": {
@@ -457,6 +464,7 @@
             "text": "Animal Units (UA)",
             "type": "integer"
         },
+        "cobertura": "Coverage",
         "data": {
             "text": "Date",
             "type": "date"
@@ -509,7 +517,12 @@
         "cons_2015": "Class in 2015",
         "cons_2016": "Class in 2016",
         "cons_2017": "Class in 2017",
+        "cons_2018": "Class in 2018",
+        "cons_2019": "Class in 2019",
+        "cons_2020": "Class in 2020",
         "class_2020": "Class in 2020",
+        "carta": "Cartographic Chart",
+        "declividade": "Slope",
         "classe": "Class",
         "dt_publica": {
             "text": "Public Date",
@@ -522,10 +535,7 @@
         "nome": "Name",
         "grupo": "Category",
         "codigouc": "UC Code",
-        "anocriacao": {
-            "text": "Foundation Year",
-            "type": "integer"
-        },
+        "anocriacao": "Foundation Year",
         "atolegal": "Legal Act",
         "qualidade": "Quality",
         "origem": "Source",
