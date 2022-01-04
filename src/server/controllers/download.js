@@ -28,7 +28,7 @@ module.exports = function(app) {
                         fs.unlinkSync(pathFile + '.zip');
                     }
                     if(type !== 'csv') {
-                        const url = `${config.ows_url}/ows?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
+                        const url = `${config.ows_local}/ows?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
                         https.get(url, (resp) => {
                             let data = '';
 
@@ -70,7 +70,7 @@ module.exports = function(app) {
         let { layer, region, filter, typeDownload} = request.body;
 
         let builder = new DownloadBuilder(typeDownload);
-        builder.setUrl(config.ows_url);
+        builder.setUrl(config.ows_local);
 
 
         if(layer.filterHandler === 'layername'){
@@ -106,7 +106,7 @@ module.exports = function(app) {
 
         if (fs.existsSync(pathFile + '.zip')) {
             if(typeDownload !== 'csv') {
-                const url = `${process.env.OWS}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
+                const url = `${config.ows_local}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
                 https.get(url, (resp) => {
                     let data = '';
 

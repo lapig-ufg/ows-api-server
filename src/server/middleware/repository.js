@@ -14,7 +14,7 @@ module.exports = function(app) {
 		collectionsLogs: {},
 	};
 
-	const uri = `mongodb://${config.mongo.host}:${config.mongo.port}/?maxPoolSize=50&writeConcern=majority`;
+	const uri = `mongodb://${config.mongo.host}:${config.mongo.port}/?maxPoolSize=10&writeConcern=majority`;
 
 	Repository.client = MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
