@@ -23,7 +23,7 @@ module.exports = function(app) {
                     gzip: true
                 }).pipe(file).on('finish', () => {
                     const stats = fs.statSync(pathFile + '.zip');
-                    if(stats.size < 1000) {
+                    if(stats.size < 500) {
                         reject('Error on mapserver');
                         fs.unlinkSync(pathFile + '.zip');
                     }
@@ -86,6 +86,8 @@ module.exports = function(app) {
         } else if (region.type === 'state') {
             builder.addFilter('uf', "'" + region.value + "'");
         } else if (region.type === 'biome') {
+            builder.addFilter('bioma', "'" + region.value + "'");
+        } else if (region.type === 'country') {
             builder.addFilter('bioma', "'" + region.value + "'");
         }
 
