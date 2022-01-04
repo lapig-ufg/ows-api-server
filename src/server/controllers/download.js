@@ -28,7 +28,7 @@ module.exports = function(app) {
                         fs.unlinkSync(pathFile + '.zip');
                     }
                     if(type !== 'csv') {
-                        const url = `${config.ows_local}/ows?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
+                        const url = `${config.ows_local}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
                         http.get(url, (resp) => {
                             let data = '';
 
@@ -86,8 +86,6 @@ module.exports = function(app) {
         } else if (region.type === 'state') {
             builder.addFilter('uf', "'" + region.value + "'");
         } else if (region.type === 'biome') {
-            builder.addFilter('bioma', "'" + region.value + "'");
-        } else if (region.type === 'country') {
             builder.addFilter('bioma', "'" + region.value + "'");
         }
 
