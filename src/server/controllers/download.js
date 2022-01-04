@@ -2,7 +2,7 @@ const fs = require("fs");
 const DownloadBuilder = require('../scripts/cache/downloadBuilder');
 const request = require('request');
 const AdmZip = require("adm-zip");
-const https = require('https');
+const http = require('http');
 
 module.exports = function(app) {
     let Controller = {};
@@ -29,7 +29,7 @@ module.exports = function(app) {
                     }
                     if(type !== 'csv') {
                         const url = `${config.ows_local}/ows?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
-                        https.get(url, (resp) => {
+                        http.get(url, (resp) => {
                             let data = '';
 
                             // A chunk of data has been received.
@@ -107,7 +107,7 @@ module.exports = function(app) {
         if (fs.existsSync(pathFile + '.zip')) {
             if(typeDownload !== 'csv') {
                 const url = `${config.ows_local}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
-                https.get(url, (resp) => {
+                http.get(url, (resp) => {
                     let data = '';
 
                     // A chunk of data has been received.
