@@ -100,5 +100,25 @@
             "show": true,
             "columns": "codigo,nome,comprimento_km"
         }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "limites_frigorificos_2021",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cnpj,razao_social,sif,nr_process,data_regis,situacao"
+        }
     }
 ]

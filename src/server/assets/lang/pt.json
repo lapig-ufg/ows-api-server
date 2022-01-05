@@ -202,7 +202,7 @@
                 "cartographic_projection": "Especificar a projeção cartográfica. Ex: UTM",
                 "cod_caracter": "Especificar o código do Caractere. Ex: UTF-8",
                 "fonte": "Não foi enviado para a TI. Especificar a organização ou pessoa que gerou o dado.",
-                "url": "Falta enviar. Especificar o link para especificação do dado ou e-mail de contato da pessoa."
+                "link": "Falta enviar. Especificar o link para especificação do dado ou e-mail de contato da pessoa."
             }
         },
         "pasture_col6_s100": {
@@ -368,6 +368,9 @@
                 "title": "Malha Viária detalhada (OSM)",
                 "description": "Malha viária brasileira detalhada fornecida pelo OpenStreet Map (OSM)."
             }
+        },
+        "limites_frigorificos_2021": {
+            "viewValueType": "Limites Frigoríficos"
         }
     },
     "basemap": {
@@ -557,6 +560,14 @@
         "leg_multim_pa_br_rodovias_dnit": "Detalhes",
         "tamanho": "Tamanho",
         "versao": "Versão",
-        "comprimento_km": "Comprimento em KMs."
+        "comprimento_km": "Comprimento em KMs.",
+        "cnpj": "CNPJ",
+        "data_regis": {
+            "text": "Data de Registro",
+            "type": "date"
+        },
+        "razao_social": "Razão Social",
+        "sif": "Nº do SIF",
+        "situacao": "Situação"
     }
 }

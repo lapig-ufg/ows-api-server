@@ -204,7 +204,7 @@
                 "cartographic_projection": "Specify the cartographic projection. Ex: UTM",
                 "cod_caracter": "Specify the Character code. Ex: UTF-8",
                 "fonte": "Not supplied. Specify the organization or person that generated the data.",
-                "url": "Still Pending. Specify the link to specify the data or the person's contact email."
+                "link": "Still Pending. Specify the link to specify the data or the person's contact email."
             }
         },
         "pasture_col6_s100": {
@@ -370,6 +370,9 @@
                 "title": "Detailed road network (OSM)",
                 "description": "Detailed Brazilian road network provided by OpenStreet Map (OSM)."
             }
+        },
+        "limites_frigorificos_2021": {
+            "viewValueType": "Meatpacking Limits"
         }
     },
     "basemap": {
@@ -440,6 +443,7 @@
         "fase_limites_terras_indigenas": "Phase",
         "modalidade_limites_terras_indigenas": "Modality",
         "cr_limites_terras_indigenas": "Regional Coordination",
+        "cd_sipra_assentamentos": "SIPRA Code",
         "nome_proje_assentamentos": "Project Name",
         "capacidade_assentamentos": {
             "text": "Settlement Capacity",
@@ -558,6 +562,14 @@
         "leg_multim_pa_br_rodovias_dnit": "Details",
         "tamanho": "Size",
         "versao": "Version",
-        "comprimento_km": "Lenght (KMs)"
+        "comprimento_km": "Lenght (KMs)",
+        "cnpj": "CNPJ",
+        "data_regis": {
+            "text": "Registry Date",
+            "type": "date"
+        },
+        "razao_social": "Corporate Name",
+        "sif": "SIF Number",
+        "situacao": "Situation"
     }
 }
