@@ -5,6 +5,8 @@ let numCPUs = require('os').cpus().length;
 if (cluster.isMaster) {
     if (process.env.NODE_ENV === 'dev') {
         numCPUs = 2
+    } else if(process.env.NODE_ENV === 'worker'){
+        numCPUs = parseInt(process.env.NUMBER_WORKER)
     }
 
     for (let i = 0; i < numCPUs; i++) {

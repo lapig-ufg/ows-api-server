@@ -223,7 +223,9 @@ module.exports = function (app) {
                         self.startCacheDownloads(conf.cache)
                     }
                     if (conf.cache.startTiles) {
-                        self.startCacheTiles(conf.cache);
+                        self.startCacheTiles(conf.cache)
+                        setTimeout(() => {self.startCacheTiles(conf.cache)}, 20000);
+                        setTimeout(() => {self.startCacheTiles(conf.cache)}, 40000);
                     }
                 }, {
                     scheduled: conf.jobs.scheduled,
