@@ -570,6 +570,11 @@
         },
         "razao_social": "Corporate Name",
         "sif": "SIF Number",
-        "situacao": "Situation"
+        "situacao": "Situation",
+        "area_limites_frigorificos_2021": "Area of Activity",
+        "classe_1_limites_frigorificos_2021": "Class 01",
+        "classe_2_limites_frigorificos_2021": "Class 02",
+        "classe_3_limites_frigorificos_2021": "Class 03",
+        "classe_4_limites_frigorificos_2021": "Class 04"
     }
 }

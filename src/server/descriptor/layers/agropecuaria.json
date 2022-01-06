@@ -399,7 +399,7 @@
             "link": "<a target='_blank' class='link-details' href='https://mapbiomas.org/'> https://mapbiomas.org/</a>"
         },
         "download": {
-            "raster": true
+            "raster": false
         }
     },
     {

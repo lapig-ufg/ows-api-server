@@ -118,7 +118,7 @@
         },
         "wfsMapCard": {
             "show": true,
-            "columns": "cnpj,razao_social,sif,nr_process,data_regis,situacao"
+            "columns": "cnpj,razao_social,sif,nr_process,data_regis,situacao,area,classe_1,classe_2,classe_3,classe_4"
         }
     }
 ]

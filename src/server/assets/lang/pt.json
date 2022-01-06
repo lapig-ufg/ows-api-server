@@ -568,6 +568,11 @@
         },
         "razao_social": "Razão Social",
         "sif": "Nº do SIF",
-        "situacao": "Situação"
+        "situacao": "Situação",
+        "area_limites_frigorificos_2021": "Área de Atuação",
+        "classe_1_limites_frigorificos_2021": "Classe 01",
+        "classe_2_limites_frigorificos_2021": "Classe 02",
+        "classe_3_limites_frigorificos_2021": "Classe 03",
+        "classe_4_limites_frigorificos_2021": "Classe 04"
     }
 }
