@@ -91,7 +91,7 @@ module.exports = function (app) {
 
     self.processCacheTile = function (request) {
         const startProcess = new Date();
-        const url = request.url.replace('ows_url', config.ows_local);
+        const url = request.url.includes('ows_url/ows') ? request.url.replace('ows_url/ows', config.ows_local) : request.url.replace('ows_url', config.ows_local);
         http.get(url, (resp) => {
             resp.on('end', () => {
                 const endProcess = new Date();
