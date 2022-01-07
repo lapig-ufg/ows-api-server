@@ -82,7 +82,7 @@ module.exports = function (app) {
         "ows_local": env.OWS_LOCAL,
     };
 
-    if (env.NODE_ENV === 'prod') {
+    if (env.NODE_ENV === 'prod' && env.NODE_ENV === 'worker') {
         config['path_catalog'] = '/STORAGE/catalog/'
         config['path_metadata'] = config['path_catalog']
         config['path_mapfile'] = pathTmp + 'ows_runtime.map';
