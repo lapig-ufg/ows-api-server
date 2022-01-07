@@ -22,7 +22,7 @@ module.exports = function (app) {
                     gzip: true
                 }).pipe(file).on('finish', () => {
                     const stats = fs.statSync(req.filePath + '.zip');
-                    if (stats.size < 1000) {
+                    if (stats.size < 400) {
                         reject('Error on mapserver');
                         fs.unlinkSync(req.filePath + '.zip');
                     }
