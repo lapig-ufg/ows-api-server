@@ -169,6 +169,8 @@ module.exports = class CacheBuilder {
                                             _id: 'tile_' + layername + '_brasil_' + filter.valueFilter + '_z' + zoom + '_' + [tile.x, tile.y, tile.z].join(''),
                                             url: url,
                                             status: 0,
+                                            region: 'BRASIL',
+                                            regionType: 'country',
                                             type: 'tile',
                                             priority: priority,
                                             zoom: zoom,
@@ -197,6 +199,8 @@ module.exports = class CacheBuilder {
                                         url: url,
                                         status: 0,
                                         type: 'tile',
+                                        region: 'BRASIL',
+                                        regionType: 'country',
                                         priority: priority,
                                         zoom: zoom,
                                         layer_id: layerId
@@ -228,6 +232,8 @@ module.exports = class CacheBuilder {
                                                 url: url,
                                                 status: 0,
                                                 type: 'tile',
+                                                region: mun.cd_geocmu,
+                                                regionType: 'city',
                                                 priority: priority,
                                                 zoom: zoom,
                                                 layer_id: layerId
@@ -254,6 +260,8 @@ module.exports = class CacheBuilder {
                                             url: url,
                                             status: 0,
                                             type: 'tile',
+                                            region: mun.cd_geocmu,
+                                            regionType: 'city',
                                             priority: priority,
                                             zoom: zoom,
                                             layer_id: layerId
@@ -287,6 +295,8 @@ module.exports = class CacheBuilder {
                                                 url: url,
                                                 status: 0,
                                                 type: 'tile',
+                                                region: uf.uf,
+                                                regionType: 'state',
                                                 priority: priority,
                                                 zoom: zoom,
                                                 layer_id: layerId
@@ -313,6 +323,8 @@ module.exports = class CacheBuilder {
                                             url: url,
                                             status: 0,
                                             type: 'tile',
+                                            region: uf.uf,
+                                            regionType: 'state',
                                             priority: priority,
                                             zoom: zoom,
                                             layer_id: layerId
@@ -346,6 +358,8 @@ module.exports = class CacheBuilder {
                                                 url: url,
                                                 status: 0,
                                                 type: 'tile',
+                                                region: bioma.bioma,
+                                                regionType: 'biome',
                                                 priority: priority,
                                                 zoom: zoom,
                                                 layer_id: layerId
@@ -373,6 +387,8 @@ module.exports = class CacheBuilder {
                                             url: url,
                                             status: 0,
                                             type: 'tile',
+                                            region: bioma.bioma,
+                                            regionType: 'biome',
                                             priority: priority,
                                             zoom: zoom,
                                             layer_id: layerId
