@@ -104,6 +104,8 @@ module.exports = function(app) {
 
         directory = config.downloadDataDir + region.type + '/' + self.normalize(region.value) + '/' + typeDownload + '/' + layer.valueType + '/';
 
+        console.log('DOWNLOAD_DIR', directory)
+
         pathFile = directory + fileParam;
 
         if (!fs.existsSync(directory)) {
