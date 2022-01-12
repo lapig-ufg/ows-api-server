@@ -9,14 +9,10 @@ module.exports = function(app) {
     let self = {};
 
     const config = app.config;
+    const string = app.utils.string;
 
     if (!fs.existsSync(config.downloadDataDir)) {
         fs.mkdirSync(config.downloadDataDir);
-    }
-
-    self.normalize = function (string) {
-        const normalized = string.replace(/\s/g, '').toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        return normalized;
     }
 
     self.requestFileFromMapServer = function(url, pathFile, layerName, type, response) {
@@ -102,7 +98,7 @@ module.exports = function(app) {
             fileParam = layer.valueType;
         }
 
-        directory = config.downloadDataDir + region.type + '/' + self.normalize(region.value) + '/' + typeDownload + '/' + layer.valueType + '/';
+        directory = config.downloadDataDir + region.type + '/' + string.normalize(region.value) + '/' + typeDownload + '/' + layer.valueType + '/';
 
         console.log('DOWNLOAD_DIR', directory)
 
@@ -114,27 +110,32 @@ module.exports = function(app) {
 
         if (fs.existsSync(pathFile + '.zip')) {
             if(typeDownload !== 'csv') {
-                const url = `${config.ows_local}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
-                http.get(url, (resp) => {
-                    let data = '';
+                const stats = fs.statSync(pathFile + '.zip');
+                if(stats.size < 60000000) {
+                    const url = `${config.ows_local}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
+                    http.get(url, (resp) => {
+                        let data = '';
 
-                    // A chunk of data has been received.
-                    resp.on('data', (chunk) => {
-                        data += chunk;
+                        // A chunk of data has been received.
+                        resp.on('data', (chunk) => {
+                            data += chunk;
+                        });
+
+                        // The whole response has been received. Print out the result.
+                        resp.on('end', () => {
+                            let zip = new AdmZip(pathFile + '.zip');
+                            zip.addFile(layerName +".sld", Buffer.from(data, "utf8"), "Styled Layer Descriptor (SLD) of " + layerName);
+                            zip.writeZip(pathFile + '.zip');
+                            response.download(pathFile + '.zip');
+                        });
+
+                    }).on("error", (err) => {
+                        response.status(400).json({ msg: err })
+                        response.end();
                     });
-
-                    // The whole response has been received. Print out the result.
-                    resp.on('end', () => {
-                        let zip = new AdmZip(pathFile + '.zip');
-                        zip.addFile(layerName +".sld", Buffer.from(data, "utf8"), "Styled Layer Descriptor (SLD) of " + layerName);
-                        zip.writeZip(pathFile + '.zip');
-                        response.download(pathFile + '.zip');
-                    });
-
-                }).on("error", (err) => {
-                    response.status(400).json({ msg: err })
-                    response.end();
-                });
+                } else {
+                    response.download(pathFile + '.zip');
+                }
             } else {
                 response.download(pathFile + '.zip');
             }

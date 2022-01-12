@@ -3,6 +3,8 @@ const cron = require('node-cron');
 const http = require('http');
 const AdmZip = require("adm-zip");
 
+const string = require('../utils/string');
+
 const request = require("request");
 
 module.exports = function (app) {
@@ -11,11 +13,6 @@ module.exports = function (app) {
     const config = app.config;
     const collections = app.middleware.repository.collections;
     const collectionsLogs = app.middleware.repository.collectionsLogs;
-
-    self.normalize = function (string) {
-        const normalized = string.replace(/\s/g, '').toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        return normalized;
-    }
 
     self.requestFileFromMapServer = function (req) {
         const startProcess = new Date();
@@ -87,7 +84,7 @@ module.exports = function (app) {
     self.processCacheDownload = function (request) {
         request['url'] = request.url.replace('ows_url', config.ows_local);
         request['filePath'] = config.downloadDataDir + request.filePath;
-        const directory = config.downloadDataDir + request.regionType + '/' + self.normalize(request.region) + '/' + request.typeDownload + '/' + request.layerName;
+        const directory = config.downloadDataDir + request.regionType + '/' + string.normalize(request.region) + '/' + request.typeDownload + '/' + request.layerName;
         if (!fs.existsSync(directory)) {
             fs.mkdirSync(directory, {recursive: true});
         }
@@ -222,23 +219,25 @@ module.exports = function (app) {
 
     Jobs.start = function () {
         try {
-            collections.config.findOne({config_id: config.jobsConfig}).then(conf => {
-                Jobs['task'] = cron.schedule(conf.jobs.cron, () => {
-                    if (conf.cache.startDownloads) {
-                        self.startCacheDownloads(conf.cache)
-                    }
-                    if (conf.cache.startTiles) {
-                        self.startCacheTiles(conf.cache)
-                        setTimeout(() => {self.startCacheTiles(conf.cache)}, 20000);
-                        setTimeout(() => {self.startCacheTiles(conf.cache)}, 40000);
-                    }
-                }, {
-                    scheduled: conf.jobs.scheduled,
-                    timezone: conf.jobs.timezone
+            if(process.env.NODE_ENV === 'worker'){
+                collections.config.findOne({config_id: config.jobsConfig}).then(conf => {
+                    Jobs['task'] = cron.schedule(conf.jobs.cron, () => {
+                        if (conf.cache.startDownloads) {
+                            self.startCacheDownloads(conf.cache)
+                        }
+                        if (conf.cache.startTiles) {
+                            self.startCacheTiles(conf.cache)
+                            setTimeout(() => {self.startCacheTiles(conf.cache)}, 20000);
+                            setTimeout(() => {self.startCacheTiles(conf.cache)}, 40000);
+                        }
+                    }, {
+                        scheduled: conf.jobs.scheduled,
+                        timezone: conf.jobs.timezone
+                    });
+                }).catch(e => {
+                    console.error(e)
                 });
-            }).catch(e => {
-                console.error(e)
-            });
+            }
         } catch (e) {
             console.error(e)
         }

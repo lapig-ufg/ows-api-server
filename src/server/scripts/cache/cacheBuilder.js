@@ -1,6 +1,7 @@
 'use strict';
 const t = require('tiles-in-bbox');
 const DownloadBuilder = require('./downloadBuilder');
+const string = require('../../utils/string')
 
 module.exports = class CacheBuilder {
 
@@ -31,11 +32,6 @@ module.exports = class CacheBuilder {
         this.setLayerType(layerType);
         this.setType(typeCache);
 
-    }
-
-    normalize (string) {
-        const normalized = string.replace(/\s/g, '').toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        return normalized;
     }
 
     isEmpty(ob) {
@@ -633,7 +629,7 @@ module.exports = class CacheBuilder {
                                                 status: 0,
                                                 type: 'download',
                                                 typeDownload: type,
-                                                region: self.normalize(bioma.bioma),
+                                                region: string.normalize(bioma.bioma),
                                                 regionType: 'biome',
                                                 filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layerId + '/' + layerId + '_' + filter.valueFilter,
                                                 priority: priority,
@@ -659,7 +655,7 @@ module.exports = class CacheBuilder {
                                             status: 0,
                                             type: 'download',
                                             typeDownload: type,
-                                            region: self.normalize(bioma.bioma),
+                                            region: string.normalize(bioma.bioma),
                                             regionType: 'biome',
                                             filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layerId + '/' + layerId,
                                             priority: priority,
