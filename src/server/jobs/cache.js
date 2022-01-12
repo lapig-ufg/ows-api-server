@@ -12,6 +12,11 @@ module.exports = function (app) {
     const collections = app.middleware.repository.collections;
     const collectionsLogs = app.middleware.repository.collectionsLogs;
 
+    self.normalize = function (string) {
+        const normalized = string.replace(/\s/g, '').toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return normalized;
+    }
+
     self.requestFileFromMapServer = function (req) {
         const startProcess = new Date();
         let file = fs.createWriteStream(req.filePath + ".zip");
@@ -82,7 +87,7 @@ module.exports = function (app) {
     self.processCacheDownload = function (request) {
         request['url'] = request.url.replace('ows_url', config.ows_local);
         request['filePath'] = config.downloadDataDir + request.filePath;
-        const directory = config.downloadDataDir + request.regionType + '/' + request.region + '/' + request.typeDownload + '/' + request.layerName;
+        const directory = config.downloadDataDir + request.regionType + '/' + self.normalize(request.region) + '/' + request.typeDownload + '/' + request.layerName;
         if (!fs.existsSync(directory)) {
             fs.mkdirSync(directory, {recursive: true});
         }

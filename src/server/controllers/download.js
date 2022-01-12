@@ -14,6 +14,11 @@ module.exports = function(app) {
         fs.mkdirSync(config.downloadDataDir);
     }
 
+    self.normalize = function (string) {
+        const normalized = string.replace(/\s/g, '').toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return normalized;
+    }
+
     self.requestFileFromMapServer = function(url, pathFile, layerName, type, response) {
         let file = fs.createWriteStream(pathFile + ".zip");
 
@@ -97,7 +102,8 @@ module.exports = function(app) {
             fileParam = layer.valueType;
         }
 
-        directory = config.downloadDataDir + region.type + '/' + region.value + '/' + typeDownload + '/' + layer.valueType + '/';
+        directory = config.downloadDataDir + region.type + '/' + self.normalize(region.value) + '/' + typeDownload + '/' + layer.valueType + '/';
+
         pathFile = directory + fileParam;
 
         if (!fs.existsSync(directory)) {

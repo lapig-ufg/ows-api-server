@@ -33,6 +33,11 @@ module.exports = class CacheBuilder {
 
     }
 
+    normalize (string) {
+        const normalized = string.replace(/\s/g, '').toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return normalized;
+    }
+
     isEmpty(ob) {
         return Object.keys(ob).length === 0;
     }
@@ -418,6 +423,7 @@ module.exports = class CacheBuilder {
     }
 
     getRequestsDownloads() {
+        const self = this;
         let urls = [];
         let types = this.getDownloadsAvailable();
         let layers = [this.layerType.download.layerTypeName];
@@ -459,7 +465,7 @@ module.exports = class CacheBuilder {
                                             typeDownload: type,
                                             region: 'BRASIL',
                                             regionType: 'country',
-                                            filePath: 'country/BRASIL/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
+                                            filePath: 'country/BRASIL/' + type + '/' + layerId + '/' + layerId + '_' + filter.valueFilter,
                                             priority: priority,
                                             zoom: null,
                                             layer_id: layerId
@@ -484,7 +490,7 @@ module.exports = class CacheBuilder {
                                         typeDownload: type,
                                         region: 'BRASIL',
                                         regionType: 'country',
-                                        filePath: 'country/BRASIL/' + type + '/' + layername + '/' + layername,
+                                        filePath: 'country/BRASIL/' + type + '/' + layerId + '/' + layerId,
                                         priority: priority,
                                         zoom: null,
                                         layer_id: layerId
@@ -515,7 +521,7 @@ module.exports = class CacheBuilder {
                                                 typeDownload: type,
                                                 region: mun.cd_geocmu,
                                                 regionType: 'city',
-                                                filePath: 'city/' + mun.cd_geocmu + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
+                                                filePath: 'city/' + mun.cd_geocmu + '/' + type + '/' + layerId + '/' + layerId + '_' + filter.valueFilter,
                                                 priority: priority,
                                                 zoom: null,
                                                 layer_id: layerId
@@ -540,7 +546,7 @@ module.exports = class CacheBuilder {
                                             typeDownload: type,
                                             region: mun.cd_geocmu,
                                             regionType: 'city',
-                                            filePath: 'city/' + mun.cd_geocmu + '/' + type + '/' + layername + '/' + layername,
+                                            filePath: 'city/' + mun.cd_geocmu + '/' + type + '/' + layerId + '/' + layerId,
                                             priority: priority,
                                             zoom: null,
                                             layer_id: layerId
@@ -572,7 +578,7 @@ module.exports = class CacheBuilder {
                                                 typeDownload: type,
                                                 region: uf.uf,
                                                 regionType: 'state',
-                                                filePath: 'state/' + uf.uf + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
+                                                filePath: 'state/' + uf.uf + '/' + type + '/' + layerId + '/' + layerId + '_' + filter.valueFilter,
                                                 priority: priority,
                                                 zoom: null,
                                                 layer_id: layerId
@@ -597,7 +603,7 @@ module.exports = class CacheBuilder {
                                             typeDownload: type,
                                             region: uf.uf,
                                             regionType: 'state',
-                                            filePath: 'state/' + uf.uf + '/' + type + '/' + layername + '/' + layername,
+                                            filePath: 'state/' + uf.uf + '/' + type + '/' + layerId + '/' + layerId,
                                             priority: priority,
                                             zoom: null,
                                             layer_id: layerId
@@ -627,9 +633,9 @@ module.exports = class CacheBuilder {
                                                 status: 0,
                                                 type: 'download',
                                                 typeDownload: type,
-                                                region: bioma.bioma,
+                                                region: self.normalize(bioma.bioma),
                                                 regionType: 'biome',
-                                                filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layername + '/' + layername + '_' + filter.valueFilter,
+                                                filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layerId + '/' + layerId + '_' + filter.valueFilter,
                                                 priority: priority,
                                                 zoom: null,
                                                 layer_id: layerId
@@ -653,9 +659,9 @@ module.exports = class CacheBuilder {
                                             status: 0,
                                             type: 'download',
                                             typeDownload: type,
-                                            region: bioma.bioma,
+                                            region: self.normalize(bioma.bioma),
                                             regionType: 'biome',
-                                            filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layername + '/' + layername,
+                                            filePath: 'biome/' + bioma.bioma + '/' + type + '/' + layerId + '/' + layerId,
                                             priority: priority,
                                             zoom: null,
                                             layer_id: layerId
