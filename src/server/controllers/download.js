@@ -3,7 +3,7 @@ const DownloadBuilder = require('../scripts/cache/downloadBuilder');
 const request = require('request');
 const AdmZip = require("adm-zip");
 const http = require('http');
-const string = require('../utils/string');
+const string = require('../jobs/string');
 
 module.exports = function(app) {
     let Controller = {};

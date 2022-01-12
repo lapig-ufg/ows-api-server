@@ -3,7 +3,7 @@ const cron = require('node-cron');
 const http = require('http');
 const AdmZip = require("adm-zip");
 
-const string = require('../utils/string');
+const string = require('./string');
 
 const request = require("request");
 

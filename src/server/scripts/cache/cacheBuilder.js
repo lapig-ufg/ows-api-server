@@ -1,7 +1,7 @@
 'use strict';
 const t = require('tiles-in-bbox');
 const DownloadBuilder = require('./downloadBuilder');
-const string = require('../../utils/string')
+const string = require('../../jobs/string')
 
 module.exports = class CacheBuilder {
 
