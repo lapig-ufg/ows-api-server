@@ -3,13 +3,13 @@ const DownloadBuilder = require('../scripts/cache/downloadBuilder');
 const request = require('request');
 const AdmZip = require("adm-zip");
 const http = require('http');
+const string = require('../utils/string');
 
 module.exports = function(app) {
     let Controller = {};
     let self = {};
 
     const config = app.config;
-    const string = app.utils.string;
 
     if (!fs.existsSync(config.downloadDataDir)) {
         fs.mkdirSync(config.downloadDataDir);
