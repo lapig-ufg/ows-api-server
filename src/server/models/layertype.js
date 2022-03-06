@@ -12,15 +12,23 @@ module.exports = class LayerType {
     typeLayer;
     origin;
     obj;
+    app;
+    params;
+    language;
+    languageOb;
 
-    constructor(language, params) {
-        this.languageOb = lang().getLang(language);
+    constructor(app, languageOb, language, params) {
+
+        this.app = app;
+        this.languageOb = languageOb;
+        this.language = language;
+        this.params = params;
 
         this.valueType = params.hasOwnProperty('valueType') ? params.valueType : null;
         this.type = params.hasOwnProperty('type') ? params.type : 'layertype';
         this.origin = params.hasOwnProperty('origin') ? params.origin : { sourceService: 'internal', typeOfTMS: 'xyz' };
         this.typeLayer = params.hasOwnProperty('typeLayer') ? params.typeLayer : null;
-        let temp = {}
+
         if (this.valueType) {
             // if (this.valueType == "pasture_carbon_aglivc") {
 
@@ -30,13 +38,13 @@ module.exports = class LayerType {
 
             //     console.log(str, replacement)
             // }
+            let temp = {};
             try {
                 temp = {
                     valueType: this.valueType,
                     type: this.type,
                     origin: this.origin,
                     typeLayer: this.typeLayer,
-
 
                     viewValueType: params.viewValueType.toLowerCase() == "translate".toLowerCase() ? this.languageOb[this.type][this.valueType].viewValueType : params.viewValueType,
 
@@ -67,18 +75,103 @@ module.exports = class LayerType {
                     visible: params.hasOwnProperty('visible') ? params.visible : false,
                     opacity: params.hasOwnProperty('opacity') ? params.opacity : 1.0,
 
-                    metadata: params.hasOwnProperty('metadata') ? new Metadado(language, this.valueType, params.metadata).getMetadadoInstance() : new Metadado(language, 'default', null).getMetadadoInstance()
+                    metadata: params.hasOwnProperty('metadata') ? new Metadado(app, this.languageOb, language, this.valueType, params.metadata).getMetadadoInstance() : new Metadado(app, this.languageOb, language, 'default', null).getMetadadoInstance()
                 };
+
             }
             catch (error) {
                 console.log("ERRO ON LAYER: ", this.valueType)
             }
             this.obj = Auxiliar.removeNullProperties(temp);
+
+            // console.log(this.valueType, this.obj)
         }
         else {
             this.obj = null;
         }
+
     }
+
+    async initializeObjects() {
+
+        const app = this.app
+        const language = this.language
+        const params = this.params
+
+        // this.languageOb = await lang(app).getLang(language)
+
+        // this.initializeLanguage(app, language).then(resultPromise => {
+        // this.languageOb = resultPromise
+
+        if (this.valueType) {
+            // if (this.valueType == "pasture_carbon_aglivc") {
+
+            //     let replacement = {};
+            //     let str = '{{' + this.getStringInBetween(this.languageOb[this.type][this.valueType].viewValueType, '{{', '}}') + '}}'
+            //     replacement[str] = this.encode_superscript(this.getStringInBetween(this.languageOb[this.type][this.valueType].viewValueType, "#", "#"))
+
+            //     console.log(str, replacement)
+            // }
+            let temp = {};
+            try {
+                temp = {
+                    valueType: this.valueType,
+                    type: this.type,
+                    origin: this.origin,
+                    typeLayer: this.typeLayer,
+
+                    viewValueType: params.viewValueType.toLowerCase() == "translate".toLowerCase() ? this.languageOb[this.type][this.valueType].viewValueType : params.viewValueType,
+
+                    typeLabel: params.hasOwnProperty('typeLabel') ? this.languageOb.labels.layertype.typeLabel[params.typeLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.typeLabel["type"],
+
+                    tableName: !params.hasOwnProperty('typeLayer') ? null : !(params.typeLayer.toUpperCase() === "vectorial".toUpperCase()) ? null : params.hasOwnProperty('tableName') ? params.tableName : null,
+
+                    wfsMapCard: params.hasOwnProperty('wfsMapCard') ? this.getCardObject(params.wfsMapCard) : {
+                        show: false, displayMapCardAttributes: {
+                            column: "",
+                            label: "",
+                            columnType: ""
+                        }
+                    },
+
+                    gallery: params.hasOwnProperty('gallery') ? params.gallery : null,
+
+                    download: this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : params.hasOwnProperty('download') ? this.getDownloadObject(params.download) : this.getDownloadObject('default'),
+
+                    layerLimits: this.type.toUpperCase() === 'limit'.toUpperCase() ? true : null,
+                    regionFilter: this.type.toUpperCase() === 'layertype'.toUpperCase() && this.typeLayer == "vectorial" ? true : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : false,
+
+                    filters: params.hasOwnProperty('filters') ? this.getFiltersArray(params.filters) : null,
+                    filterLabel: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterLabel') ? this.languageOb.labels.layertype.filterLabel[params.filterLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.filterLabel["year"],
+                    filterSelected: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterSelected') ? params.filterSelected : null,
+                    filterHandler: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterHandler') ? params.filterHandler : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() || this.typeLayer == "raster" ? null : "msfilter",
+
+                    visible: params.hasOwnProperty('visible') ? params.visible : false,
+                    opacity: params.hasOwnProperty('opacity') ? params.opacity : 1.0,
+
+                    metadata: params.hasOwnProperty('metadata') ? new Metadado(app, this.languageOb, language, this.valueType, params.metadata).getMetadadoInstance() : new Metadado(app, this.languageOb, language, 'default', null).getMetadadoInstance()
+                };
+
+            }
+            catch (error) {
+                console.log("ERRO ON LAYER: ", this.valueType)
+            }
+            this.obj = Auxiliar.removeNullProperties(temp);
+
+            // console.log(this.valueType, this.obj)
+        }
+        else {
+            this.obj = null;
+        }
+
+        // })
+
+
+        // console.log("FINAL - ", this.obj)
+
+
+    }
+
 
     replacementStringsSuperscript(template, replacements) {
 
@@ -202,6 +295,7 @@ module.exports = class LayerType {
 
 
     getLayerTypeInstance = function () {
+
         return this.obj;
     }
 
@@ -239,7 +333,7 @@ module.exports = class LayerType {
     getLayerTypesArray(language, types) {
         var arr = [];
         types.forEach(function (item, index) {
-            var type = new LayerType(language, item);
+            var type = new LayerType(this.app, language, item);
             var typeObj = new Object(type.getLayerTypeInstance());
             arr.push(typeObj);
         });

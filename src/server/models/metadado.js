@@ -2,14 +2,20 @@ const lang = require('../utils/language');
 
 module.exports = class Metadado {
 
+    app;
     languageOb = "";
+    language;
     layertype = "";
+    params
     metadataObj = []
 
-    constructor(language, layertype, params) {
+    constructor(app, languageOb, language, layertype, params) {
 
+        this.app = app;
+        this.languageOb = languageOb;
+        this.language = language;
+        this.params = params;
         this.layertype = layertype;
-        this.languageOb = lang().getLang(language);
 
         let arrayOfMetadata = [];
         let layerTranslate = this.layertype == 'default' ? this.languageOb.layertype['default'].metadata : !this.languageOb.layertype.hasOwnProperty(this.layertype) ? this.languageOb.layertype['default'].metadata : this.languageOb.layertype[this.layertype].hasOwnProperty('metadata') ? this.languageOb.layertype[this.layertype].metadata : this.languageOb.layertype['default'].metadata;
@@ -42,10 +48,10 @@ module.exports = class Metadado {
         }
 
         this.metadataObj = arrayOfMetadata
+
+
     }
-
     getMetadadoInstance() {
-
         return this.metadataObj;
     }
 

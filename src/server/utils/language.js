@@ -1,9 +1,29 @@
 const fs = require('fs');
 
 module.exports = function (app) {
-    let Language = {}
+    let Controller = {}
 
-    Language.getLang = function (lang) {
+    const collections = app.middleware.repository.collectionsOws
+
+    Controller.getLang = async function (lang) {
+
+        if (!lang) {
+            lang = 'pt'
+        }
+
+        // const options = {
+        //     projection: { _id: 0, layertypes: 1 },
+        // };
+
+        try {
+            let obj = await collections.languages.findOne({ '_id': lang })
+            return obj;
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    Controller.getLangFromFile = function (lang) {
 
         if (!lang) {
             lang = 'pt'
@@ -18,5 +38,5 @@ module.exports = function (app) {
         }
     }
 
-    return Language;
+    return Controller;
 }
