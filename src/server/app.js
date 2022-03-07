@@ -26,9 +26,14 @@ app.database.client.init(function () {
             app.use(cookie);
             app.use((req, res, next) => {
                 const options = {
-                    "origin": "*",
+                    "origin": [
+                        "*",
+                        "https://atlasdaspastagens.ufg.br",
+                        "https://cepf.lapig.iesa.ufg.br",
+                        "https://maps.lapig.iesa.ufg.br"
+                    ],
                     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-                    "preflightContinue": true,
+                    "preflightContinue": false,
                     "optionsSuccessStatus": 204
                 }
                 app.use(cors(options));
