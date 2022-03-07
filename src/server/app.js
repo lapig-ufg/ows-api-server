@@ -24,15 +24,14 @@ app.database.client.init(function () {
     app.libs.catalog.init(function () {
         app.middleware.repository.init(() => {
             app.use(cookie);
-
             app.use((req, res, next) => {
-                app.use(cors());
-                //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
-                res.header("Access-Control-Allow-Origin", "*");
-                // res.setHeader("Access-Control-Allow-Origin", "https://atlasdaspastagens.ufg.br/");
-                //Quais são os métodos que a conexão pode realizar na API
-                // res.header("Access-Control-Allow-Methods", '*');
-                res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+                const options = {
+                    "origin": "*",
+                    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+                    "preflightContinue": true,
+                    "optionsSuccessStatus": 204
+                }
+                app.use(cors(options));
                 next();
             });
 
