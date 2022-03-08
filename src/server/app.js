@@ -24,7 +24,10 @@ app.database.client.init(function () {
     app.libs.catalog.init(function () {
         app.middleware.repository.init(() => {
             app.use(cookie);
-            app.use(cors())
+            app.use(cors({
+                origin: ['*', 'https://atlasdaspastagens.ufg.br'],
+                credentials: true
+            }))
             app.use(compression());
             app.use(express.static(app.config.clientDir));
             app.set('views', __dirname + '/templates');
