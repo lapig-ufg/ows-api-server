@@ -25,13 +25,8 @@ app.database.client.init(function () {
         app.middleware.repository.init(() => {
             app.use(cookie);
             app.use((req, res, next) => {
-                const options = {
-                    "origin": "*",
-                    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-                    "preflightContinue": false,
-                    "optionsSuccessStatus": 204
-                }
-                app.use(cors(options));
+                res.setHeader('Access-Control-Allow-Origin', '*');
+                res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
                 next();
             });
 
