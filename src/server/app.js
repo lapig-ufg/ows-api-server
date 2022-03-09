@@ -20,13 +20,32 @@ load('config.js', { 'verbose': false })
     .then('libs')
     .into(app);
 
-// app.use(cors({
-//     origin: '*'
-// }))
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://atlasdaspastagens.ufg.br',
+    'https://covidgoias.ufg.br',
+    'https://maps.lapig.iesa.ufg.br',
+    'https://cepf.lapig.iesa.ufg.br'
+];
+
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Origin not allowed by CORS'));
+        }
+    },
+};
+
+app.options('*', cors(corsOptions));
+app.all('*', cors(corsOptions));
 
 app.database.client.init(function () {
     app.libs.catalog.init(function () {
         app.middleware.repository.init(() => {
+
             app.use(cookie);
             app.use(compression());
             app.use(express.static(app.config.clientDir));
@@ -50,7 +69,7 @@ app.database.client.init(function () {
 
             app.set('view engine', 'ejs');
             app.set('views', './views');
-            app.use(express.static('./assets/dashboard'));
+            // app.use(express.static('./assets/dashboard'));
             app.use(bodyParser.urlencoded({ extended: true }));
             app.use(bodyParser.json({ limit: '1gb' }));
 
