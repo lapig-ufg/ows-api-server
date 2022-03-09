@@ -22,6 +22,7 @@ load('config.js', { 'verbose': false })
 
 const allowedOrigins = [
     'http://localhost:3000',
+    'http://localhost:4200',
     'https://atlasdaspastagens.ufg.br',
     'https://covidgoias.ufg.br',
     'https://maps.lapig.iesa.ufg.br',
