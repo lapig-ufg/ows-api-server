@@ -21,14 +21,13 @@ load('config.js', { 'verbose': false })
     .into(app);
 
 const allowedOrigins = [
-    'http://localhost:3000',
     'http://localhost:4200',
     'https://atlasdaspastagens.ufg.br',
     'https://covidgoias.ufg.br',
     'https://maps.lapig.iesa.ufg.br',
-    'https://cepf.lapig.iesa.ufg.br'
+    'https://cepf.lapig.iesa.ufg.br',
+    'https://araticum.lapig.iesa.ufg.br'
 ];
-
 
 const corsOptions = {
     origin: (origin, callback) => {
