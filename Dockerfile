@@ -15,7 +15,7 @@ ENV BRANCH="develop"
 # Install GDAL dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get  install -y wget git bzip2 curl build-essential \
                                                     libgdal-dev g++ libcurl4 python3.7 python3-pip gdal-bin=2.4.0+dfsg-1+b1 \
-                                                    mapserver-bin=7.2.2-1 mapserver-doc python-mapscript=7.2.2-1 && \ 
+                                                    mapserver-bin=7.2.2-1 mapserver-doc python-mapscript=7.2.2-1 procps net-tools && \ 
                                                     curl -sL https://deb.nodesource.com/setup_12.x | bash -  && \ 
                                                     apt-get update && apt-get install -y nodejs && \
                                                     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && \
