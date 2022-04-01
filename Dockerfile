@@ -32,4 +32,3 @@ ADD epsg /usr/share/proj/epsg
 
 # This will install GDAL 2.2.4
 RUN pip3 install GDAL==2.4.0
-
