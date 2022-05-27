@@ -1,7 +1,6 @@
 var crypto = require('crypto')
 	, fsextra = require('fs-extra')
-	, fs = require('fs')
-	;
+	, fs = require('fs');
 
 module.exports = function (app) {
 

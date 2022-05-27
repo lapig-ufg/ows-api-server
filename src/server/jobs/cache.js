@@ -220,23 +220,25 @@ module.exports = function (app) {
     Jobs.start = function () {
         try {
             if(process.env.NODE_ENV === 'worker'){
-                collections.config.findOne({config_id: config.jobsConfig}).then(conf => {
-                    Jobs['task'] = cron.schedule(conf.jobs.cron, () => {
-                        if (conf.cache.startDownloads) {
-                            self.startCacheDownloads(conf.cache)
-                        }
-                        if (conf.cache.startTiles) {
-                            self.startCacheTiles(conf.cache)
-                            setTimeout(() => {self.startCacheTiles(conf.cache)}, 20000);
-                            setTimeout(() => {self.startCacheTiles(conf.cache)}, 40000);
-                        }
-                    }, {
-                        scheduled: conf.jobs.scheduled,
-                        timezone: conf.jobs.timezone
-                    });
-                }).catch(e => {
-                    console.error(e)
-                });
+                if( collections.config){
+                    collections.config.findOne({config_id: config.jobsConfig}).then(conf => {
+                        Jobs['task'] = cron.schedule(conf.jobs.cron, () => {
+                            if (conf.cache.startDownloads) {
+                                self.startCacheDownloads(conf.cache)
+                            }
+                            if (conf.cache.startTiles) {
+                                self.startCacheTiles(conf.cache)
+                                setTimeout(() => {self.startCacheTiles(conf.cache)}, 20000);
+                                setTimeout(() => {self.startCacheTiles(conf.cache)}, 40000);
+                            }
+                        }, {
+                            scheduled: conf.jobs.scheduled,
+                            timezone: conf.jobs.timezone
+                        });
+                    }).catch(e => {
+                        console.error(e)
+                    })
+                }
             }
         } catch (e) {
             console.error(e)

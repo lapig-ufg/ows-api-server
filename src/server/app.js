@@ -26,7 +26,8 @@ const allowedOrigins = [
     'https://covidgoias.ufg.br',
     'https://maps.lapig.iesa.ufg.br',
     'https://cepf.lapig.iesa.ufg.br',
-    'https://araticum.lapig.iesa.ufg.br'
+    'https://araticum.lapig.iesa.ufg.br',
+    'https://agrotoxicosdev.lapig.iesa.ufg.br'
 ];
 
 const corsOptions = {
