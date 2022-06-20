@@ -32,5 +32,5 @@ ENV C_INCLUDE_PATH=/usr/include/gdal
 ADD ./files/NotoSans-Regular.ttf /usr/share/fonts/truetype/noto/NotoSans-Regular.ttf
 ADD ./files/epsg /usr/share/proj/epsg
 
-# This will install GDAL 2.2.4
+# This will install GDAL 2.4.0
 RUN pip3 install GDAL==2.4.0
