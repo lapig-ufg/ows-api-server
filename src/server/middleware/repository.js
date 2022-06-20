@@ -9,9 +9,11 @@ module.exports = function(app) {
 		db: {},
 		dbOws: {},
 		dbLogs: {},
+		dbGlobalPasture: {},
 		collections: {},
 		collectionsOws: {},
 		collectionsLogs: {},
+		collectionsGlobalPasture: {},
 	};
 
 	const uri = `mongodb://${config.mongo.host}:${config.mongo.port}/?maxPoolSize=10&writeConcern=majority`;
@@ -27,6 +29,7 @@ module.exports = function(app) {
 			Repository.db = client.db(config.mongo.dbname);
 			Repository.dbLogs = client.db(config.mongo.dbLogs);
 			Repository.dbOws = client.db(config.mongo.dbOwsName);
+			Repository.dbGlobalPasture = client.db(config.mongo.dbGlobalPasture);
 
 			Repository.db.listCollections().toArray((err, collection) => {
 				if (err) {
@@ -80,6 +83,26 @@ module.exports = function(app) {
 								console.log(err)
 							}
 							Repository.collectionsOws[name] = repository;
+							callback();
+						});
+					} else {
+						callback();
+					}
+				};
+				async.each(collection, forEachOne, callback)
+			});
+			Repository.dbGlobalPasture.listCollections().toArray((err, collection) => {
+				if (err) {
+					return callback(err);
+				}
+				const forEachOne = function (collection, callback) {
+					const name = collection.name.substr(collection.name.indexOf('\.') + 1);
+					if(name !== 'indexes') {
+						Repository.dbGlobalPasture.collection(name, function(err, repository) {
+							if(err){
+								console.log(err)
+							}
+							Repository.collectionsGlobalPasture[name] = repository;
 							callback();
 						});
 					} else {

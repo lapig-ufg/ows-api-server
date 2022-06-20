@@ -74,7 +74,8 @@ module.exports = function (app) {
             "dbname": env.MONGO_DATABASE,
             "url": env.MONGO_URL,
             "dbOwsName": env.MONGO_DATABASE_OWS,
-            "dbLogs": env.MONGO_DATABASE_LOGS
+            "dbLogs": env.MONGO_DATABASE_LOGS,
+            "dbGlobalPasture": env.MONGO_DATABASE_GLOBAL_PASTURE
         },
         "jobsConfig": env.MONGO_JOBS_CONFIG,
         "port": env.PORT,
