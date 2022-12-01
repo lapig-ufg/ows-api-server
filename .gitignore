@@ -109,3 +109,4 @@ dist
 # Freeze File Jenkinsfile
 freeze = update-index --assume-unchanged
 git freeze Jenkinsfile
+Dockerfile
