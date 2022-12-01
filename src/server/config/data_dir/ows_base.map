@@ -167,7 +167,7 @@ MAP
       "wfs_getfeature_formatlist" "{wfs_getfeature_formatlist}"
       "ows_encoding" "UTF-8"
       "ows_sld_enabled" "TRUE"
-      "wcs_srs" "{ows_srs}"
+      "wcs_srs" "{wcs_srs}"
       "wcs_enable_request" "*"
       "wms_getmap_formatlist" "{wms_getmap_formatlist}"
     END

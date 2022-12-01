@@ -7,9 +7,8 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     parseCookie = require('cookie-parser'),
     requestParam = require('request-param'),
-    morgan = require('morgan');
-
-const {algorithms} = require("hawk/lib/crypto");
+    morgan = require('morgan'),
+    cors = require('cors');
 
 const app = express();
 const http = require('http').Server(app);
@@ -21,11 +20,36 @@ load('config.js', { 'verbose': false })
     .then('libs')
     .into(app);
 
+const allowedOrigins = [
+    'http://localhost:4200',
+    'https://atlasdaspastagens.ufg.br',
+    'https://atlasdev.lapig.iesa.ufg.br',
+    'https://atlasdev.lapig.iesa.ufg.br',
+    'https://covidgoias.ufg.br',
+    'https://maps.lapig.iesa.ufg.br',
+    'https://cepf.lapig.iesa.ufg.br',
+    'https://araticum.lapig.iesa.ufg.br',
+    'https://agrotoxicosdev.lapig.iesa.ufg.br'
+];
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Origin not allowed by CORS'));
+        }
+    },
+};
+
+app.options('*', cors(corsOptions));
+app.all('*', cors(corsOptions));
+
 app.database.client.init(function () {
     app.libs.catalog.init(function () {
         app.middleware.repository.init(() => {
-            app.use(cookie);
 
+            app.use(cookie);
             app.use(compression());
             app.use(express.static(app.config.clientDir));
             app.set('views', __dirname + '/templates');
@@ -48,7 +72,7 @@ app.database.client.init(function () {
 
             app.set('view engine', 'ejs');
             app.set('views', './views');
-            app.use(express.static('./assets/dashboard'));
+            // app.use(express.static('./assets/dashboard'));
             app.use(bodyParser.urlencoded({ extended: true }));
             app.use(bodyParser.json({ limit: '1gb' }));
 

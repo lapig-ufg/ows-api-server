@@ -6,7 +6,10 @@
         "typeLayer": "vectorial",
         "viewValueType": "translate",
         "tablename": "estados",
-        "columnsMapCard": "estado,regiao,uf"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "estado,regiao,uf"
+        }
     },
     {
         "valueType": "municipios",
@@ -15,7 +18,10 @@
         "typeLayer": "vectorial",
         "viewValueType": "translate",
         "tablename": "municipios",
-        "columnsMapCard": "municipio,cd_geocmu"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "municipio,cd_geocmu"
+        }
     },
     {
         "valueType": "biomas",
@@ -24,7 +30,10 @@
         "typeLayer": "vectorial",
         "viewValueType": "translate",
         "tablename": "biomas",
-        "columnsMapCard": "bioma"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "bioma"
+        }
     },
     {
         "valueType": "limites_cartas_ibge",
@@ -33,7 +42,10 @@
         "typeLayer": "vectorial",
         "viewValueType": "translate",
         "tablename": "cartas_ibge",
-        "columnsMapCard": "bioma"
+        "wfsMapCard": {
+            "show": false,
+            "columns": "bioma"
+        }
     },
     {
         "valueType": "municipios_info",
@@ -41,6 +53,9 @@
         "typeLayer": "vectorial",
         "viewValueType": "translate",
         "tablename": "municipios_info",
-        "columnsMapCard": "municipio,cd_geocmu,regiao,bioma,area_municipio_ha"
+        "wfsMapCard": {
+            "show": true,
+            "columns": "municipio,cd_geocmu,regiao,bioma,area_municipio_ha"
+        }
     }
 ]

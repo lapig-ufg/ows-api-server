@@ -1,4 +1,3 @@
-const Metadado = require('../models/metadado');
 const LayerTypeBuilder = require('../utils/layertypeBuilder');
 
 module.exports = function (app) {
@@ -8,87 +7,48 @@ module.exports = function (app) {
 
     const collections = app.middleware.repository.collectionsOws
 
-    Internal.returnAllLayerTypes = async function (lang) {
 
-        const result = {
-            layers: LayerTypeBuilder().getAllLayertypes(lang),
-            basemaps: LayerTypeBuilder().getBasemapsOrLimitsLayers(lang, 'basemaps'),
-            limits: LayerTypeBuilder().getBasemapsOrLimitsLayers(lang, 'limits')
-        }
-
-        // const arrayLayers = await collections.layers.find().toArray();
-
-        // Query for a movie that has the title 'The Room'
-        // const query = { title: "The Room" };
-
-        // const options = {
-        //     projection: { _id: 0, layertypes: 1 },
-        // };
-
-        // const resultOut = {
-        //     layers: await collections.layers.find({ '_id': { '$nin': ['basemaps', 'limits'] } }, options).toArray().then(ob => { return ob.map(o => o.layertypes) }).flat(Infinity),
-        //     basemaps: await collections.layers.findOne({ '_id': 'basemaps' }, options).then(ob => ob.layertypes),
-        //     limits: await collections.layers.findOne({ '_id': 'limits' }, options).then(ob => ob.layertypes),
-        // }
-
-        // console.log(resultOut.layers.flat(Infinity))
-        let allLayers = [];
-
-
-        for (const [keyType, type] of Object.entries(result)) {
-            for (const [keyLayer, layer] of Object.entries(result[keyType])) {
-                for (const [keyLayerType, layertype] of Object.entries(result[keyType][keyLayer])) {
-                    allLayers.push(layertype)
-                }
-            }
-        }
-
-        return allLayers;
-    }
-
-
-    Controller.getLayers = function (request, response) {
+    Controller.getLayers = async function (request, response) {
         const { lang } = request.query;
 
-        const result = LayerTypeBuilder().getAllLayertypes(lang);
+        const result = await LayerTypeBuilder(app).getLayersFromType(lang, 'layers');
 
         response.send(result);
         response.end();
     };
 
-    Controller.getLimits = function (request, response) {
+    Controller.getLimits = async function (request, response) {
         const { lang } = request.query;
 
-        const result = LayerTypeBuilder().getBasemapsOrLimitsLayers(lang, 'limits');
+        const result = await LayerTypeBuilder(app).getLayersFromType(lang, 'limits');
 
         response.send(result);
         response.end();
     };
 
-    Controller.getBasemaps = function (request, response) {
+    Controller.getBasemaps = async function (request, response) {
         const { lang } = request.query;
 
-        const result = LayerTypeBuilder().getBasemapsOrLimitsLayers(lang, 'basemaps');
+        const result = await LayerTypeBuilder(app).getLayersFromType(lang, 'basemaps');
 
         response.send(result);
         response.end();
     };
 
-    Controller.getAllLayers = function (request, response) {
+    Controller.getAllLayers = async function (request, response) {
         const { lang } = request.query;
 
+        let result = await LayerTypeBuilder(app).returnAllLayerTypes(lang);
 
-        let allLayers = Internal.returnAllLayerTypes(lang);
-
-        response.send(allLayers);
+        response.send(result);
         response.end();
     };
 
-    Controller.getLayerTypeFromName = function (request, response) {
+    Controller.getLayerTypeFromName = async function (request, response) {
 
         const { lang, layertype } = request.query;
 
-        let allLayers = Internal.returnAllLayerTypes(lang);
+        let allLayers = await LayerTypeBuilder(app).returnAllLayerTypes(lang);
 
         let result;
         if (layertype) {
@@ -101,7 +61,27 @@ module.exports = function (app) {
 
         response.send(result);
         response.end();
+    };
 
+    Controller.getAllLayersPerType = async function (request, response) {
+        const { lang } = request.query;
+
+        let allLayers = await LayerTypeBuilder(app).returnAllLayerTypes(lang);
+
+        let result = {};
+        allLayers.forEach(layer => {
+
+            let propertyName = (layer.type.toLowerCase() === 'layertype'.toLowerCase() ? 'layers' : layer.type + 's')
+
+            if (!result.hasOwnProperty(propertyName)) {
+                result[propertyName] = []
+            }
+
+            result[propertyName].push(layer)
+        })
+
+        response.send(result);
+        response.end();
     };
 
     Controller.host = function (request, response) {

@@ -8,8 +8,8 @@
             "_commentURLExample": "https://tiles{0-3}.planet.com/basemaps/v1/planet-tiles/global_quarterly_2021q2_mosaic/gmap/{z}/{x}/{y}.png",
             "epsg": "if 'sourceService' is 'external', then type of EPSG, should be 'transformed' to 4674 in front-end"
         },
-        "value_type": "Name of the layer in Mapserver",
-        "type": "Declare type of group layer: 'layer', 'basemap' or 'limit'. Default: 'layer'",
+        "valueType": "Name of the layer in Mapserver",
+        "type": "Declare type of group layer: 'layertype', 'basemap' or 'limit'. Default: 'layertype'",
         "typeLayer": "Declare type of Layer: vectorial or raster",
         "viewValueType": "Can be directly assigned (Ex. 'Planet'), or inform 'translate' which should be declared with property the same name used in 'value' in client/locales/pt-en.json inside descriptor_labels.groups.'group_id'.layers.'id'.label_layer.types.'value'.viewValueType. ",
         "typeLabel": "Label of Type in Layer. Values: 'type', 'quantity', 'source', 'area_planted', 'production'",

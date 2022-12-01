@@ -3,6 +3,8 @@ const cron = require('node-cron');
 const http = require('http');
 const AdmZip = require("adm-zip");
 
+const string = require('./string');
+
 const request = require("request");
 
 module.exports = function (app) {
@@ -13,6 +15,7 @@ module.exports = function (app) {
     const collectionsLogs = app.middleware.repository.collectionsLogs;
 
     self.requestFileFromMapServer = function (req) {
+        const startProcess = new Date();
         let file = fs.createWriteStream(req.filePath + ".zip");
 
         const downloadPromise = new Promise((resolve, reject) => {
@@ -21,12 +24,12 @@ module.exports = function (app) {
                     gzip: true
                 }).pipe(file).on('finish', () => {
                     const stats = fs.statSync(req.filePath + '.zip');
-                    if (stats.size < 1000) {
+                    if (stats.size < 400) {
                         reject('Error on mapserver');
                         fs.unlinkSync(req.filePath + '.zip');
                     }
                     if (req.typeDownload !== 'csv') {
-                        const url = `${config.ows_url}/ows?request=GetStyles&layers=${req.layerName}&service=wms&version=1.1.1`;
+                        const url = `${config.ows_local}?request=GetStyles&layers=${req.layerName}&service=wms&version=1.1.1`;
                         http.get(url, (resp) => {
                             let data = '';
 
@@ -56,9 +59,10 @@ module.exports = function (app) {
         );
 
         downloadPromise.then(result => {
+            const endProcess = new Date();
             collections.requests.updateOne(
                 {"_id": req._id},
-                {$set: {"status": 2, updated_at: new Date()}}
+                { $set: {"status": 2, updated_at: new Date(), "startProcess": startProcess, "endProcess": endProcess}}
             );
         }).catch(error => {
             collectionsLogs.cache.insertOne({
@@ -80,7 +84,7 @@ module.exports = function (app) {
     self.processCacheDownload = function (request) {
         request['url'] = request.url.replace('ows_url', config.ows_local);
         request['filePath'] = config.downloadDataDir + request.filePath;
-        const directory = config.downloadDataDir + request.regionType + '/' + request.region + '/' + request.typeDownload + '/' + request.layerName;
+        const directory = config.downloadDataDir + request.regionType + '/' + string.normalize(request.region) + '/' + request.typeDownload + '/' + request.layerName;
         if (!fs.existsSync(directory)) {
             fs.mkdirSync(directory, {recursive: true});
         }
@@ -88,12 +92,14 @@ module.exports = function (app) {
     }
 
     self.processCacheTile = function (request) {
-        const url = request.url.replace('ows_url', config.ows_local);
+        const startProcess = new Date();
+        const url = request.url.includes('ows_url/ows') ? request.url.replace('ows_url/ows', config.ows_local) : request.url.replace('ows_url', config.ows_local);
         http.get(url, (resp) => {
             resp.on('end', () => {
+                const endProcess = new Date();
                 collections.requests.updateOne(
                     {"_id": request._id},
-                    {$set: {"status": 2, updated_at: new Date()}}
+                    {$set: {"status": 2, updated_at: new Date(), "startProcess": startProcess, "endProcess": endProcess}}
                 );
             });
 
@@ -213,21 +219,27 @@ module.exports = function (app) {
 
     Jobs.start = function () {
         try {
-            collections.config.findOne({config_id: config.jobsConfig}).then(conf => {
-                Jobs['task'] = cron.schedule(conf.jobs.cron, () => {
-                    if (conf.cache.startDownloads) {
-                        self.startCacheDownloads(conf.cache)
-                    }
-                    if (conf.cache.startTiles) {
-                        self.startCacheTiles(conf.cache);
-                    }
-                }, {
-                    scheduled: conf.jobs.scheduled,
-                    timezone: conf.jobs.timezone
-                });
-            }).catch(e => {
-                console.error(e)
-            });
+            if(process.env.NODE_ENV === 'worker'){
+                if( collections.config){
+                    collections.config.findOne({config_id: config.jobsConfig}).then(conf => {
+                        Jobs['task'] = cron.schedule(conf.jobs.cron, () => {
+                            if (conf.cache.startDownloads) {
+                                self.startCacheDownloads(conf.cache)
+                            }
+                            if (conf.cache.startTiles) {
+                                self.startCacheTiles(conf.cache)
+                                setTimeout(() => {self.startCacheTiles(conf.cache)}, 20000);
+                                setTimeout(() => {self.startCacheTiles(conf.cache)}, 40000);
+                            }
+                        }, {
+                            scheduled: conf.jobs.scheduled,
+                            timezone: conf.jobs.timezone
+                        });
+                    }).catch(e => {
+                        console.error(e)
+                    })
+                }
+            }
         } catch (e) {
             console.error(e)
         }

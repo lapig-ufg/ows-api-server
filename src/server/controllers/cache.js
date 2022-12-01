@@ -8,6 +8,7 @@ module.exports = function (app) {
     let Controller = {};
     let Internal = {};
     const config = app.config;
+    const cache = app.libs.cache;
     const cacheCollections = app.middleware.repository.collections;
 
     Internal.currentDate = function (){
@@ -21,6 +22,95 @@ module.exports = function (app) {
             chunkArray.push(arr.slice(i, i+size));
         }
         return chunkArray;
+    }
+
+    Internal.getParams = function (url) {
+        let params = {};
+
+        url = url.replace('ows_url/ows?', '');
+
+        const urlArray = url.split("&");
+
+        params = {};
+
+        urlArray.forEach(param => {
+            const key = param.substr(0,param.indexOf('=')).toUpperCase();
+            const value = param.substr(param.indexOf('=')+1);
+            params[key] = value;
+        });
+
+        return params;
+    }
+
+    Internal.getCacheKey = function (url) {
+
+        const params = Internal.getParams(url);
+
+        const requestType = ('REQUEST' in params) ? params['REQUEST'] : '';
+        const mode = ('MODE' in params) ? params['MODE'] : '';
+        const prefix = config.cachePrefix;
+
+        if (requestType === 'GetMap') {
+
+            const layers = params['LAYERS'];
+            const srs = params['SRS'];
+            const bbox = params['BBOX'];
+            const width = params['WIDTH'];
+            const height = params['HEIGHT'];
+            const msfilter = params['MSFILTER'];
+            const format = params['FORMAT'];
+            const startyear = params['STARTYEAR'];
+            const endyear = params['ENDYEAR'];
+            const enhance = params['ENHANCE']
+
+            let parts = [prefix, layers, srs, bbox, width, height, msfilter, format];
+
+            if (startyear)
+                parts.push(startyear);
+            if (endyear)
+                parts.push(endyear);
+            if (enhance)
+                parts.push(enhance);
+
+            return parts.join(',');
+
+        } else if (requestType === 'GetCapabilities') {
+
+            const capPrefix = 'CAPABILITIES'
+            const service = params['SERVICE'];
+            const version = params['VERSION'];
+
+            return [prefix, capPrefix, requestType, service, version].join(',');
+        } else if (mode === 'tile') {
+            const tile = params['TILE']
+            const msfilter = params['MSFILTER'];
+            const imagetype = params['MAP.IMAGETYPE'];
+            const startyear = params['STARTYEAR'];
+            const endyear = params['ENDYEAR'];
+
+            const zoom = (tile) ? tile.split(' ')[2] : '0';
+            const layers = params['LAYERS'] + '-tiles' + '/' + zoom;
+
+            const parts = [prefix, layers, tile, msfilter, imagetype];
+            if (startyear)
+                parts.push(startyear);
+            if (endyear)
+                parts.push(endyear);
+
+            return parts.join(',');
+
+        } else if (requestType === 'GetLegendGraphic') {
+
+            const layer = 'layer-legend-tiles' + '/' + params['LAYER'];
+
+            const parts = [prefix, layer];
+
+            return parts.join(',');
+
+        }
+
+        return undefined;
+
     }
 
     Internal.returnAllLayerTypes = function (lang) {
@@ -84,7 +174,6 @@ module.exports = function (app) {
 
                     if(limits){
                         cacheBuilder.setLimits(limits.split('-'))
-
                     }
 
                     if(priority){
@@ -135,10 +224,11 @@ module.exports = function (app) {
         }
     };
 
-    Controller.resetRequests = function (request, response) {
+    Controller.resetRequests = async function (request, response) {
         let lang = 'pt';
         let zooms = [];
-        const { layerType, type, zoomLevels, token } = request.query;
+
+        const { layerType, type, zoomLevels, limits, token } = request.query;
 
         if(token){
             const hashRequest = CryptoJS.MD5(token).toString();
@@ -177,46 +267,60 @@ module.exports = function (app) {
                     filter['zoom'] =  { $in: zooms }
                 }
 
-                cacheCollections.layers.updateOne(
-                    {_id: layerId},
-                    {
-                        $set: { updated_at: Internal.currentDate() },
-                    }
-                ).then(async updated => {
-                    cacheCollections.requests.updateMany(filter, { $set: {"status": 0, updated_at: new Date()}}).then(resp => {
-                        let removedLayerDirs = []
-                        const layerPathDir = config.cacheTilesDir + layer.valueType + '-tiles';
-                        const layerLegendPathDir = config.cacheTilesDir + '/layer-legend-tiles/' +  layer.valueType;
-                        if(zooms.length > 0) {
-                            zooms.forEach(zoom => {
-                                const zoomLayerPathDir = layerPathDir + '/' + zoom;
-                                if (fs.existsSync(zoomLayerPathDir)) {
-                                    fs.rmSync(zoomLayerPathDir, { recursive: true, force: true });
-                                    removedLayerDirs.push(zoomLayerPathDir);
-                                }
+                console.log(filter)
+
+                cacheCollections.requests.find(filter).limit(5).toArray()
+                    .then(requests => {
+                        let files = [];
+                        if(requests.length > 0){
+                            requests.forEach(req => {
+                                const cacheKey = Internal.getCacheKey(req.url);
+                                console.log(cacheKey)
+                                cache.get(cacheKey, result => {  console.log(result) });
                             })
-                        } else {
-                            if (fs.existsSync(layerPathDir)) {
-                                fs.rmSync(layerPathDir, { recursive: true, force: true });
-                                removedLayerDirs.push(layerPathDir);
-                            }
-                            if (fs.existsSync(layerLegendPathDir)) {
-                                fs.rmSync(layerLegendPathDir, { recursive: true, force: true });
-                                removedLayerDirs.push(layerLegendPathDir);
-                            }
                         }
-                        response.status(200).json({totalRequestsRemoved: resp.result.n, removedLayerDirsFromOwsCache: removedLayerDirs})
-                        response.end();
-                    }).catch(e => {
-                        console.error(e)
-                        response.status(400).json({ msg: e.stack })
-                        response.end();
                     });
-                }).catch(e => {
-                    console.error(e)
-                    response.status(400).json({ msg: e.stack })
-                    response.end();
-                });
+
+                // cacheCollections.layers.updateOne(
+                //     {_id: layerId},
+                //     {
+                //         $set: { updated_at: Internal.currentDate() },
+                //     }
+                // ).then(async updated => {
+                //     cacheCollections.requests.updateMany(filter, { $set: {"status": 0, updated_at: new Date()}}).then(resp => {
+                //         let removedLayerDirs = []
+                //         const layerPathDir = config.cacheTilesDir + layer.valueType + '-tiles';
+                //         const layerLegendPathDir = config.cacheTilesDir + '/layer-legend-tiles/' +  layer.valueType;
+                //         if(zooms.length > 0) {
+                //             zooms.forEach(zoom => {
+                //                 const zoomLayerPathDir = layerPathDir + '/' + zoom;
+                //                 if (fs.existsSync(zoomLayerPathDir)) {
+                //                     fs.rmSync(zoomLayerPathDir, { recursive: true, force: true });
+                //                     removedLayerDirs.push(zoomLayerPathDir);
+                //                 }
+                //             })
+                //         } else {
+                //             if (fs.existsSync(layerPathDir)) {
+                //                 fs.rmSync(layerPathDir, { recursive: true, force: true });
+                //                 removedLayerDirs.push(layerPathDir);
+                //             }
+                //             if (fs.existsSync(layerLegendPathDir)) {
+                //                 fs.rmSync(layerLegendPathDir, { recursive: true, force: true });
+                //                 removedLayerDirs.push(layerLegendPathDir);
+                //             }
+                //         }
+                //         response.status(200).json({totalRequestsRemoved: resp.result.n, removedLayerDirsFromOwsCache: removedLayerDirs})
+                //         response.end();
+                //     }).catch(e => {
+                //         console.error(e)
+                //         response.status(400).json({ msg: e.stack })
+                //         response.end();
+                //     });
+                // }).catch(e => {
+                //     console.error(e)
+                //     response.status(400).json({ msg: e.stack })
+                //     response.end();
+                // });
 
             } else {
                 response.status(404).json({ msg: 'Layer not found' })
@@ -250,8 +354,6 @@ module.exports = function (app) {
             response.end();
             return;
         }
-
-
         try {
 
             if(zoomLevels){
@@ -267,49 +369,52 @@ module.exports = function (app) {
             if(layer){
 
                 let layerId = layer.valueType
-                const filter = type ? { layer_id : layerId, type: type }: { layer_id : layerId } ;
+                let filter = type ? { layer_id : layerId, type: type }: { layer_id : layerId } ;
 
                 if(zooms.length > 0) {
                     filter['zoom'] =  { $in: zooms }
                 }
 
-                cacheCollections.layers.deleteOne(
-                    {_id: layerId}
-                ).then(async updated => {
-                    cacheCollections.requests.deleteMany(filter).then(resp => {
-                        let removedLayerDirs = []
-                        const layerPathDir = config.cacheTilesDir + layer.valueType + '-tiles';
-                        const layerLegendPathDir = config.cacheTilesDir + '/layer-legend-tiles/' +  layer.valueType;
-                        if(zooms.length > 0) {
-                            zooms.forEach(zoom => {
-                                const zoomLayerPathDir = layerPathDir + '/' + zoom;
-                                if (fs.existsSync(zoomLayerPathDir)) {
-                                    fs.rmSync(zoomLayerPathDir, { recursive: true, force: true });
-                                    removedLayerDirs.push(zoomLayerPathDir);
+                cacheCollections.requests.find(filter).toArray()
+                    .then(requests => {
+                        cacheCollections.layers.deleteOne(
+                            {_id: layerId}
+                        ).then(async updated => {
+                            cacheCollections.requests.deleteMany(filter).then(resp => {
+                                let removedLayerDirs = []
+                                const layerPathDir = config.cacheTilesDir + layer.valueType + '-tiles';
+                                const layerLegendPathDir = config.cacheTilesDir + '/layer-legend-tiles/' +  layer.valueType;
+                                if(zooms.length > 0) {
+                                    zooms.forEach(zoom => {
+                                        const zoomLayerPathDir = layerPathDir + '/' + zoom;
+                                        if (fs.existsSync(zoomLayerPathDir)) {
+                                            fs.rmSync(zoomLayerPathDir, { recursive: true, force: true });
+                                            removedLayerDirs.push(zoomLayerPathDir);
+                                        }
+                                    })
+                                } else {
+                                    if (fs.existsSync(layerPathDir)) {
+                                        fs.rmSync(layerPathDir, { recursive: true, force: true });
+                                        removedLayerDirs.push(layerPathDir);
+                                    }
+                                    if (fs.existsSync(layerLegendPathDir)) {
+                                        fs.rmSync(layerLegendPathDir, { recursive: true, force: true });
+                                        removedLayerDirs.push(layerLegendPathDir);
+                                    }
                                 }
-                            })
-                        } else {
-                            if (fs.existsSync(layerPathDir)) {
-                                fs.rmSync(layerPathDir, { recursive: true, force: true });
-                                removedLayerDirs.push(layerPathDir);
-                            }
-                            if (fs.existsSync(layerLegendPathDir)) {
-                                fs.rmSync(layerLegendPathDir, { recursive: true, force: true });
-                                removedLayerDirs.push(layerLegendPathDir);
-                            }
-                        }
-                        response.status(200).json({totalRequestsRemoved: resp.result.n, removedLayerDirsFromOwsCache: removedLayerDirs})
-                        response.end();
-                    }).catch(e => {
-                        console.error(e)
-                        response.status(400).json({ msg: e.stack })
-                        response.end();
+                                response.status(200).json({totalRequestsRemoved: resp.result.n, removedLayerDirsFromOwsCache: removedLayerDirs})
+                                response.end();
+                            }).catch(e => {
+                                console.error(e)
+                                response.status(400).json({ msg: e.stack })
+                                response.end();
+                            });
+                        }).catch(e => {
+                            console.error(e)
+                            response.status(400).json({ msg: e.stack })
+                            response.end();
+                        });
                     });
-                }).catch(e => {
-                    console.error(e)
-                    response.status(400).json({ msg: e.stack })
-                    response.end();
-                });
 
             } else {
                 response.status(404).json({ msg: 'Layer not found' })

@@ -2,7 +2,8 @@ const fs = require("fs");
 const DownloadBuilder = require('../scripts/cache/downloadBuilder');
 const request = require('request');
 const AdmZip = require("adm-zip");
-const https = require('https');
+const http = require('http');
+const string = require('../jobs/string');
 
 module.exports = function(app) {
     let Controller = {};
@@ -23,13 +24,13 @@ module.exports = function(app) {
                     gzip: true
                 }).pipe(file).on('finish', () => {
                     const stats = fs.statSync(pathFile + '.zip');
-                    if(stats.size < 1000) {
+                    if(stats.size < 500) {
                         reject('Error on mapserver');
                         fs.unlinkSync(pathFile + '.zip');
                     }
                     if(type !== 'csv') {
-                        const url = `${config.ows_url}/ows?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
-                        https.get(url, (resp) => {
+                        const url = `${config.ows_local}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
+                        http.get(url, (resp) => {
                             let data = '';
 
                             // A chunk of data has been received.
@@ -70,7 +71,7 @@ module.exports = function(app) {
         let { layer, region, filter, typeDownload} = request.body;
 
         let builder = new DownloadBuilder(typeDownload);
-        builder.setUrl(config.ows_url);
+        builder.setUrl(config.ows_local);
 
 
         if(layer.filterHandler === 'layername'){
@@ -97,7 +98,10 @@ module.exports = function(app) {
             fileParam = layer.valueType;
         }
 
-        directory = config.downloadDataDir + region.type + '/' + region.value + '/' + typeDownload + '/' + layer.valueType + '/';
+        directory = config.downloadDataDir + region.type + '/' + string.normalize(region.value) + '/' + typeDownload + '/' + layer.valueType + '/';
+
+        console.log('DOWNLOAD_DIR', directory)
+
         pathFile = directory + fileParam;
 
         if (!fs.existsSync(directory)) {
@@ -106,27 +110,32 @@ module.exports = function(app) {
 
         if (fs.existsSync(pathFile + '.zip')) {
             if(typeDownload !== 'csv') {
-                const url = `${process.env.OWS}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
-                https.get(url, (resp) => {
-                    let data = '';
+                const stats = fs.statSync(pathFile + '.zip');
+                if(stats.size < 60000000) {
+                    const url = `${config.ows_local}?request=GetStyles&layers=${layerName}&service=wms&version=1.1.1`;
+                    http.get(url, (resp) => {
+                        let data = '';
 
-                    // A chunk of data has been received.
-                    resp.on('data', (chunk) => {
-                        data += chunk;
+                        // A chunk of data has been received.
+                        resp.on('data', (chunk) => {
+                            data += chunk;
+                        });
+
+                        // The whole response has been received. Print out the result.
+                        resp.on('end', () => {
+                            let zip = new AdmZip(pathFile + '.zip');
+                            zip.addFile(layerName +".sld", Buffer.from(data, "utf8"), "Styled Layer Descriptor (SLD) of " + layerName);
+                            zip.writeZip(pathFile + '.zip');
+                            response.download(pathFile + '.zip');
+                        });
+
+                    }).on("error", (err) => {
+                        response.status(400).json({ msg: err })
+                        response.end();
                     });
-
-                    // The whole response has been received. Print out the result.
-                    resp.on('end', () => {
-                        let zip = new AdmZip(pathFile + '.zip');
-                        zip.addFile(layerName +".sld", Buffer.from(data, "utf8"), "Styled Layer Descriptor (SLD) of " + layerName);
-                        zip.writeZip(pathFile + '.zip');
-                        response.download(pathFile + '.zip');
-                    });
-
-                }).on("error", (err) => {
-                    response.status(400).json({ msg: err })
-                    response.end();
-                });
+                } else {
+                    response.download(pathFile + '.zip');
+                }
             } else {
                 response.download(pathFile + '.zip');
             }

@@ -25,10 +25,11 @@ module.exports = function (app) {
         'default_epsgproj': '4674',
         'ows_onlineresource': 'http://localhost:5500/ows',
         'ows_srs': 'EPSG:4326 EPSG:4269 EPSG:3978 EPSG:3857 EPSG:4674 EPSG:900913',
+        'wcs_srs': 'EPSG:4326 EPSG:4269 EPSG:3978 EPSG:3857 EPSG:4674 EPSG:900913',
         'ows_title': 'LAPIG-OWS',
         'wms_getmap_formatlist': 'image/png,application/json,pdf',
         'wfs_getfeature_formatlist': 'CSV,GML,SHAPE-ZIP,application/json,GEOPACKAGE,geojson,SQLITE-ZIP',
-        'wms_getfeatureinfo_formatlist': 'gml',
+        'wms_getfeatureinfo_formatlist': 'gml,application/json',
         'wms_bbox_extended': 'TRUE',
         'wms_encoding': 'UTF-8',
         'pattern_mapfile': '*.map',
@@ -73,7 +74,8 @@ module.exports = function (app) {
             "dbname": env.MONGO_DATABASE,
             "url": env.MONGO_URL,
             "dbOwsName": env.MONGO_DATABASE_OWS,
-            "dbLogs": env.MONGO_DATABASE_LOGS
+            "dbLogs": env.MONGO_DATABASE_LOGS,
+            "dbGlobalPasture": env.MONGO_DATABASE_GLOBAL_PASTURE
         },
         "jobsConfig": env.MONGO_JOBS_CONFIG,
         "port": env.PORT,
@@ -81,7 +83,7 @@ module.exports = function (app) {
         "ows_local": env.OWS_LOCAL,
     };
 
-    if (env.NODE_ENV === 'prod') {
+    if (env.NODE_ENV === 'prod' || env.NODE_ENV === 'worker') {
         config['path_catalog'] = '/STORAGE/catalog/'
         config['path_metadata'] = config['path_catalog']
         config['path_mapfile'] = pathTmp + 'ows_runtime.map';

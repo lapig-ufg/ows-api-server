@@ -4,41 +4,7 @@
             "sourceService": "internal",
             "typeOfTMS": "xyz"
         },
-        "valueType": "geo_car_imovel",
-        "type": "layertype",
-        "typeLayer": "vectorial",
-        "viewValueType": "SICAR",
-        "typeLabel": "source",
-        "metadata": {
-            "title": "translate",
-            "description": "translate",
-            "format": "shp",
-            "region": "translate",
-            "period": "2012~",
-            "scale": "1:5.000",
-            "system_coordinator": "sirgas2000",
-            "cartographic_projection": "utm",
-            "cod_caracter": "utf8",
-            "fonte": "translate",
-            "link": "<a target='_blank' class='link-details' href='http://www.car.gov.br/#/sobre'> http://www.car.gov.br/#/sobre </a>"
-        },
-        "download": {
-            "csv": false,
-            "shp": true,
-            "gpkg": false,
-            "raster": false
-        },
-        "wfsMapCard": {
-            "show": true,
-            "columns": "cod_car,data_ref"
-        }
-    },
-    {
-        "origin": {
-            "sourceService": "internal",
-            "typeOfTMS": "xyz"
-        },
-        "valueType": "unidades_planejamento_hidrico",
+        "valueType": "armazens_conab_br",
         "type": "layertype",
         "typeLayer": "vectorial",
         "viewValueType": "translate",
@@ -48,23 +14,23 @@
             "description": "translate",
             "format": "shp",
             "region": "translate",
-            "period": "2016",
-            "scale": "1:5.000",
+            "period": "2021",
+            "scale": "translate",
             "system_coordinator": "sirgas2000",
             "cartographic_projection": "utm",
-            "cod_caracter": "latin1",
+            "cod_caracter": "utf8",
             "fonte": "translate",
-            "link": "<a target='_blank' class='link-details' href='https://metadados.snirh.gov.br/geonetwork/srv/api/records/df48de18-753b-4789-964d-7f0967c53d08'> https://metadados.snirh.gov.br/geonetwork/srv/api/records/df48de18-753b-4789-964d-7f0967c53d08 </a>"
+            "link": "<a target='_blank' class='link-details' href='https://portaldeinformacoes.conab.gov.br/armazem'> https://portaldeinformacoes.conab.gov.br/armazem </a>"
         },
         "download": {
-            "csv": false,
+            "csv": true,
             "shp": true,
             "gpkg": false,
             "raster": false
         },
         "wfsMapCard": {
             "show": true,
-            "columns": "uph_nm,uph_cd"
+            "columns": "codigo,armazenado,type,endereco,capacidade"
         }
     },
     {
@@ -72,7 +38,7 @@
             "sourceService": "internal",
             "typeOfTMS": "xyz"
         },
-        "valueType": "reserva_legal_br",
+        "valueType": "pa_br_rodovias_dnit",
         "type": "layertype",
         "typeLayer": "vectorial",
         "viewValueType": "translate",
@@ -80,15 +46,49 @@
         "metadata": {
             "title": "translate",
             "description": "translate",
-            "format": "gpkg",
+            "format": "shp",
             "region": "translate",
-            "period": "2019",
-            "scale": "1:5.000",
+            "period": "2021",
+            "scale": "1:2.500 ~ 1:25.000",
             "system_coordinator": "sirgas2000",
             "cartographic_projection": "utm",
             "cod_caracter": "utf8",
-            "fonte": "translate",
-            "link": "<a target='_blank' class='link-details' href='http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm'> http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm </a>"
+            "fonte": "OpenStreet Map",
+            "link": "<a target='_blank' class='link-details' href='https://www.gov.br/infraestrutura/pt-br/assuntos/dados-de-transportes/bit/bitmodosmapas#maprodo'> https://www.gov.br/infraestrutura/pt-br/assuntos/dados-de-transportes/bit/bitmodosmapas#maprodo </a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "codigo,nm_tipo_tr,ds_local_i,ds_local_f,ds_tipo_ad,ds_legenda,leg_multim,comprimento_km,versao"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pa_br_estradas_osm",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "translate",
+            "period": "2021",
+            "scale": "1:25.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "OpenStreet Map",
+            "link": "<a target='_blank' class='link-details' href='http://download.geofabrik.de/south-america/brazil.html'> http://download.geofabrik.de/south-america/brazil.html </a>"
         },
         "download": {
             "csv": false,
@@ -97,8 +97,28 @@
             "raster": false
         },
         "wfsMapCard": {
-            "show": false,
-            "columns": "nom_tema,area_ha"
+            "show": true,
+            "columns": "codigo,nome,comprimento_km"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "limites_frigorificos_2021",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "source",
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cnpj,razao_social,sif,nr_process,data_regis,situacao,area,classe_1,classe_2,classe_3,classe_4"
         }
     }
 ]

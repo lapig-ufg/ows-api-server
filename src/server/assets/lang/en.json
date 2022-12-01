@@ -122,13 +122,16 @@
             }
         },
         "limites_terras_indigenas": {
-            "viewValueType": "Boundaries",
+            "viewValueType": "Boundaries Indigenous Land",
             "metadata": {
                 "title": "Indigenous Land (TI)",
                 "description": "Indigenous lands boundaries.",
                 "region": "Brazil",
                 "fonte": "National Indian Foundation (FUNAI)"
             }
+        },
+        "areas_militares_br": {
+            "viewValueType": "Military Areas"
         },
         "assentamentos": {
             "viewValueType": "Settlements",
@@ -137,6 +140,33 @@
                 "description": "The agrarian reform settlement is a group of agricultural units, installed by Incra in a rural property.",
                 "region": "Brazil",
                 "fonte": "The National Institute of Colonization and Agrarian Reform (INCRA)"
+            }
+        },
+        "areas_quilombolas": {
+            "viewValueType": "Quilombolas Communities",
+            "metadata": {
+                "title": "Quilombolas Communities",
+                "description": "Boundaries of Quilombolas Communities lands.",
+                "region": "Brasil",
+                "fonte": "National Indian Foundation (FUNAI)"
+            }
+        },
+        "pa_br_unidades_conservacao_PI": {
+            "viewValueType": "UCs - Integral Protection",
+            "metadata": {
+                "title": "Conservation Units (Integral Protection)",
+                "description": "Location of strictly protected conservation units.",
+                "region": "Brazil",
+                "fonte": "Chico Mendes Institute for Biodiversity Conservation (ICMBio)"
+            }
+        },
+        "pa_br_unidades_conservacao_US": {
+            "viewValueType": "UCs - Uso Sustentável",
+            "metadata": {
+                "title": "Conservation Units (Sustainable Use)",
+                "description": "Location of sustainable use conservation units.",
+                "region": "Brazil",
+                "fonte": "Chico Mendes Institute for Biodiversity Conservation (ICMBio)"
             }
         },
         "soilgrids_argila": {
@@ -164,21 +194,21 @@
         "default": {
             "viewValueType": "Default Value",
             "metadata": {
-                "title": "Default Value",
-                "description": "Default Description",
-                "format": "shp",
-                "region": "Default Region",
-                "period": "Infinity",
-                "scale": "1:250.000",
-                "system_coordinator": "sirgas2000",
-                "cartographic_projection": "utm",
-                "cod_caracter": "latin1",
-                "fonte": "Nós mesmos",
-                "url": "bora bora"
+                "title": "Metadata not supplied to the TI Team, therefore we set Default",
+                "description": "Due to the lack of Metadata delivery, it was not possible to obtain a description.",
+                "format": "Specify whether it is SHP, GPKG (Vector) or TIF (Raster)",
+                "region": "Specify the data coverage region. Specify the data coverage region.",
+                "period": "Specify the data period. Ex. 2000 ~ 2020",
+                "scale": "Specify the data scale: Ex. 1:250.000",
+                "system_coordinator": "Specify the coordinate system. Ex: SIRGAS2000",
+                "cartographic_projection": "Specify the cartographic projection. Ex: UTM",
+                "cod_caracter": "Specify the Character code. Ex: UTF-8",
+                "fonte": "Not supplied. Specify the organization or person that generated the data.",
+                "link": "Still Pending. Specify the link to specify the data or the person's contact email."
             }
         },
         "pasture_col6_s100": {
-            "viewValueType": "Regular Pasture",
+            "viewValueType": "Pasture",
             "metadata": {
                 "title": "Pasture Areas of Brazil",
                 "description": "Annual mapping of Brazilian pastures, carried out using Landsat data series from 1985 to 2020. Using supervised classification approaches (Random Forest) from Google's Earth Engine platform.",
@@ -195,38 +225,45 @@
             }
         },
         "lotacao_bovina_regions": {
-            "viewValueType": "Cattle Herd",
+            "viewValueType": "Cattle Herd (Animal Units)",
             "metadata": {
                 "title": "Bovine Herd in Animal Units (UA)",
                 "description": "Calculation performed considering the composition of the herd for the agricultural census. For the years 1986 to 1999, data from the 1996 agricultural census were used. For the years 2000 to 2018, data from the 2006 agricultural census were used. Animal Unit (UA) is equivalent to 450 kg animal alive."
             }
         },
-        "pasture_carbon_aglivc": {
-            "viewValueType": "Living Biomass",
+        "n_kbcs_regions": {
+            "viewValueType": "Cattle Herd (Head Counts)",
             "metadata": {
-                "title": "Carbon Stock with Living Biomass Index",
-                "description": "Carbon Stock with Living Biomass Index"
+                "title": "Bovine Herd in Head Counts (NKbcs)",
+                "description": "Calculation performed considering the composition of the herd for the agricultural census. For the years 1986 to 1999, data from the 1996 agricultural census were used. For the years 2000 to 2018, data from the 2006 agricultural census were used. Animal Unit (UA) is equivalent to 450 kg animal alive."
             }
         },
-        "pasture_carbon_bglivs": {
-            "viewValueType": "Roots",
+        "pasture_carbon_aglivc": {
+            "viewValueType": "Live Aerial Biomass (MgC.ha)",
             "metadata": {
-                "title": "Roots Carbon Stock",
-                "description": "Roots Carbon Stock"
+                "title": "Carbon Stock with Living Biomass Index",
+                "description": "Estimates of stocks in pasture areas of the Cerrado biome, in the following compartments: (a) live aboveground biomass; (b) dead aboveground biomass; (c) soil organic matter; and (d) roots."
             }
         },
         "pasture_carbon_stdeadc": {
-            "viewValueType": "Dead biomass",
+            "viewValueType": "Dead Aerial Biomass (MgC.ha)",
             "metadata": {
                 "title": "Dead Biomass Carbon Stock",
-                "description": "Dead Biomass Carbon Stock"
+                "description": "Estimates of stocks in pasture areas of the Cerrado biome, in the following compartments: (a) live aboveground biomass; (b) dead aboveground biomass; (c) soil organic matter; and (d) roots."
             }
         },
         "pasture_carbon_somsc": {
-            "viewValueType": "Soil",
+            "viewValueType": "Soil Organic Matter - 0-20cm (MgC.ha)",
             "metadata": {
                 "title": "Soil Organic Material Carbon Stock (SOM)",
-                "description": "Soil Organic Material Carbon Stock (SOM)"
+                "description": "Estimates of stocks in pasture areas of the Cerrado biome, in the following compartments: (a) live aboveground biomass; (b) dead aboveground biomass; (c) soil organic matter; and (d) roots."
+            }
+        },
+        "pasture_carbon_bglivs": {
+            "viewValueType": "Roots - 0-20cm (MgC.ha)",
+            "metadata": {
+                "title": "Roots Carbon Stock",
+                "description": "Estimates of stocks in pasture areas of the Cerrado biome, in the following compartments: (a) live aboveground biomass; (b) dead aboveground biomass; (c) soil organic matter; and (d) roots."
             }
         },
         "pontos_campo_parada": {
@@ -256,6 +293,86 @@
                 "title": "Visually Inspected Points",
                 "description": "Georeferenced set of points for the entire Brazilian territory, with classes of Land use and land cover referring to each year, from 1985 to 2017. Landsat images from TM, ETM + and OLI sensors were used. We also sought to address the criteria adopted, difficulties and specificities encountered regarding the interpretation of images in each of the 6 Brazilian biomes."
             }
+        },
+        "v_union_tvi_validacao_1985_2017": {
+            "viewValueType": "Points (1985-2017)",
+            "metadata": {
+                "title": "Visually Inspected Points",
+                "description": "Georeferenced set of points for the entire Brazilian territory, with classes of Land use and land cover referring to each year, from 1985 to 2017. Landsat images from TM, ETM + and OLI sensors were used. We also sought to address the criteria adopted, difficulties and specificities encountered regarding the interpretation of images in each of the 6 Brazilian biomes."
+            }
+        },
+        "pontos_classes_raras_85k_mapbiomas": {
+            "viewValueType": "Points (1985-2019)",
+            "metadata": {
+                "title": "Visually Inspected Points",
+                "description": "Georeferenced set of points for the entire Brazilian territory used to validate the mapbiomas mappings, with classes of land use and land cover being assigned according to the mapbiomas legend for the years 1985 to 2018. Time series of Landsat images were used using the TVI tool. Period: 1985 to 2019"
+            }
+        },
+        "pontos_validacao_pastagem_mapbiomas_col6": {
+            "viewValueType": "Points (Col.6)",
+            "metadata": {
+                "title": "Visually Inspected Points",
+                "description": "Georeferenced set of points for the entire Brazilian territory, being assigned pasture and non-grazing classes referring to the year 2020. Semiannual Sentinel 2 images were used through the GEE platform and using the Qgis software. "
+            }
+        },
+        "floresta_plantada_mapbiomas": {
+            "viewValueType": "Planted Forest",
+            "metadata": {
+                "title": "Planted Forest (MapBiomas Collection 6)",
+                "description": "Tree species planted for commercial purposes (e.g., pine, eucalyptus, araucaria)."
+            }
+        },
+        "lavoura_perene_mapbiomas": {
+            "viewValueType": "Perennial Crop",
+            "metadata": {
+                "title": "Perennial Crop (MapBiomas Collection 6)",
+                "description": "Areas occupied with short or medium term agricultural crops (e.g., Soybean, Sugarcane, Rice, and others)."
+            }
+        },
+        "lavoura_temporaria_mapbiomas": {
+            "viewValueType": "Temporary Crop",
+            "metadata": {
+                "title": "Temporary Crop (MapBiomas Collection 6)",
+                "description": "Areas occupied with agricultural crops with a long vegetative cycle (e.g, Coffee, Citrus, Cocoa, Cashew, and others)."
+            }
+        },
+        "areas_publicas_nao_destinadas_br": {
+            "viewValueType": "Non-Intended Public Areas"
+        },
+        "reserva_legal_br": {
+            "viewValueType": "Legal Reserve",
+            "metadata": {
+                "title": "Legal Reserve (RL)",
+                "description": "Property area intended for the sustainable economic use of the natural resources of the rural property, to assist the conservation and rehabilitation of ecological processes and to promote the conservation of biodiversity.",
+                "fonte": "Rural Environmental Registry (CAR) / Brazilian Forest Service (SFB)"
+            }
+        },
+        "armazens_conab_br": {
+            "viewValueType": "Warehouses",
+            "metadata": {
+                "title": "Warehouses",
+                "description": "Number of warehouses for storage and production control in Brazil.",
+                "scale": "Point",
+                "fonte": "National Supply Company (CONAB) (Reviewed by LAPIG-UFG)"
+            }
+        },
+        "pa_br_rodovias_dnit": {
+            "viewValueType": "Highways - DNIT",
+            "metadata": {
+                "title": "road network (DNIT)",
+                "description": "Detailed Brazilian road network provided by the Brazilian National Department of Infrastructure and Transport (DNIT).",
+                "fonte": "Federal Government of Brazil - National Department of Infrastructure and Transport (DNIT)"
+            }
+        },
+        "pa_br_estradas_osm": {
+            "viewValueType": "Detailed Ways - OSM",
+            "metadata": {
+                "title": "Detailed road network (OSM)",
+                "description": "Detailed Brazilian road network provided by OpenStreet Map (OSM)."
+            }
+        },
+        "limites_frigorificos_2021": {
+            "viewValueType": "Meatpacking Limits"
         }
     },
     "basemap": {
@@ -326,6 +443,7 @@
         "fase_limites_terras_indigenas": "Phase",
         "modalidade_limites_terras_indigenas": "Modality",
         "cr_limites_terras_indigenas": "Regional Coordination",
+        "cd_sipra_assentamentos": "SIPRA Code",
         "nome_proje_assentamentos": "Project Name",
         "capacidade_assentamentos": {
             "text": "Settlement Capacity",
@@ -341,10 +459,7 @@
         },
         "forma_obte_assentamentos": "Obtaining method",
         "descricao__assentamentos": "Settlement Description",
-        "year": {
-            "text": "Year",
-            "type": "integer"
-        },
+        "year": "Year",
         "n_kbcs": {
             "text": "Cattle Population",
             "type": "integer"
@@ -353,6 +468,7 @@
             "text": "Animal Units (UA)",
             "type": "integer"
         },
+        "cobertura": "Coverage",
         "data": {
             "text": "Date",
             "type": "date"
@@ -360,6 +476,7 @@
         "periodo": "Period",
         "horario": "Time",
         "altura": "Height",
+        "invasoras": "Invaders?",
         "gado": "Livestock Presence?",
         "qtd_cupins": "Termite Quantity",
         "forrageira": "Forager",
@@ -404,6 +521,60 @@
         "cons_2015": "Class in 2015",
         "cons_2016": "Class in 2016",
         "cons_2017": "Class in 2017",
-        "classe": "Class"
+        "cons_2018": "Class in 2018",
+        "cons_2019": "Class in 2019",
+        "cons_2020": "Class in 2020",
+        "class_2020": "Class in 2020",
+        "carta": "Cartographic Chart",
+        "declividade": "Slope",
+        "classe": "Class",
+        "dt_publica": {
+            "text": "Public Date",
+            "type": "date"
+        },
+        "esfera": "Domain",
+        "status": "Status",
+        "nm_comunid": "Community Name",
+        "nr_process": "Process No.",
+        "nome": "Name",
+        "grupo": "Category",
+        "codigouc": "UC Code",
+        "anocriacao": "Foundation Year",
+        "atolegal": "Legal Act",
+        "qualidade": "Quality",
+        "origem": "Source",
+        "campanha": "Campaign",
+        "year_created": "Creation Year",
+        "category": "Category",
+        "type": "Type",
+        "agency_man": "Agency",
+        "codigo": "Code",
+        "paof_fase": "Annual Forestry Grant Plan (PAOF)",
+        "nom_tema_reserva_legal_br": "Theme",
+        "armazenado": "Warehouse Name",
+        "endereco": "Address",
+        "capacidade": "Capacity",
+        "nm_tipo_tr_pa_br_rodovias_dnit": "Tipo do Trecho",
+        "ds_local_i_pa_br_rodovias_dnit": "Rodovia Início",
+        "ds_local_f_pa_br_rodovias_dnit": "Rodovia Final",
+        "ds_tipo_ad_pa_br_rodovias_dnit": "Administration Type",
+        "ds_legenda_pa_br_rodovias_dnit": "Highway Type",
+        "leg_multim_pa_br_rodovias_dnit": "Details",
+        "tamanho": "Size",
+        "versao": "Version",
+        "comprimento_km": "Lenght (KMs)",
+        "cnpj": "CNPJ",
+        "data_regis": {
+            "text": "Registry Date",
+            "type": "date"
+        },
+        "razao_social": "Corporate Name",
+        "sif": "SIF Number",
+        "situacao": "Situation",
+        "area_limites_frigorificos_2021": "Area of Activity",
+        "classe_1_limites_frigorificos_2021": "Class 01",
+        "classe_2_limites_frigorificos_2021": "Class 02",
+        "classe_3_limites_frigorificos_2021": "Class 03",
+        "classe_4_limites_frigorificos_2021": "Class 04"
     }
 }

@@ -20,19 +20,22 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
-            "csv": false,
+            "csv": true,
             "shp": true,
             "gpkg": false,
             "raster": false
         },
         "wfsMapCard": {
             "show": true,
-            "columns": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
+            "columns": "cobertura,data,periodo,horario,latitude,longitude,altura,invasoras,gado,qtd_cupins,forrageira,solo_exp,condicao,obs"
         },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        "gallery": {
+            "id_column": "id",
+            "tableName": "pontos_campo_parada"
+        }
     },
     {
         "origin": {
@@ -55,10 +58,10 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
-            "csv": false,
+            "csv": true,
             "shp": true,
             "gpkg": false,
             "raster": false
@@ -66,8 +69,7 @@
         "wfsMapCard": {
             "show": true,
             "columns": "cobertura,data,periodo,horario,altura,gado,qtd_cupins,forrageira,solo_exp,obs,condicao,cultivo"
-        },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        }
     },
     {
         "origin": {
@@ -90,7 +92,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -101,8 +103,7 @@
         "wfsMapCard": {
             "show": true,
             "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
-        },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        }
     },
     {
         "origin": {
@@ -125,7 +126,7 @@
             "cartographic_projection": "utm",
             "cod_caracter": "latin1",
             "fonte": "lapig",
-            "link": "<a target='_blank' class='link-details' href='https://pastagem.org/'> https://pastagem.org/</a>"
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
         },
         "download": {
             "csv": false,
@@ -136,7 +137,108 @@
         "wfsMapCard": {
             "show": true,
             "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
         },
-        "galleryAddress": "atlas-pastagens-files/campo"
+        "valueType": "v_union_tvi_validacao_1985_2017",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "1985 ~ 2017",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2017"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pontos_validacao_pastagem_mapbiomas_col6",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "2020",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "latin1",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "campanha,class_2020"
+        }
+    },
+    {
+        "origin": {
+            "sourceService": "internal",
+            "typeOfTMS": "xyz"
+        },
+        "valueType": "pontos_classes_raras_85k_mapbiomas",
+        "type": "layertype",
+        "typeLayer": "vectorial",
+        "viewValueType": "translate",
+        "typeLabel": "type",
+        "metadata": {
+            "title": "translate",
+            "description": "translate",
+            "format": "shp",
+            "region": "brasil",
+            "period": "1985 ~ 2019",
+            "scale": "1:250.000",
+            "system_coordinator": "sirgas2000",
+            "cartographic_projection": "utm",
+            "cod_caracter": "utf8",
+            "fonte": "lapig",
+            "link": "<a target='_blank' class='link-details' href='https://atlasdaspastagens.ufg.br'> https://atlasdaspastagens.ufg.br</a>"
+        },
+        "download": {
+            "csv": true,
+            "shp": true,
+            "gpkg": false,
+            "raster": false
+        },
+        "wfsMapCard": {
+            "show": true,
+            "columns": "cons_1985,cons_1990,cons_1995,cons_2000,cons_2005,cons_2010,cons_2015,cons_2016,cons_2017,cons_2018,cons_2019,carta,declividade"
+        }
     }
 ]
