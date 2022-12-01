@@ -71,7 +71,7 @@ module.exports = class LayerType {
                     filterLabel: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterLabel') ? this.languageOb.labels.layertype.filterLabel[params.filterLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.filterLabel["year"],
                     filterSelected: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterSelected') ? params.filterSelected : null,
                     filterHandler: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterHandler') ? params.filterHandler : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() || this.typeLayer == "raster" ? null : "msfilter",
-
+                    alertMessage: params.hasOwnProperty('alertMessage') ? params.alertMessage : null,
                     visible: params.hasOwnProperty('visible') ? params.visible : false,
                     opacity: params.hasOwnProperty('opacity') ? params.opacity : 1.0,
 
@@ -145,7 +145,7 @@ module.exports = class LayerType {
                     filterLabel: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterLabel') ? this.languageOb.labels.layertype.filterLabel[params.filterLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.filterLabel["year"],
                     filterSelected: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterSelected') ? params.filterSelected : null,
                     filterHandler: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterHandler') ? params.filterHandler : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() || this.typeLayer == "raster" ? null : "msfilter",
-
+                    alertMessage: params.hasOwnProperty('alertMessage') ? params.alertMessage : null,
                     visible: params.hasOwnProperty('visible') ? params.visible : false,
                     opacity: params.hasOwnProperty('opacity') ? params.opacity : 1.0,
 
