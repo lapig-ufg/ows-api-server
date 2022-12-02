@@ -1,8 +1,6 @@
-const lang = require('../utils/language');
 const Metadado = require('./metadado');
 
 const Auxiliar = require('../utils/auxiliar')
-
 
 module.exports = class LayerType {
 
@@ -71,20 +69,20 @@ module.exports = class LayerType {
                     filterLabel: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterLabel') ? this.languageOb.labels.layertype.filterLabel[params.filterLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.filterLabel["year"],
                     filterSelected: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterSelected') ? params.filterSelected : null,
                     filterHandler: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterHandler') ? params.filterHandler : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() || this.typeLayer == "raster" ? null : "msfilter",
-                    alertMessage: params.hasOwnProperty('alertMessage') ? params.alertMessage : null,
+
+                    alertMessage: params.hasOwnProperty('alertMessage') ? params.alertMessage.toLowerCase() === "translate".toLowerCase() ? this.languageOb[this.type][this.valueType].alertMessage : params.alertMessage : null,
+
                     visible: params.hasOwnProperty('visible') ? params.visible : false,
                     opacity: params.hasOwnProperty('opacity') ? params.opacity : 1.0,
 
                     metadata: params.hasOwnProperty('metadata') ? new Metadado(app, this.languageOb, language, this.valueType, params.metadata).getMetadadoInstance() : new Metadado(app, this.languageOb, language, 'default', null).getMetadadoInstance()
                 };
-
             }
             catch (error) {
-                console.log("ERRO ON LAYER: ", this.valueType)
+
+                console.log("ERRO ON LAYER: ", this.valueType, error)
             }
             this.obj = Auxiliar.removeNullProperties(temp);
-
-            // console.log(this.valueType, this.obj)
         }
         else {
             this.obj = null;
@@ -145,15 +143,18 @@ module.exports = class LayerType {
                     filterLabel: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterLabel') ? this.languageOb.labels.layertype.filterLabel[params.filterLabel] : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : this.languageOb.labels.layertype.filterLabel["year"],
                     filterSelected: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterSelected') ? params.filterSelected : null,
                     filterHandler: !params.hasOwnProperty('filters') ? null : params.hasOwnProperty('filterHandler') ? params.filterHandler : this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() || this.typeLayer == "raster" ? null : "msfilter",
-                    alertMessage: params.hasOwnProperty('alertMessage') ? params.alertMessage : null,
+
+                    alertMessage: params.hasOwnProperty('alertMessage') ? params.alertMessage.toLowerCase() === "translate".toLowerCase() ? this.languageOb[this.type][this.valueType].alertMessage : params.alertMessage : null,
+
                     visible: params.hasOwnProperty('visible') ? params.visible : false,
                     opacity: params.hasOwnProperty('opacity') ? params.opacity : 1.0,
 
                     metadata: params.hasOwnProperty('metadata') ? new Metadado(app, this.languageOb, language, this.valueType, params.metadata).getMetadadoInstance() : new Metadado(app, this.languageOb, language, 'default', null).getMetadadoInstance()
                 };
 
-            }
-            catch (error) {
+
+
+            } catch (error) {
                 console.log("ERRO ON LAYER: ", this.valueType)
             }
             this.obj = Auxiliar.removeNullProperties(temp);
@@ -295,7 +296,6 @@ module.exports = class LayerType {
 
 
     getLayerTypeInstance = function () {
-
         return this.obj;
     }
 
