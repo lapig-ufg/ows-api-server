@@ -59,7 +59,6 @@ module.exports = class LayerType {
                     },
 
                     gallery: params.hasOwnProperty('gallery') ? params.gallery : null,
-
                     download: this.type.toUpperCase() === 'limit'.toUpperCase() || this.type.toUpperCase() === 'basemap'.toUpperCase() ? null : params.hasOwnProperty('download') ? this.getDownloadObject(params.download) : this.getDownloadObject('default'),
 
                     layerLimits: this.type.toUpperCase() === 'limit'.toUpperCase() ? true : null,
@@ -79,7 +78,6 @@ module.exports = class LayerType {
                 };
             }
             catch (error) {
-
                 console.log("ERRO ON LAYER: ", this.valueType, error)
             }
             this.obj = Auxiliar.removeNullProperties(temp);

@@ -10,7 +10,7 @@ RUN apt-get -qq update --fix-missing && apt-get -qq --yes upgrade
 
 # Clone app and npm install on server
 ENV URL_TO_APPLICATION_GITHUB="https://github.com/lapig-ufg/ows-api-server.git"
-ENV BRANCH="develop"
+ENV BRANCH="main"
 
 # Install GDAL dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get  install -y wget git bzip2 curl build-essential \
