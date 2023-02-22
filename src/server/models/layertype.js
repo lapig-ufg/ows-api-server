@@ -250,11 +250,42 @@ module.exports = class LayerType {
             if (language.hasOwnProperty(value)) {
 
                 if (typeof language[value] === 'object' && language[value] !== null) {
-                    obj = {
-                        column: value,
-                        label: language[value].text,
-                        columnType: language[value].type
-                    }
+
+                    switch (language[value].type) {
+                        case 'dict':
+                            obj = {
+                                column: value,
+                                label: language[value].text,
+                                columnType: language[value].type,
+                                dict: language[value].dict
+                            }
+                            break
+                        case 'expression':
+                            obj = {
+                                column: value,
+                                label: language[value].text,
+                                columnType: language[value].type,
+                                expression: language[value].expression
+                            }
+                            break
+                        case 'enum':
+                            obj = {
+                                column: value,
+                                label: language[value].text,
+                                columnType: language[value].type,
+                                enum: language[value].enum
+                            }
+                            break
+                        default:
+                            obj = {
+                                column: value,
+                                label: language[value].text,
+                                columnType: language[value].type
+                            }
+                            break
+                    
+                        }
+                    
                 } else {
                     obj = {
                         column: value,
