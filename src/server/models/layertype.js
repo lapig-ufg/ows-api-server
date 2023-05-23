@@ -38,9 +38,6 @@ module.exports = class LayerType {
             // }
             let temp = {};
             try {
-                if(this.valueType==='pa_br_somsc_2022'){
-                    console.log(params.download)
-                }
                 temp = {
                     valueType: this.valueType,
                     type: this.type,
