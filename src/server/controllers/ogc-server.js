@@ -270,8 +270,8 @@ module.exports = function (app) {
 
 		var params = Internal.getParams(request);
 
-		console.log('teste:',regexLAYER.test(String(params['LAYER']).toLowerCase()))
-		if(regexLAYER.test(String(params['LAYER']).toLowerCase()) === false) {
+		console.log('teste:',params['LAYER'],regexLAYER.test(params['LAYER']))
+		if(regexLAYER.test(params['LAYER']) === false) {
 			console.log('request nao autorizada')
 			return response.stats(401).end();
 		}
