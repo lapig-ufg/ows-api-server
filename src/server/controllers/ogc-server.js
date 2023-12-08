@@ -283,8 +283,8 @@ module.exports = function (app) {
 
 		if(
 			regexGeral.test(params['MODE']) === false ||
-			regexGeral.test(params['TITLE']) === false ||
-			regexGeral.test(params['TITLEMODE']) === false ||
+			regexGeral.test(params['TILE']) === false ||
+			regexGeral.test(params['TILEMODE']) === false ||
 			regexGeral.test(params['MAP.IMAGETYPE']) === false
 			) {
 			return response.json({
