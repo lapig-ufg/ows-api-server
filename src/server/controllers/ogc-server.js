@@ -266,7 +266,15 @@ module.exports = function (app) {
 	}
 
 	OgcServer.ows = function (request, response) {
+		const regexLAYER = /^[a-zA-Z0-9_\-]+$/;
+
 		var params = Internal.getParams(request);
+
+		if(re.test(String(params['LAYER']).toLowerCase()) == false) {
+			return response.stats(401).end();
+		}
+
+
 		console.log(params)
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		if (params['LAYER'] == 'ogcserver') {
