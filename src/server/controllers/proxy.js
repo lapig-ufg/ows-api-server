@@ -16,13 +16,18 @@ module.exports = function (app) {
 		var url = baseUrl + request.path;
 		var params = querystring.stringify(request.query);
 
-		if (request.param('url'))
-
+		if (request.param('url')){
 			url = request.params['url'];
-		else
-			url += '?' + params;
+			console.log('param["url]":',url)
 
-		console.log('url:',url)
+		}
+		else{
+			url += '?' + params;
+			console.log('params:',url)
+		}
+			
+
+		
 		requester({
 			uri: url
 			, timeout: config.timeout
