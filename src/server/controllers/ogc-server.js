@@ -271,8 +271,7 @@ module.exports = function (app) {
 		var params = Internal.getParams(request);
 
 		
-		if(regexLAYER.test(params['LAYERS']) === false  ) {
-			
+		if(regexLAYER.test(params['LAYERS']) === false || regexLAYER.test(params['LAYER']) === false ) {
 			return response.json({
 				error: {
 					message: 'The layer provided is not valid'
@@ -281,8 +280,6 @@ module.exports = function (app) {
 			 }).stats(401).end();
 		}
 
-
-		console.log(params)
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		if (params['LAYER'] == 'ogcserver') {
 			response.sendfile(config['path_undefined_img'])
