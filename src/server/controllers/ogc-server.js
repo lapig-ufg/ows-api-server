@@ -270,7 +270,7 @@ module.exports = function (app) {
 
 		var params = Internal.getParams(request);
 
-		if(re.test(String(params['LAYER']).toLowerCase()) == false) {
+		if(regexLAYER.test(String(params['LAYER']).toLowerCase()) == false) {
 			return response.stats(401).end();
 		}
 
