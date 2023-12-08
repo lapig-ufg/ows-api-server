@@ -267,9 +267,10 @@ module.exports = function (app) {
 
 	OgcServer.ows = function (request, response) {
 		const regexLAYER = /^[a-zA-Z0-9_\-]+$/;
+		const regexGeral = /^[a-zA-Z0-9_\ \+\-\.]+$/;
 
 		var params = Internal.getParams(request);
-
+		console.log(params)
 		
 		if(regexLAYER.test(params['LAYERS']) === false || regexLAYER.test(params['LAYER']) === false ) {
 			return response.json({
@@ -277,8 +278,22 @@ module.exports = function (app) {
 					message: 'The layer provided is not valid'
 				},
 				status: 401
-			 }).stats(401).end();
+			 }).status(401).end();
 		}
+
+		if(
+			regexGeral.test(params['MODE']) === false ||
+			regexGeral.test(params['TITLE']) === false ||
+			regexGeral.test(params['TITLEMODE']) === false ) {
+			return response.json({
+				error: {
+					message: 'One of the url parameters was rejected by the server'
+				},
+				status: 401
+			 }).status(401).end();
+		}
+
+
 
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		if (params['LAYER'] == 'ogcserver') {
