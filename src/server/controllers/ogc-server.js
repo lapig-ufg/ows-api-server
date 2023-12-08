@@ -267,6 +267,7 @@ module.exports = function (app) {
 
 	OgcServer.ows = function (request, response) {
 		var params = Internal.getParams(request);
+		console.log(params)
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		if (params['LAYER'] == 'ogcserver') {
 			response.sendfile(config['path_undefined_img'])
