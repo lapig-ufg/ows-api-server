@@ -17,10 +17,12 @@ module.exports = function (app) {
 		var params = querystring.stringify(request.query);
 
 		if (request.param('url'))
+
 			url = request.params['url'];
 		else
 			url += '?' + params;
 
+		console.log('url:',url)
 		requester({
 			uri: url
 			, timeout: config.timeout
