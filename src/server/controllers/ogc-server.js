@@ -269,8 +269,9 @@ module.exports = function (app) {
 		const regexLAYER = /^[a-zA-Z0-9_\-]+$/;
 
 		var params = Internal.getParams(request);
-
+		console.log('teste:',regexLAYER.test(String(params['LAYER']).toLowerCase()))
 		if(regexLAYER.test(String(params['LAYER']).toLowerCase()) == false) {
+			colose
 			return response.stats(401).end();
 		}
 
