@@ -270,10 +270,15 @@ module.exports = function (app) {
 
 		var params = Internal.getParams(request);
 
-		console.log('teste:',params['LAYER'],regexLAYER.test(params['LAYER']))
-		if(regexLAYER.test(params['LAYER']) === false) {
-			console.log('request nao autorizada')
-			return response.stats(401).end();
+		
+		if(regexLAYER.test(params['LAYERS']) === false  ) {
+			
+			return response.json({
+				error: {
+					message: 'The layer provided is not valid'
+				},
+				status: 401
+			 }).stats(401).end();
 		}
 
 
