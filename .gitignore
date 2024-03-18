@@ -106,7 +106,4 @@ dist
 # TernJS port file
 .tern-port
 
-# Freeze File Jenkinsfile
-freeze = update-index --assume-unchanged
-git freeze Jenkinsfile
-Dockerfile
+
