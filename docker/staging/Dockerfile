@@ -12,6 +12,7 @@ RUN apt-get -qq update --fix-missing && apt-get -qq --yes upgrade
 ENV URL_TO_APPLICATION_GITHUB="https://github.com/lapig-ufg/ows-api-server.git"
 ENV BRANCH="develop"
 
+
 # Install GDAL dependencies
 RUN DEBIAN_FRONTEND=noninteractive apt-get  install -y wget git bzip2 curl build-essential \
                                                     libgdal-dev g++ libcurl4 python3.7 python3-pip gdal-bin=2.4.0+dfsg-1+b1 \
