@@ -73,7 +73,11 @@ jobs:
     steps:
       - name: Restart Application
         run: |
-          zelador process {{ github.repository }} ${{ needs.build.outputs.DOCKER_PATH }}
+          zelador process ${{ env.APPLICATION_NAME }}  ${{ needs.build.outputs.DOCKER_PATH }} /
+            --title="ows-server|map-server"   /
+          │ --commit=${{ needs.build.outputs.LAST_COMMIT_HASH }} /
+          │ --repo=${{ github.repository }}                                              
+
 
       - name: Verify deployment
         run: |
