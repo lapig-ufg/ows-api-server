@@ -77,7 +77,6 @@ COPY --chown=appuser:appuser ./src /app
 # Trocar para usuário não-root e instalar dependências npm
 USER appuser
 RUN cd /app/src/server && \
-    rm -f package-lock.json && \
     npm install
 
 # Definir diretório de trabalho final
