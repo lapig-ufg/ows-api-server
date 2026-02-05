@@ -68,7 +68,7 @@ COPY --from=ghcr.io/astral-sh/uv:0.9.30 /uv /uvx /bin/
 WORKDIR /app
 
 # Copy application source
-COPY --chown=appuser:appuser ./scr /app
+COPY --chown=appuser:appuser ./src /app
 
 # Install npm dependencies as appuser
 USER appuser
