@@ -76,11 +76,11 @@ COPY --chown=appuser:appuser ./src /app
 
 # Trocar para usuário não-root e instalar dependências npm
 USER appuser
-RUN cd /app/src/server && \
+RUN cd /app/server && \
     npm install
 
 # Definir diretório de trabalho final
-WORKDIR /app/src/server
+WORKDIR /app/server
 
 # Comando de inicialização
 CMD ["node", "app-cluster.js"]
