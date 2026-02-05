@@ -44,6 +44,7 @@ jobs:
           echo "{\"commitId\":\"$LAST_COMMIT_HASH\",\"repository\":\"$APPLICATION_NAME\",\"dockerPath\":\"$DOCKER_PATH\"}" > version.json
           cat version.json
 
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
