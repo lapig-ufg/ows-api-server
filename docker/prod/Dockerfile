@@ -1,52 +1,83 @@
-FROM debian:bookworm-slim
+# Stage 1: Get Node.js binaries
+# ==================================================================
+# Stage 1: Node.js 14 (versão legada)
+# ==================================================================
+FROM node:14.17.3-buster-slim AS node-base
 
-#If you change ubuntu version, don't forget to change 3 echo lines 
-LABEL Renato Gomes<renatogomessilverio@gmail.com>
 
-ENV LANG C.UTF-8
-ENV GDAL_VERSION=3.6.2
+# Stage 2: Final image
+FROM debian:buster-slim
+
+ENV LANG=C.UTF-8
+ENV NODE_OPTIONS="--max-old-space-size=41943040"
+
 # Update and upgrade system
 RUN apt-get -qq update --fix-missing && apt-get -qq --yes upgrade
 
-# Clone app and npm install on server
-ENV URL_TO_APPLICATION_GITHUB="https://github.com/lapig-ufg/ows-api-server.git"
-ENV BRANCH="develop"
+# Create non-root user
+RUN groupadd -r -g 1000 appuser && \
+    useradd -r -g appuser -u 1000 -m -s /bin/bash appuser && \
+    # Cria diretórios necessários
+    mkdir -p /app /STORAGE/catalog && \
+    chown -R appuser:appuser /app /STORAGE
 
-
-# Install GDAL dependencies
-RUN DEBIAN_FRONTEND=noninteractive apt-get  install -y \
+# Install GDAL dependencies (without Node.js)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     wget \
     git \
     bzip2 \
     curl \
     build-essential \
-    libgdal-dev=${GDAL_VERSION}+dfsg-1+b2 \
+    libgdal-dev \
     g++ \
     libcurl4 \
-    python3.11 \
-    python3-full \
+    python3.7 \
     python3-pip \
-    gdal-bin=${GDAL_VERSION}+dfsg-1+b2 \
-    python3-gdal=${GDAL_VERSION}+dfsg-1+b2 \
-    pipx \
-    mapserver-bin=8.0.0-3+b8 \
+    gdal-bin=2.4.0+dfsg-1+b1 \
+    mapserver-bin=7.2.2-1 \
     mapserver-doc \
+    python-mapscript=7.2.2-1 \
     procps \
-    net-tools
-
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -  && \
-    apt-get update && apt-get install -y nodejs && \
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && \
-    mkdir -p /APP && \
+    net-tools && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN cd /APP && git clone -b ${BRANCH} ${URL_TO_APPLICATION_GITHUB}
+# Copy Node.js from node-base stage
+COPY --from=node-base /usr/local/bin/node /usr/local/bin/node
+COPY --from=node-base /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node-base /usr/local/bin/npm /usr/local/bin/npm
+COPY --from=node-base /usr/local/bin/npx /usr/local/bin/npx
+
+
+# Create symlinks
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
+    ln -s /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
+
 # Update C env vars so compiler can find gdal
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
-#Config EPSG and ADD Required font
+# Config EPSG and ADD Required font
 ADD ./files/NotoSans-Regular.ttf /usr/share/fonts/truetype/noto/NotoSans-Regular.ttf
 ADD ./files/epsg /usr/share/proj/epsg
 
-RUN apt-get update && apt-get  install python3-mapscript && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Install GDAL Python bindings
+RUN pip3 install --no-cache-dir GDAL==2.4.0
+
+COPY --from=ghcr.io/astral-sh/uv:0.9.30 /uv /uvx /bin/
+
+WORKDIR /app
+
+# Copy application source
+COPY --chown=appuser:appuser ./scr /app
+
+# Install npm dependencies as appuser
+USER appuser
+RUN cd /app/src/server && \
+    rm -f package-lock.json && \
+    npm install
+
+WORKDIR /app/src/server
+
+
+# Start application directly
+CMD ["node", "app-cluster.js"]
