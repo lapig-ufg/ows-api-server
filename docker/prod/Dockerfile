@@ -24,8 +24,8 @@ RUN apt-get -qq update --fix-missing && \
     apt-get -qq --yes upgrade && \
     groupadd -r -g 1000 appuser && \
     useradd -r -g appuser -u 1000 -m -s /bin/bash appuser && \
-    mkdir -p /app /STORAGE/catalog && \
-    chown -R appuser:appuser /app /STORAGE
+    mkdir -p /app /STORAGE/catalog /mnt/tmpfs && \
+    chown -R appuser:appuser /app /STORAGE /mnt/tmpfs
 
 # Instalar dependências do sistema em uma única camada
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
