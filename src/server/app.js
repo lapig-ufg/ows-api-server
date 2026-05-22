@@ -31,7 +31,8 @@ const allowedOrigins = [
     'https://araticum.lapig.iesa.ufg.br',
     'https://araticumdev.lapig.iesa.ufg.br',
     'https://agrotoxicosdev.lapig.iesa.ufg.br',
-    'https://agrotoxicos.lapig.iesa.ufg.br'
+    'https://agrotoxicos.lapig.iesa.ufg.br',
+    'https://malhafundiaria.lapig.iesa.ufg.br'
 ];
 
 const corsOptions = {
